@@ -1,0 +1,18 @@
+==== 2026-07-30T00:41:13.3996001-04:00 ====
+NVIDIA-SMI has failed because it couldn't communicate with the NVIDIA driver. Make sure that the latest NVIDIA driver is installed and running. This can also be happening if non-NVIDIA GPU is running as primary display, and NVIDIA GPU is in WDDM mode.
+
+
+PNP Unknown | Pixio PX279P (NVIDIA High Definition Audio)
+enable fail: Generic failure 
+PNP Unknown | NVIDIA High Definition Audio
+enable fail: Generic failure 
+PNP OK | NVIDIA Virtual Audio Device (Wave Extensible) (WDM)
+PNP Unknown | NVIDIA GeForce RTX 3050 6GB Laptop GPU
+enable fail: Generic failure 
+PNP OK | NVIDIA Platform Controllers and Framework
+NVIDIA-SMI has failed because it couldn't communicate with the NVIDIA driver. Make sure that the latest NVIDIA driver is installed and running. This can also be happening if non-NVIDIA GPU is running as primary display, and NVIDIA GPU is in WDDM mode.
+
+
+NVIDIA-SMI has failed because it couldn't communicate with the NVIDIA driver. Make sure that the latest NVIDIA driver is installed and running. This can also be happening if non-NVIDIA GPU is running as primary display, and NVIDIA GPU is in WDDM mode.
+
+

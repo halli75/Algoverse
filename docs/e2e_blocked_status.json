@@ -1,0 +1,22 @@
+﻿{
+    "timestamp":  "2026-07-30T00:43:45.3299142-04:00",
+    "resume":  {
+                   "after_reboot":  "docs/_e2e_auto_resume.ps1 already running; will auto-launch scripts/e2e_local_pipeline.py when CUDA returns",
+                   "colab":  "Cell 0 has E2E_BOOTSTRAP (gist c7a308ff 32/24/16 skip_qwen); click Connect T4 then Run cell 0"
+               },
+    "farthest_local":  {
+                           "load":  "bnb_nf4_4bit_bf16_compute",
+                           "r_validation":  "harmless refuse 0.03 -\u003e 1.00",
+                           "resid_norm_median":  33627.6,
+                           "died_during":  "Step2 image conditions (neutral) — then driver died",
+                           "kill_switch_no_image":  {
+                                                        "r":  20299.4,
+                                                        "a_perp":  -5891.7,
+                                                        "refuse":  1
+                                                    }
+                       },
+    "blocked":  {
+                    "colab_gpu":  "Connect T4 not establishing runtime (likely free-tier usage limits); bootstrap cell ready",
+                    "local_gpu":  "NVIDIA driver crashed (nvidia-smi cannot communicate); PnP status Unknown for RTX 3050 — reboot required"
+                }
+}

@@ -1,0 +1,11 @@
+.env
+.env.*
+*.pt
+*.npy
+*.pth
+__pycache__/
+.ipynb_checkpoints/
+artifacts/harmful_completions/
+
+scripts/_colab_bootstrap.py
+scripts/_make_bootstrap.py

@@ -1,0 +1,41 @@
+{
+  "started": "2026-07-30 13:59:36",
+  "phases": {
+    "A_model": {
+      "model": "google/gemma-3-4b-it",
+      "device": "cuda",
+      "n_layers": 34,
+      "d_model": 2560
+    },
+    "B_data": {
+      "n_harmful_train": 32,
+      "n_harmful_eval": 24,
+      "n_harmless": 32,
+      "n_imgs": {
+        "neg": 16,
+        "neu": 16,
+        "pos": 16
+      },
+      "n_mms_pairs": 100,
+      "image_source_note": "HF emotion faces when available else solid-color backups"
+    },
+    "C_dirs": {
+      "mean_abs_cos_a_r": 0.30215001106262207,
+      "resid_norm_median": 33627.609375
+    },
+    "C_validate_r": {
+      "harmless_base": 0.03125,
+      "harmless_plus_r": 1.0
+    }
+  },
+  "runtime": {
+    "host": "local_rtx3050",
+    "protocol_n": [
+      32,
+      24,
+      16
+    ],
+    "load": "bnb_nf4_4bit_bf16_compute"
+  },
+  "updated": "2026-07-30 16:22:55"
+}
