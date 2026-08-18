@@ -1,0 +1,39 @@
+{
+  "complete": true,
+  "dirs": {
+    "abs_cos_a_r": 0.13611170649528503,
+    "layers": 42,
+    "n_dir": 64,
+    "n_img": 64,
+    "path": "/content/e2e_dirs_publish.pt"
+  },
+  "finished": "2026-08-07 07:16:24",
+  "gpu": "Tesla T4",
+  "headline": "ratio_a_raw=1.5910 ratio_a_unit=1.3900 \u2192 INVERTED_persists (published ratio_a\u22481.591; OOD norms already PASS)",
+  "job": "rebuild_dirs_ratio_unit",
+  "model": {
+    "d_model": 2560,
+    "id": "google/gemma-4-E4B-it",
+    "n_layers": 42
+  },
+  "prereg_hash": "3111c3af7f7b12656cb0792bea4a21b4302a0c42",
+  "ratio_a_recheck": {
+    "delta_img": 5.410639660978424,
+    "delta_img_unit": 0.04498948899244646,
+    "delta_txt": 3.4006885176613215,
+    "delta_txt_unit": 0.03236692318958895,
+    "headline_implication": "INVERTED_persists",
+    "n": 40,
+    "published_ratio_a": 1.5910424118170519,
+    "ratio_a_raw": 1.5910424118170519,
+    "ratio_a_unit": 1.3899834942271452
+  },
+  "sizes": {
+    "N_DELTA": 40,
+    "N_DIR": 64,
+    "N_IMG": 64
+  },
+  "split_hash": "ef2a7d2a84a803c7",
+  "started": "2026-08-07 07:01:31",
+  "tier": "full"
+}

@@ -1,0 +1,109 @@
+=== AGENT_LOOP_START mechanism 2026-08-12T15:41:34.1401737-04:00 ===
+AGENT_LOOP_TICK_mechanism 2026-08-12T15:41:34.1568087-04:00
+AGENT_LOOP_TICK_mechanism 2026-08-12T15:56:34.1718974-04:00
+AGENT_LOOP_TICK_mechanism 2026-08-12T16:11:34.2029269-04:00
+TICK 2026-08-12T16:17:22.9417518-04:00
+status: smoke running T4
+hb: phase2 delta_desc 11/32
+elapsed_mechanism_s: ~1525
+split_hash: 1e8ea1c22144dd9d (pinned; ef2a lost)
+notes: r validation weak continuing
+AGENT_LOOP_TICK_mechanism 2026-08-12T16:26:34.2295849-04:00
+AGENT_LOOP_TICK_mechanism 2026-08-12T16:41:34.2465414-04:00
+TICK 2026-08-12T16:49:17.8545796-04:00
+SMOKE DONE exit=0 headline=M3_PROTECTIVE (underpowered)
+FULL A100 launched pid=1385
+split pinned 1e8ea1c22144dd9d
+artifacts: artifacts/colab/e2e_mechanism_results_smoke.json data/emotic_split.json
+AGENT_LOOP_TICK_mechanism 2026-08-12T16:56:34.2619308-04:00
+TICK 2026-08-12T17:08:02.0005691-04:00
+FULL A100 RUNNING v2 pid=6209
+gpu=NVIDIA A100-SXM4-40GB
+split_hash=1e8ea1c22144dd9d PINNED OK
+stage=model_load
+sizes=full N_DIR=64 N_DELTA=64 N_BEH=100 N_BORDER=80 seeds=3
+AGENT_LOOP_TICK_mechanism 2026-08-12T17:11:34.2697701-04:00
+TICK 2026-08-12T17:23:25.8148951-04:00 hb=beh_harm_none 73/100 elapsed~972s alive=1 split=1e8ea1c
+AGENT_LOOP_TICK_mechanism 2026-08-12T17:26:34.2776446-04:00
+AGENT_LOOP_TICK_mechanism 2026-08-12T17:41:34.2935776-04:00
+AGENT_LOOP_TICK_mechanism 2026-08-12T18:23:21.5158165-04:00
+AGENT_LOOP_TICK_mechanism 2026-08-12T18:38:21.6287374-04:00
+AGENT_LOOP_TICK_mechanism 2026-08-12T18:53:21.6455570-04:00
+AGENT_LOOP_TICK_mechanism 2026-08-12T19:08:21.6739779-04:00
+AGENT_LOOP_TICK_mechanism 2026-08-12T19:23:21.6970364-04:00
+AGENT_LOOP_TICK_mechanism 2026-08-12T19:38:21.7076289-04:00
+AGENT_LOOP_TICK_mechanism 2026-08-12T19:53:21.7304966-04:00
+AGENT_LOOP_TICK_mechanism 2026-08-12T20:08:21.7466802-04:00
+AGENT_LOOP_TICK_mechanism 2026-08-12T20:23:21.7603309-04:00
+AGENT_LOOP_TICK_mechanism 2026-08-12T20:38:21.7622697-04:00
+AGENT_LOOP_TICK_mechanism 2026-08-12T20:53:21.7783724-04:00
+AGENT_LOOP_TICK_mechanism 2026-08-12T21:08:21.7994921-04:00
+AGENT_LOOP_TICK_mechanism 2026-08-12T21:23:21.8102493-04:00
+AGENT_LOOP_TICK_mechanism 2026-08-12T21:38:21.8298602-04:00
+AGENT_LOOP_TICK_mechanism 2026-08-12T21:53:21.8528827-04:00
+AGENT_LOOP_TICK_mechanism 2026-08-12T22:08:21.8698835-04:00
+AGENT_LOOP_TICK_mechanism 2026-08-12T22:23:21.8857022-04:00
+AGENT_LOOP_TICK_mechanism 2026-08-12T22:38:21.9008646-04:00
+AGENT_LOOP_TICK_mechanism 2026-08-12T22:53:21.9074753-04:00
+AGENT_LOOP_TICK_mechanism 2026-08-12T23:08:21.9160331-04:00
+AGENT_LOOP_TICK_mechanism 2026-08-12T23:23:21.9320848-04:00
+AGENT_LOOP_TICK_mechanism 2026-08-12T23:38:21.9454241-04:00
+AGENT_LOOP_TICK_mechanism 2026-08-12T23:53:21.9564310-04:00
+AGENT_LOOP_TICK_mechanism 2026-08-13T00:08:21.9858658-04:00
+AGENT_LOOP_TICK_mechanism 2026-08-13T00:23:22.0010522-04:00
+AGENT_LOOP_TICK_mechanism 2026-08-13T00:38:22.0193372-04:00
+AGENT_LOOP_TICK_mechanism 2026-08-13T00:53:25.5306096-04:00
+AGENT_LOOP_TICK_mechanism 2026-08-13T01:08:25.5460132-04:00
+AGENT_LOOP_TICK_mechanism 2026-08-13T01:23:25.5536714-04:00
+AGENT_LOOP_TICK_mechanism 2026-08-13T01:38:25.5671876-04:00
+AGENT_LOOP_TICK_mechanism 2026-08-13T01:53:25.5900103-04:00
+AGENT_LOOP_TICK_mechanism 2026-08-13T02:08:25.6040932-04:00
+AGENT_LOOP_TICK_mechanism 2026-08-13T02:23:25.6137920-04:00
+AGENT_LOOP_TICK_mechanism 2026-08-13T02:38:25.6432220-04:00
+AGENT_LOOP_TICK_mechanism 2026-08-13T02:53:25.6623086-04:00
+AGENT_LOOP_TICK_mechanism 2026-08-13T03:08:25.6866570-04:00
+AGENT_LOOP_TICK_mechanism 2026-08-13T03:23:25.7136070-04:00
+AGENT_LOOP_TICK_mechanism 2026-08-13T03:38:25.7343752-04:00
+AGENT_LOOP_TICK_mechanism 2026-08-13T03:53:25.7460896-04:00
+AGENT_LOOP_TICK_mechanism 2026-08-13T04:08:25.7697700-04:00
+AGENT_LOOP_TICK_mechanism 2026-08-13T04:23:25.7815267-04:00
+AGENT_LOOP_TICK_mechanism 2026-08-13T04:38:25.7955014-04:00
+AGENT_LOOP_TICK_mechanism 2026-08-13T04:53:25.8117789-04:00
+TICK 2026-08-13T05:01:57.9797878-04:00
+RECONNECTED A100 after overnight disconnect
+steer fix SHIPPED to gist (alpha * norms[l])
+incomplete unzip repaired n_jpg=23185
+FULL relaunched pid=2908 v3b
+TICK 2026-08-13T05:07:27.1591137-04:00 FULL healthy script_norms=true split=1e8ea1c stage=model_load gpu=A100 pid=2908
+AGENT_LOOP_TICK_mechanism 2026-08-13T05:08:25.8206004-04:00
+TICK 2026-08-13T05:22:52.0478962-04:00 r_validate OK 0.08->1.0 ood=PASS hb=beh_harm_none 78/100 elapsed~1013s notes=[]
+AGENT_LOOP_TICK_mechanism 2026-08-13T05:23:25.8414759-04:00
+TICK 2026-08-13T05:38:05.0766724-04:00 hb=beh_harm_neg 62/100 elapsed~1925s grok_timeout_note=1 continuing r_ok
+AGENT_LOOP_TICK_mechanism 2026-08-13T05:38:25.8534217-04:00
+TICK 2026-08-13T05:53:11.2474588-04:00 hb=beh_harm_neu 50/100 elapsed~2833s phase1 continuing 1 grok timeout
+AGENT_LOOP_TICK_mechanism 2026-08-13T05:53:25.8690425-04:00
+TICK 2026-08-13T06:08:21.5642589-04:00 hb=beh_bord_none 45/80 elapsed~3744s phase1 still going
+AGENT_LOOP_TICK_mechanism 2026-08-13T06:08:25.8920513-04:00
+AGENT_LOOP_TICK_mechanism 2026-08-13T06:23:25.9190113-04:00
+TICK 2026-08-13T06:23:30.1573334-04:00 hb=beh_bord_neg 60/80 elapsed~4648s still phase1
+AGENT_LOOP_TICK_mechanism 2026-08-13T06:38:25.9414925-04:00
+TICK 2026-08-13T06:38:39.7541449-04:00 hb=beh_bord_neu 69/80 elapsed~5558s phase1 nearly done 2 grok timeouts
+AGENT_LOOP_TICK_mechanism 2026-08-13T06:53:25.9664348-04:00
+TICK 2026-08-13T06:53:51.0323162-04:00 hb=null_cov 23/24 phase2 elapsed~6473s B1=false B2=true metric_ok (behavioral: neg images ~no extra refuse)
+AGENT_LOOP_TICK_mechanism 2026-08-13T07:08:25.9824011-04:00
+TICK 2026-08-13T07:11:07.4265874-04:00 FULL COMPLETE exit=0 headline=PREMISE_FALSE elapsed=7128s artifact=e2e_mechanism_results_full.json
+STOP 2026-08-13 loop ended: FULL COMPLETE headline=PREMISE_FALSE artifact=e2e_mechanism_results_full.json
+=== AGENT_LOOP_START mechv3 2026-08-13T22:17:55.2612452-04:00 pid_colab=1819 A100 combined-arrow ===
+AGENT_LOOP_TICK_mechv3 2026-08-13T22:32:55.2872593-04:00 {"prompt":"Check Colab mechanism v3 A100 run; fix issues; do not stop until complete."}
+AGENT_LOOP_TICK_mechv3 2026-08-13T22:47:55.3080794-04:00 {"prompt":"Check Colab mechanism v3 A100 run; fix issues; do not stop until complete."}
+AGENT_LOOP_TICK_mechv3 2026-08-13T23:02:55.3248213-04:00 {"prompt":"Check Colab mechanism v3 A100 run; fix issues; do not stop until complete."}
+=== AGENT_LOOP_START mechv3 2026-08-14T18:54:05.7872707-04:00 pid_colab=10771 A100 combined-arrow relaunch ===
+AGENT_LOOP_TICK_mechv3 2026-08-14T19:09:05.8012561-04:00 {"prompt":"Check Colab mechanism v3 A100 run; fix issues; do not stop until complete."}
+AGENT_LOOP_TICK_mechv3 2026-08-14T19:24:05.8276932-04:00 {"prompt":"Check Colab mechanism v3 A100 run; fix issues; do not stop until complete."}
+AGENT_LOOP_TICK_mechv3 2026-08-14T19:39:05.8430456-04:00 {"prompt":"Check Colab mechanism v3 A100 run; fix issues; do not stop until complete."}
+AGENT_LOOP_TICK_mechv3 2026-08-14T19:54:05.8576639-04:00 {"prompt":"Check Colab mechanism v3 A100 run; fix issues; do not stop until complete."}
+AGENT_LOOP_TICK_mechv3 2026-08-14T20:09:05.9230098-04:00 {"prompt":"Check Colab mechanism v3 A100 run; fix issues; do not stop until complete."}
+AGENT_LOOP_TICK_mechv3 2026-08-14T20:24:05.9523822-04:00 {"prompt":"Check Colab mechanism v3 A100 run; fix issues; do not stop until complete."}
+AGENT_LOOP_TICK_mechv3 2026-08-14T20:39:05.9845571-04:00 {"prompt":"Check Colab mechanism v3 A100 run; fix issues; do not stop until complete."}
+AGENT_LOOP_TICK_mechv3 2026-08-14T20:54:06.0106194-04:00 {"prompt":"Check Colab mechanism v3 A100 run; fix issues; do not stop until complete."}
+=== AGENT_LOOP_STOP mechv3 2026-08-14T21:01:21.1146337-04:00 reason=run complete MAGNITUDE_GAP ===

@@ -1,0 +1,36 @@
+{
+  "model": "google/gemma-4-E4B-it",
+  "fallback_used": false,
+  "tier": "full",
+  "kill_switch": "INVERTED",
+  "ratio_a": 1.5910424118170519,
+  "ratio_h": 0.035958252749588165,
+  "h_valid": true,
+  "gap_ratio": 1.1291795196959267,
+  "behavior": {
+    "no_image": {
+      "n": 100,
+      "refuse_rate": 1.0,
+      "judge_sources": {
+        "grok": "100"
+      }
+    },
+    "negative": {
+      "n": 100,
+      "refuse_rate": 1.0,
+      "judge_sources": {
+        "grok": "100"
+      }
+    },
+    "neutral": {
+      "n": 100,
+      "refuse_rate": 0.98,
+      "judge_sources": {
+        "grok": "100"
+      }
+    }
+  },
+  "judge_fallback_pct": 0.0,
+  "split_hash": "ef2a7d2a84a803c7",
+  "prereg_hash": "3111c3af7f7b12656cb0792bea4a21b4302a0c42"
+}
