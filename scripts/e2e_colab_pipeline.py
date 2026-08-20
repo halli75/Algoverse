@@ -19,6 +19,24 @@ from pathlib import Path
 
 import numpy as np
 
+# Historical dry run of the obsolete coeff=20 / all-layer encoding.
+# Current shared method lives in scripts/affect_core.py and is imported by
+# e2e_mechanism_context_suppress.py and e2e_publish_pipeline.py.
+_variant = os.environ.get("E2E_VARIANT", "")
+if "--variant" in sys.argv:
+    _i = sys.argv.index("--variant")
+    if _i + 1 < len(sys.argv):
+        _variant = sys.argv[_i + 1]
+if _variant != "legacy_colab_dry_run":
+    raise SystemExit(
+        "scripts/e2e_colab_pipeline.py is a historical dry run "
+        "(obsolete_dry_run: coeff=20 / late layers / last-token proj). "
+        "It is not a default launcher. Re-run with "
+        "E2E_VARIANT=legacy_colab_dry_run or --variant legacy_colab_dry_run. "
+        "Use scripts/affect_core.py via e2e_mechanism_context_suppress.py "
+        "or e2e_publish_pipeline.py for the locked shared method."
+    )
+
 OUT = Path("/content/e2e_results.json")
 RESULTS: dict = {"started": time.strftime("%Y-%m-%d %H:%M:%S"), "phases": {}}
 
