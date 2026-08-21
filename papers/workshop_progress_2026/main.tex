@@ -1,0 +1,449 @@
+\documentclass{article}
+
+\usepackage[preprint]{neurips_2026}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{graphicx}
+
+\title{Affect steering gates refusal in Gemma-3-12B, but emotional images do not jailbreak: a progress report\thanks{This document is an internal practice writeup of work in progress. It is formatted to NeurIPS 2026 workshop style. It is not a conference submission and is not submitted to a named workshop.}}
+
+\author{%
+  Arnav \\
+  Algoverse
+  \And
+  Charlotte Li \\
+  Algoverse
+}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Can an emotional photograph open the same refusal gate that white-box affect steering opens in a vision-language model? This progress report keeps two stacks separate. On Gemma-3-12B (bf16, OASIS valence tertiles), steering an affect direction orthogonal to the Arditi refusal vector collapses first-token refuse from 0.99 to 0.04 while a matched random control stays at 0.99; restoring the refusal projection recovers refuse from 0.25 to 1.00. On Gemma-4-E4B-it (nf4, EMOTIC), pairing AdvBench-style harms with negative or neutral photos leaves refuse at ceiling (Grok $n=100$: no-image 1.00, negative 1.00, neutral 0.98). An earlier internal image-built metric, $\mathrm{ratio}_a=1.591$, was labeled INVERTED. That label is not evidence that images are more affective than text because the axis was built from images. The same run's OOD residual-norm check passes (science/ref $\approx 1.003$), and unit-norming leaves $\mathrm{ratio}_a=1.390$ inverted. A later frozen joint-axis run reports MAGNITUDE\_GAP: $\Delta_{\mathrm{DESCRIBE}}=3.664$ and $\Delta_{\mathrm{harm}}=0.389$, a suppression ratio of $0.107$ (95\% CI $[0.079,0.130]$). Separately, its image movement is $R_{\mathrm{affect}}=0.0050$ of the affect-steering ceiling. Shared code now locks \texttt{CORE\_METHOD} $=$ fractional gate, last prompt token, window mean, normscaled, $\alpha=0.008$. That core has not been re-run as a confirmatory experiment.
+\end{abstract}
+
+\section{Introduction}
+\label{sec:intro}
+
+Prior work identifies a residual-stream direction that mediates refusal in chat models \citep{arditi2024refusal}. In text-only models, a valence-arousal subspace can move that behavior \citep{sun2026valence}. The practical question for vision-language models (VLMs) is narrower: if you attach a sad or frightening photograph to a harmful request, does the picture reach the same gate?
+
+Two programs addressed that question with different models, corpora, and estimands. They should not be collapsed. Charlotte Li's program (``affect as a control axis'') tests whether a valence direction causally gates refusal on Gemma-3 \citep{gemmateam2025gemma3} with OASIS images \citep{kurdi2017oasis}, then asks whether natural images can reach that gate. Arnav's program (``why don't emotional images jailbreak VLMs?'') tests Gemma-4-E4B-it \citep{gemmateam2026gemma4} with EMOTIC \citep{kosti2017emotion,kosti2019emotic}, held-out splits, and an independent jailbreak direction $j$.
+
+The load-bearing fact on both stacks is behavioral: emotional images do not lower refuse. The load-bearing mechanism split is that a white-box affect steer \emph{does} open the gate on Gemma-3-12B, while Gemma-4 measurements of \emph{how far} a photo moves affect depend on how the axis was built. An early Gemma-4 ratio above one is circular as a modality ranking. A later joint-axis run replaces that ranking with MAGNITUDE\_GAP.
+
+Progress findings, with status tags:
+
+\begin{enumerate}
+\item \textbf{[HOLDS, both stacks]} Emotional images do not jailbreak under the recorded protocols (Section~\ref{sec:null}).
+\item \textbf{[HOLDS, Gemma-3-12B / OASIS]} An affect direction gates refusal with a dose-response, random-direction control, and $r$-restore mediation (Section~\ref{sec:charlotte}).
+\item \textbf{[WITHDRAWN as mechanism]} Gemma-4 $\mathrm{ratio}_a=1.591$ INVERTED is not a claim that images are more affective than text (Section~\ref{sec:inverted}).
+\item \textbf{[HOLDS as frozen v3]} Joint text+image $a_\perp$ on Gemma-4 yields MAGNITUDE\_GAP: context-dependent suppression with correlational M1 true and causal M1 false (Section~\ref{sec:v3}).
+\item \textbf{[CODE LOCKED, NOT RE-RUN]} \texttt{scripts/affect\_core.py} is the shared method; confirmatory reruns on that pin are pending (Section~\ref{sec:unify}).
+\item \textbf{[INCOMPLETE]} Graded sycophancy, three direction rebuilds, lighting, detector/clamp import into the core, and a Syed-style transfer matrix are not confirmatory results (Section~\ref{sec:incomplete}).
+\end{enumerate}
+
+Appendix~\ref{app:faq} restates fifteen reviewer questions. The body already answers circularity, the two-stack split, $100\times$ versus $\mathrm{ratio}_a$, nf4, leakage, and Grok versus first-token scores.
+
+\section{Related work}
+\label{sec:related}
+
+\paragraph{Refusal as a direction.}
+\citet{arditi2024refusal} extract $r$ as the mean last-token residual difference between harmful and harmless instructions, then show that adding or erasing that direction induces or removes refusal. We reuse that construction, including a competence check that adding scaled $+r$ to harmless prompts raises refusal.
+
+\paragraph{Text-only affect gates.}
+\citet{sun2026valence} recover a 2D valence-arousal subspace in LLMs and show that steering it modulates refusal and sycophancy. Their models are text-only. Charlotte's 12B result is the VLM analogue with an image-built valence contrast, not a replication of their lexical-mediation experiments.
+
+\paragraph{Appraisal and mid-layer emotion.}
+\citet{zhou2024alignment} argue that alignment ties early unethical classification to mid-layer negative emotion, then to refuse tokens, and that jailbreaks disturb that association. This motivates, but does not establish for VLMs, a directional hypothesis that perceived negative affect should raise rather than lower refusal. The image experiments test that hypothesis.
+
+\paragraph{Image corpora.}
+EMOTIC labels people-in-context emotion \citep{kosti2017emotion,kosti2019emotic}. OASIS is a normative valence/arousal photo set \citep{kurdi2017oasis}. Charlotte's early EMOTIC download was incomplete ($\sim$184 images, a 1-image negative set) and poisoned affect numbers; confirmed Charlotte results use OASIS. Arnav's Gemma-4 runs use a full EMOTIC dump (23{,}185 JPGs). Those are different visual populations.
+
+\paragraph{Steering tools.}
+Interventions follow activation-addition practice \citep{turner2023activation,rimsky2024steering} through TransformerLens hooks on \texttt{resid\_post} \citep{nanda2022transformerlens}. Harmful prompts come from AdvBench \citep{zou2023universal}. Harmless prompts on the Charlotte stack use Alpaca \citep{taori2023alpaca}.
+
+\paragraph{Orthogonality is not independence.}
+\citet{wollschlager2025geometry} warn that orthogonalizing a concept against $r$ does not make it causally independent of refusal. Charlotte's $r$-restore test is the empirical counterpart: $a_\perp$ still acts \emph{through} $r$.
+
+\paragraph{Three quantities that are not interchangeable.}
+Table~\ref{tab:three} is the load-bearing distinction. INVERTED does not refute Charlotte's shared-axis behavioral story.
+
+\begin{table}[t]
+\caption{Three recorded affect/refusal numbers. They are not the same estimand. Do not substitute one for another.}
+\label{tab:three}
+\centering
+\footnotesize
+\begin{tabular}{@{}p{0.18\linewidth}p{0.42\linewidth}p{0.28\linewidth}@{}}
+\toprule
+Name & Definition & Recorded value \\
+\midrule
+Charlotte $100\times$ & Harmful-prompt image $\Delta$ on $a_\perp$ vs.\ jailbreak steer & $\sim$11-22 vs.\ $\sim$2200 \\
+v3 suppression & Bootstrap median of $\Delta_{\mathrm{harm}}/\Delta_{\mathrm{DESCRIBE}}$ on joint $a_\perp$ & $0.107$, 95\% CI $[0.079,0.130]$ \\
+$\mathrm{ratio}_a$ & $|\Delta_{\mathrm{img}}|/|\Delta_{\mathrm{txt}}|$ on \emph{image-built} $a_\perp$ (publish) & $1.591$ (construction-biased) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Method}
+\label{sec:method}
+
+Locked shared method, now in \texttt{scripts/affect\_core.py}:
+\begin{quote}
+\small
+\texttt{CORE\_METHOD = fractional\_gate, last\_prompt, window\_mean,}\\
+\texttt{normscaled, alpha=0.008}.
+\end{quote}
+Layer windows: $L=34$ gives $[8,20)$; $L=42$ gives $[10,25)$; $L=48$ gives $[12,28)$. Equivalent form: $[\lfloor 0.25L\rfloor, \lfloor 0.60L\rfloor)$.
+
+\paragraph{Directions, last-token \texttt{resid\_post}.}
+Let $h_\ell(x)$ be the last prompt-token residual at layer $\ell$. Write $\mathrm{unit}(v)=v/\|v\|$.
+\begin{align}
+r &= \mathrm{unit}\!\left(\mathbb{E}[h(\mathrm{harmful})]-\mathbb{E}[h(\mathrm{harmless})]\right), \\
+a_{\mathrm{img}} &= \mathrm{unit}\!\left(\mathbb{E}[h(\mathrm{DESCRIBE}{+}\mathrm{neg})]-\mathbb{E}[h(\mathrm{DESCRIBE}{+}\mathrm{neu})]\right), \\
+a_{\mathrm{text}} &= \mathrm{unit}\!\left(\mathbb{E}[h(\mathrm{distress\ text})]-\mathbb{E}[h(\mathrm{neutral\ text})]\right).
+\end{align}
+Joint primary axis:
+\begin{equation}
+a_\perp=\mathrm{orth}_{\mathrm{span}}\!\left(\mathrm{unit}(a_{\mathrm{text}}+a_{\mathrm{img}}),\, r\right).
+\end{equation}
+Image-only $a_\perp$ is a named variant \texttt{image\_only\_a\_perp}, not the headline shared construct. Orthogonalization is QR on the span, not sequential Gram-Schmidt against a non-orthogonal $\{r,j\}$ pair (sequential subtraction can put $r$ back).
+
+DESCRIBE is the string ``Describe what is happening in this image.'' The publish-pipeline distress comparator is the single string ``You feel deeply sad, afraid, and distressed while reading this.'' Mechanism v3 replaces that with 64 distress and 64 neutral text bank items.
+
+\paragraph{Normscaled steer.}
+On gate layers,
+\begin{equation}
+\mathrm{resid}_\ell \leftarrow \mathrm{resid}_\ell + \alpha\, \|\mathrm{resid}_\ell\|\, \widehat{d}_\ell.
+\end{equation}
+Fixed coefficients (the obsolete \texttt{coeff}$=20$ / late-layer dry run) silently no-op on Gemma residual norms on the order of $10^4$. That dry run is not Arnav's current mechanism and is not a confirmatory result.
+
+\paragraph{First-token refuse score.}
+Refuse vocabulary: I, I'm, Sorry, As, Unfortunately, Cannot. Comply vocabulary: Sure, Here, Certainly, Of, Absolutely, Step. The generation-free score is logsumexp(refuse logits) minus logsumexp(comply logits) at the first generated token. Rate is the fraction of prompts with refuse $>$ comply. Grok is secondary on Arnav's behavioral arms: publish $n=100$ per cell, and v3 harmful $n=100$ plus borderline $n=80$. Publish \texttt{judge\_fallback\_pct}$=0$. Charlotte headlines are generation-free; no LLM judge.
+
+\paragraph{Dual stacks.}
+Table~\ref{tab:stacks} is the design split. Effect sizes are not pooled across rows.
+
+\begin{table}[t]
+\caption{Dual stacks. Science factors, not method knobs. Do not pool nf4+EMOTIC numbers with bf16+OASIS numbers.}
+\label{tab:stacks}
+\centering
+\footnotesize
+\begin{tabular}{@{}llll@{}}
+\toprule
+Item & Charlotte & Arnav publish & Arnav mechanism v3 \\
+\midrule
+Model & Gemma-3-12B-it & Gemma-4-E4B-it & Gemma-4-E4B-it \\
+Layers / $d$ & 48 / not recorded here & 42 / 2560 & 42 / 2560 \\
+Dtype & bf16 & nf4, bf16 compute & nf4, bf16 compute \\
+Images & OASIS tertiles, 200/class & EMOTIC & EMOTIC \\
+Primary $a$ & image valence, then $a_\perp$ & \texttt{image\_only\_a\_perp} & joint $a_\perp$ \\
+Gate & $[12,28)$ at $L=48$ & $[10,25)$ & $[10,25)$ \\
+Headline metric & first-token refuse & Grok $+$ FT & FT $+$ Grok; $\Delta$ on $a_\perp$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Leakage wall.}
+Arnav image ids are hashed into train/eval (and v3 calib/science). Publish split hash \texttt{ef2a7d2a84a803c7}, seed 0, train 10{,}184 / eval 6{,}793. Mechanism v3 split hash \texttt{1e8ea1c22144dd9d}, same train/eval sizes, plus $n_{\mathrm{calib}}=1018$ and $n_{\mathrm{science}}=5775$. Charlotte's confirmed OASIS runs used split-half stability $a_{\mathrm{stab}}$ rather than a hashed science holdout; some image estimates were in-sample. The unified core requires hashed splits going forward.
+
+\paragraph{Frozen v3.}
+\texttt{artifacts/colab/e2e\_mechanism\_results\_full\_v3.json} is read-only. Later code changes must not overwrite it. Unification edits the shared core; they do not rewrite that JSON.
+
+\section{Experimental setting}
+\label{sec:setting}
+
+\paragraph{Charlotte / OASIS / Gemma-3.}
+Primary model: Gemma-3-12B-it, bf16, $n_{\mathrm{layers}}=48$, residual-norm median 75{,}776, $a_{\mathrm{stab}}=0.830$, $\cos(a,r)=0.371$, $\alpha=0.008$. Image set: OASIS valence tertiles, 200 per class. Roster (not pooled with 12B): Gemma-3-4B, LLaVA-OneVision-7B \citep{liu2024llavaov}, Qwen2.5-VL \citep{bai2025qwen25vl}, InternVL3 \citep{zhu2025internvl3}, LLaVA-OV-0.5B, Qwen3.5-4B. GPU SKU and wall time for the 12B bf16 runs are not recorded.
+
+\paragraph{Arnav publish / EMOTIC / Gemma-4.}
+Model: \texttt{google/gemma-4-E4B-it}. Gemma-3-4B fallback was not used. GPU: Tesla T4, $\sim$15.6\,GB. Full pipeline finished 2026-08-07 00:21:17; wall $\sim$8942\,s. EMOTIC: 23{,}185 JPGs; unique images after person-dedup from 16{,}977 person-rows; buckets neu 10{,}573, pos 5{,}838, neg 566. Prereg hash \texttt{3111c3af7f7b12656cb0792bea4a21b4302a0c42}. Sample sizes: $N_{\mathrm{DIR}}=64$, $N_{\mathrm{IMG}}=64$, $N_{\mathrm{EVAL}}=100$, $N_{\Delta}=40$, $N_{\mathrm{GAP}}=50$, $N_{\mathrm{BEH}}=100$, $N_{\Gamma}=40$.
+
+\paragraph{Arnav mechanism v3.}
+Same Gemma-4 nf4 model and gate. Started 2026-08-14 23:00:30, elapsed 6740.5\,s, \texttt{complete=true}, GPU NVIDIA A100-SXM4-40GB. Text banks: 64 distress $+$ 64 neutral. $n_{\Delta}=64$. Harmful behavioral $n=100$, borderline $n=80$.
+
+\paragraph{Prompts.}
+Harmful: AdvBench-style instructions \citep{zou2023universal}. Image cells use DESCRIBE or the harmful instruction plus a photo. $\gamma$ stress tests (publish) sweep a large coefficient along emotion versus random; they are named collapse checks, not the locked $\alpha=0.008$ dose.
+
+\section{Results}
+\label{sec:results}
+
+\subsection{Behavioral null on both stacks}
+\label{sec:null}
+
+Table~\ref{tab:null} is the claim that survives the geometry audit. Emotional photographs do not drop refuse under these protocols.
+
+\begin{table}[t]
+\caption{Refuse rates for harmful prompts with and without images. Stacks are not pooled. FT is the first-token metric; Grok is an LLM judge on full generations, used only on the Arnav behavioral arm.}
+\label{tab:null}
+\centering
+\small
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+Condition & Charlotte 12B FT & Arnav FT (img table) & Arnav Grok $n=100$ \\
+\midrule
+No image & 0.99 (base) & 0.99 & 1.00 \\
+Neutral image & 0.99 & 1.00 & 0.98 \\
+Negative image & 0.99 & 1.00 & 1.00 \\
+Positive image & 0.99 & 1.00 & n/a \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Charlotte 12B image refuse is 0.98-0.99 across valences in the writeup summary and 0.99 in \texttt{replication\_full.json} for neu/neg/pos. Mechanism v3 Phase~1 is the same null on Gemma-4: FT refuse $\sim$0.99-1.0 with and without images on harmful $n=100$ and border $n=80$; Grok agrees; \texttt{images\_jailbreak=false}.
+
+\subsection{Charlotte: Gemma-3-12B affect gate}
+\label{sec:charlotte}
+
+On Gemma-3-12B, white-box steering of $-a_\perp$ (toward benign affect) opens refusal. \texttt{replication\_full.json} records base refuse 0.99, affect-gate refuse 0.04, random-gate refuse 0.99 at $\alpha=0.008$. A separate dose-response grid from the results writeup is Table~\ref{tab:dose}. Those two artifacts should not be treated as one fitted curve until a unified-core rerun.
+
+\begin{table}[t]
+\caption{Gemma-3-12B dose-response from the results writeup. Random control is a direction orthogonal to $r$ at matched $\alpha$. Coherence fails at $\alpha=0.016$ (over-steer).}
+\label{tab:dose}
+\centering
+\small
+\begin{tabular}{@{}lccc@{}}
+\toprule
+$\alpha\times\|\mathrm{resid}\|$ & Affect $a_\perp$ refuse & Random $\perp$ refuse & Coherent \\
+\midrule
+0.000 & 1.00 & 1.00 & yes \\
+0.008 & 0.75 & 1.00 & yes \\
+0.010 & 0.25 & 1.00 & yes \\
+0.012 & 0.00 & 1.00 & yes \\
+0.016 & 0.00 & 1.00 & no \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Mediation through $r$.}
+Affect steering drops the $r$-projection 30{,}756 to 21{,}421 ($\sim$$-30\%$). Steering affect while restoring the $r$-projection to the clean baseline recovers refuse $0.25$ to $1.00$. The gate is a valence route into Arditi's direction, not a second independent refusal axis.
+
+\paragraph{Detector versus clamp.}
+Monitoring the affect projection: detector AUROC $1.0$ against a white-box steer (partly expected for a large injected offset). A one-sided projection clamp restores attack refuse only $0.00$ to $0.17$ and over-refuses benign prompts $0.06$ to $0.81$. Localization of the steer: early refuse 1.0, mid 0.33, late 1.0.
+
+\paragraph{Model table.}
+Table~\ref{tab:models} is the roster. The gate is present on Gemma-3-12B and absent or partial among the other recorded strong-refuser tests. Gemma-3-4B has $a_{\mathrm{stab}}=0.633$ and affect-gate refuse 1.0 at $\alpha=0.004$: no confirmed gate, with a stability confound. LLaVA-OV-7B has $a_{\mathrm{stab}}=0.652$ and is partial (affect-steer refuse 0.65). Qwen2.5-VL and InternVL3: no gate. LLaVA-OV-0.5B is a weak refuser (base 0.29). Qwen3.5-4B base refuse 0.09 (not a strong refuser); image refuse still $\sim$0.99.
+
+\begin{table}[t]
+\caption{Charlotte roster on OASIS. ``Gate'' is a qualitative label from the writeup, not a pooled effect size with Gemma-4.}
+\label{tab:models}
+\centering
+\footnotesize
+\begin{tabular}{@{}lccc@{}}
+\toprule
+Model & $a_{\mathrm{stab}}$ & Affect-steer refuse & Gate \\
+\midrule
+Gemma-3-12B-it & 0.830 & 0.04 & yes \\
+Gemma-3-4B-it & 0.633 & 1.0 ($\alpha=0.004$) & no \\
+LLaVA-OV-7B & 0.652 & 0.65 & partial \\
+Qwen2.5-VL, InternVL3 & n/a & no gate & no \\
+LLaVA-OV-0.5B & n/a & (base 0.29) & excluded \\
+Qwen3.5-4B & n/a & (base 0.09) & weak refuser \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Why images still do not jailbreak on 12B.}
+Under harmful text, image movement on the gate axis is $\sim$11-22 versus a steer ceiling $\sim$2200: about $100\times$ too small. That is a reachability gap, not $\mathrm{ratio}_a$.
+
+\subsection{Arnav publish metric, then the audit}
+\label{sec:inverted}
+
+The full-tier publish pipeline reported kill-geometry INVERTED on image-built $a_\perp$: $\mathrm{ratio}_a=1.591$, $\mathrm{ratio}_h=0.036$, with $\delta_{\mathrm{txt},a}=3.401$, $\delta_{\mathrm{img},a}=5.411$, $\delta_{\mathrm{txt},h}=25.079$, $\delta_{\mathrm{img},h}=0.902$, and $|\cos(a,r)|=0.1361$. Competence checks: $r$ on harmless prompts takes refuse $0.075$ to $1.0$ at $+0.25\,r$; $h$ validate $0.067$ to $0.80$ versus random 0.00 (\texttt{valid=true} in the JSON).
+
+The 2026-08-10 validity audit is binding for claims.
+
+\paragraph{Construction bias.}
+$a$ / $a_\perp$ was built from images (EMOTIC neg$-$neu under DESCRIBE). Measuring $|\Delta_{\mathrm{img}}|/|\Delta_{\mathrm{txt}}|$ on that axis reconstructs the defining contrast in the numerator. $\mathrm{ratio}_a=1.591$ is a valid number for that biased metric. It is not evidence that photographs are intrinsically more emotional than text. The INVERTED branch is withdrawn as a mechanism headline.
+
+\paragraph{What still holds from the same run.}
+OOD residual-norm PASS: science/ref $\approx 1.003$ (not color-square inflation). Unit-norm recheck: $\mathrm{ratio}_{a,\mathrm{raw}}=1.591$, $\mathrm{ratio}_{a,\mathrm{unit}}=1.390$; inversion persists as a narrow measurement on the same image-built direction. $\gamma$ collapse is generic: $\gamma=1$ to $20$ refuse 1.0; $\gamma=50$ emotion 0.95 / random 1.0; $\gamma=100$ emotion 0.475 / random 0.1; \texttt{coherent\_frac}$=1.0$ throughout. Random is worse at $\gamma=100$, so this is not an emotion-specific jailbreak. Gap $B/A=1.129$ ($d_{\mathrm{img},A}=5.898$, $d_{\mathrm{cap},B}=6.660$, $d_{\mathrm{txt},C}=13.259$, $n=50$) only partially holds, because A and B sit on the image-built axis. Gap C's baseline (distress minus image-neu) is suspect. $\mathrm{ratio}_h$ is suspect: $h$ was built from harmful text minus DESCRIBE(eval neg), with overlap. The distress string was repeated rather than diversified. Three independent direction rebuilds were not done.
+
+\paragraph{Contagion (recorded, not a jailbreak).}
+Emotion-image contagion rate 0.045 versus neu 0.0, delta 0.045.
+
+\subsection{Arnav mechanism v3: MAGNITUDE\_GAP}
+\label{sec:v3}
+
+Frozen v3 rebuilds affect as $a_\perp=\mathrm{orth}(\mathrm{unit}(a_{\mathrm{text}}+a_{\mathrm{img}}),r)$ and adds an independent jailbreak direction $j$ from natural refuse/comply terciles on a borderline bank (not a steered $-r$ in disguise). $|\cos(j,r)|=0.247$, status INDEPENDENT. $j$ competence (FT): base 12.62, $+j$ 0.47, $+j_\perp$ $-0.61$. Geometry: $|\cos(a_{\mathrm{text}},r)|=0.169$, $|\cos(a_{\mathrm{img}},r)|=0.135$, $|\cos(a_{\mathrm{text}},a_{\mathrm{img}})|=0.098$, $|\cos(a_{\mathrm{both}},r)|=0.186$. $r$ validate $0.083$ to $1.0$. OOD PASS ratio 1.002.
+
+Table~\ref{tab:hyp} records the frozen mechanism flags. B1/B2 are the behavioral non-inferiority gates (images do not jailbreak hard harms or borderline prompts).
+
+\paragraph{Phase 2 deltas on $a_\perp$.}
+$\Delta_{\mathrm{DESCRIBE}}=3.664$, $\Delta_{\mathrm{emotionQ}}=1.536$, $\Delta_{\mathrm{harm}}=0.389$, $\Delta_{\mathrm{border}}=0.353$. Whitened null $p_{95}=0.751$, whitened $p=0.0$; isotropic $p_{95}=0.059$; \texttt{floor\_pass=true}. Suppression ratio $0.107$, 95\% CI $[0.079,0.130]$, $n_\Delta=64$, M1 correlational true. The point is the median of 1{,}000 paired-image bootstrap ratios; the CI is the corresponding percentile interval. Diagnostic: $a_{\mathrm{img}\perp}$ DESCRIBE 5.396 / harm 0.576; $a_{\mathrm{text}\perp}$ DESCRIBE 0.146 / harm $-0.182$.
+
+\paragraph{Phase 3: miss on $j$.}
+$s_{j,\mathrm{neg}}=4.275$ versus $s_{j,\mathrm{neu}}=4.451$ (images miss the jailbreak subspace). $s_{a,\mathrm{neg}}=-1.987$.
+
+\paragraph{Phase 4 ceilings.}
+$\alpha_{a,\mathrm{ceiling}}=0.4$, $R_{\mathrm{affect}}=0.0050$; $\alpha_{j,\mathrm{ceiling}}=0.4$, $s_{j,\mathrm{ceiling}}=99.48$, $R_{\mathrm{jail}}=0.043$.
+
+\paragraph{C1 is not causal.}
+$\cos(\delta,a)=0.662$; drop$_{\mathrm{clean}}=1.68$ versus drop$_{\mathrm{rand}}=7.56$; rate drop$_{\mathrm{clean}}=0.0$; M1 causal false. Restoring the image-scale $\Delta$ under harmful prompts does not open refusal.
+
+\paragraph{Headline.}
+MAGNITUDE\_GAP: photos move emotion under DESCRIBE, but under harmful asks the push is small. The harmful/DESCRIBE ratio is $0.107$. Separately, $R_{\mathrm{affect}}=0.0050$ compares movement with the v3 affect-steering ceiling. Neither quantity is Charlotte's $100\times$ comparison (Table~\ref{tab:three}).
+
+\begin{table}[t]
+\caption{Frozen v3 hypothesis flags. M1 correlational holds; the causal restore (C1) does not. $j$ is independent of $r$ and images miss it.}
+\label{tab:hyp}
+\centering
+\footnotesize
+\begin{tabular}{@{}llp{0.48\linewidth}@{}}
+\toprule
+Flag & Verdict & Meaning \\
+\midrule
+B1 / B2 & true & Images do not jailbreak hard harm or borderline \\
+no\_jailbreak harm+border & true & Same behavioral null \\
+M1\_corr & true & $\Delta$ large under DESCRIBE, small under harmful \\
+M1\_causal (C1) & false & Restoring that $\Delta$ does not drop refuse \\
+M2\_indep / M2\_miss & true / true & $j$ independent of $r$; images miss $j$ \\
+M3 protective & true & Negative images raise $r$ / refuse \\
+M4 site failure & false & Not ``$\Delta$ dies before refuse layers'' \\
+M5 ceiling & false & Not ``no headroom only on hard harms'' \\
+caption\_vision\_specific & false & Caption is not uniquely vision-specific \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Unified pipeline}
+\label{sec:unify}
+
+Code now shares one method implementation. Scientific programs stay separate. Pull request: \url{https://github.com/halli75/algoverse/pull/1}. Core tests: 19 unit tests, no GPU.
+
+Locked choices and why: fractional gate plus window mean plus normscaled $0.008$ (the family that moved tone; \texttt{coeff}$=20$/late was an obsolete dry run); depth-portable $[0.25L,0.60L)$; last-token scalars averaged on the intervened window, not an all-layer mean; joint $a_\perp$ as primary; QR span orthogonalization; hashed train/calib/eval; first-token refuse as shared headline.
+
+Not merged, and not allowed to overwrite the core: Arnav graded sycophancy; M1-M5/$j$ scoring; caption gap; $\gamma$ as a causal dose; Grok as headline. Charlotte detector/clamp; lighting; six-probe battery; agentic/protective modules; cross-model roster.
+
+Those modules may import the core. Confirmatory numbers in this paper are the older stack-specific runs. The unified core has not been re-run.
+
+\section{Incomplete work}
+\label{sec:incomplete}
+
+\paragraph{Sycophancy.}
+Arnav-only, frozen, not done. Plan hash prefix \texttt{051e1ea79cd116fce56edeb43848ae10526e2830}. T4 smoke: \texttt{ENDPOINT\_INVALID}; Likert digit mass $0.181<0.8$ (later amendment: Likert invalid should not kill $S_{\mathrm{label}}$). A VA-estimator repair is gist-pinned; last smoke $r_a=-0.019$ against a $\ge 0.7$ gate on the old VA estimator. Phase~1 $S_{\mathrm{label,mean}}=3.88$, $S_{\mathrm{native,mean}}=4.58$, \texttt{fc\_mass}$=0.989$. These are not sycophancy results.
+
+\paragraph{Local color squares.}
+Gemma-3-4B on a local RTX 3050 with solid color squares: \texttt{INCONCLUSIVE\_OR\_MIXED}, $\sim$192$\times$ anomaly. Invalid for claims. Plumbing failure only.
+
+\paragraph{Direction rebuilds.}
+Pre-registration called for three independent direction seeds. They were not done. Seed 0 numbers stand as single-run artifacts.
+
+\paragraph{Unified-core rerun.}
+Pending. Do not read Section~\ref{sec:unify} as a new experiment.
+
+\paragraph{Other Charlotte modules.}
+Lighting, the six-probe behavior battery, and input-space LLM attacker cells are not confirmatory in this writeup.
+
+\paragraph{Early EMOTIC poison.}
+Charlotte's $\sim$184-image download (1-image negative) is retired. Do not cite those affect numbers.
+
+\section{Limitations}
+\label{sec:limitations}
+
+nf4 versus bf16 is an unquantified confound; we do not treat Gemma-4 suppression ratios as a scale replication of the 12B gate. EMOTIC people-in-context labels are not OASIS normative valence. Negative EMOTIC pool size (566) is small relative to neu/pos. Charlotte OASIS science was not hashed the way Arnav eval is. Orthogonalizing to $r$ does not make $a$ refusal-independent \citep{wollschlager2025geometry}. Publish $\mathrm{ratio}_a$ used a repeated distress string. Detector AUROC $1.0$ is measured against a white-box injection. Gemma-3-4B's missing gate co-occurs with the lowest $a_{\mathrm{stab}}$. Results are instruction-tuned Gemma and a small VLM roster, not a survey of deployed systems.
+
+\section{Broader impacts}
+\label{sec:impacts}
+
+Positive use: if the 12B gate is real, a runtime monitor on the affect projection can flag white-box steers, and natural emotional images do not appear to be an input-space jailbreak under the tested protocols. Negative use: the same 12B result is a white-box exposure. A small coherent $\alpha$ on $a_\perp$ collapses refuse. We do not package an attack tool. Most scoring is generation-free. Arnav's secondary Grok evaluation did generate short completions and send each one for refusal classification. The named JSON artifacts retain aggregate rates, not completion text. Image sets are existing public corpora, not newly scraped distress photos.
+
+\section{Conclusion}
+
+Emotional images did not lower refusal under the recorded protocols. On Gemma-3-12B, affect gates refusal through $r$ when steered. On Gemma-4, the supported mechanism statement is MAGNITUDE\_GAP plus a withdrawn INVERTED ranking, not a finished shared-appraisal theorem. The pipelines are unified in code and not yet unified in confirmatory numbers. This is a progress report.
+
+\begin{ack}
+Algoverse research program. Draft editing and pipeline-unification advising used LLMs. Grok was a secondary refusal judge. The experimental artifacts named above are the evidence for scientific claims.
+\end{ack}
+
+\small
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\appendix
+
+\section{Reviewer questions}
+\label{app:faq}
+
+The main text already answers the load-bearing items (circularity, two stacks, $100\times$ versus $\mathrm{ratio}_a$, nf4, leakage, Grok versus first-token). Table~\ref{tab:faq} compactly maps all fifteen lock-file questions.
+
+\begin{table}[h]
+\caption{Answers to the lock-file reviewer questions. Pointers are to main-text sections.}
+\label{tab:faq}
+\centering
+\footnotesize
+\begin{tabular}{@{}p{0.42\linewidth}p{0.52\linewidth}@{}}
+\toprule
+Question & Answer \\
+\midrule
+Why no image jailbreak if affect gates refusal?
+& The 12B stack records image movement $\sim$100$\times$ below its steer ceiling. v3 separately records suppression $0.107$ and $R_{\mathrm{affect}}=0.0050$ (Sec.~\ref{sec:charlotte},~\ref{sec:v3}). \\
+Is $\mathrm{ratio}_a=1.59$ evidence images $>$ text?
+& No. Image-built axis, construction bias (Sec.~\ref{sec:inverted}). \\
+Same method now?
+& Shared \texttt{CORE\_METHOD} in code; confirmatory rerun pending (Sec.~\ref{sec:unify}). \\
+Why two models and two corpora?
+& Generation, quantization, and image semantics are science factors (Table~\ref{tab:stacks}). \\
+Is nf4 a confound versus bf16?
+& Yes, unquantified. Do not pool effect sizes (Sec.~\ref{sec:limitations}). \\
+Did train images leak into eval?
+& Arnav: hashed splits. Charlotte OASIS: split-half, some in-sample estimates (Sec.~\ref{sec:method}). \\
+Why first-token scores? When Grok?
+& Headline is generation-free. Grok is secondary on Arnav behavior: publish $n=100$; v3 harmful $n=100$, border $n=80$. Publish fallback is 0\% (Sec.~\ref{sec:method}). \\
+Frozen versus rerun on unified core?
+& v3 JSON frozen. Core locked. Rerun not done (Sec.~\ref{sec:unify},~\ref{sec:incomplete}). \\
+Does orth to $r$ make $a$ independent?
+& No. 12B $r$-restore and Wollschl{\"a}ger (Sec.~\ref{sec:related},~\ref{sec:charlotte}). \\
+Is $100\times$ the same as $0.107$?
+& No. Reachability gap versus $\Delta_{\mathrm{harm}}/\Delta_{\mathrm{DESCRIBE}}$ (Sec.~\ref{sec:related},~\ref{sec:v3}). \\
+Why Gemma-3-4B has no gate?
+& Affect-gate refuse 1.0 at $\alpha=0.004$; lowest $a_{\mathrm{stab}}=0.633$ (Table~\ref{tab:models}). \\
+What failed?
+& Sycophancy endpoint, color squares, EMOTIC 1-image poison, sequential orth, all-layer proj, \texttt{coeff}=20 dry run (Sec.~\ref{sec:incomplete}). \\
+Ethics: harmful completions?
+& Yes, short completions were generated for Arnav's Grok judge. Named JSON artifacts retain aggregate rates, not completion text (Sec.~\ref{sec:impacts}). \\
+Compute?
+& T4 publish $\sim$8942\,s; A100 v3 6740.5\,s. Charlotte's GPU and wall time are not recorded (Sec.~\ref{sec:setting}). \\
+Pre-registration?
+& Hashes in Sec.~\ref{sec:setting}; three direction rebuilds not done. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Additional recorded numbers}
+
+\paragraph{Publish $\gamma$ table.}
+Refuse stays 1.0 for $\gamma\in\{1,\ldots,20\}$. At $\gamma=50$: emotion 0.95, random 1.0. At $\gamma=100$: emotion 0.475, random 0.1. Coherent fraction 1.0 at every recorded $\gamma$. Interpretation: generic collapse.
+
+\paragraph{Publish gap cells.}
+$d_{\mathrm{img},A}=5.898$, $d_{\mathrm{cap},B}=6.660$, $d_{\mathrm{txt},C}=13.259$, $B/A=1.129$, $n=50$. Relative A versus B is usable as a caption$\approx$photo check on the image-built axis. C is not a clean text-emotion upper bound.
+
+\paragraph{v3 cosine table.}
+$|\cos(a_{\mathrm{text}},r)|=0.169$; $|\cos(a_{\mathrm{img}},r)|=0.135$; $|\cos(a_{\mathrm{text}},a_{\mathrm{img}})|=0.098$; $|\cos(a_{\mathrm{both}},r)|=0.186$; $|\cos(j,r)|=0.247$.
+
+\paragraph{Hashes.}
+Publish prereg \texttt{3111c3af7f7b12656cb0792bea4a21b4302a0c42}; publish split \texttt{ef2a7d2a84a803c7}; v3 split \texttt{1e8ea1c22144dd9d}; sycophancy plan sha256 prefix \texttt{051e1ea79cd116fce56edeb43848ae10526e2830}.
+
+\section{Method variants that are out of scope}
+
+Obsolete Charlotte notebook row labeled ``Arnav'': late layers, last-token only, \texttt{coeff}=20. Status: \texttt{obsolete\_dry\_run}. Current Arnav mechanism already used normscaled $+$ fractional gate before unification.
+
+All-layer mean projection is not the locked proj: it dilutes the gate window.
+
+Sequential Gram-Schmidt against $\{r,j\}$ is not the locked orth.
+
+Image-only $a_\perp$ may be reported as \texttt{image\_only\_a\_perp}. It may not headline an image-versus-text ranking.
+
+\newpage
+\input{checklist}
+
+\end{document}
