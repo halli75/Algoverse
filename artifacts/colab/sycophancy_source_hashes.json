@@ -1,0 +1,48 @@
+{
+  "docs/sycophancy_affect_plan.md": {
+    "sha256": "178c1011ffad0cea5df6ab33be46776dd4fbf9cd844c16f041e0ac9a5f24a5a0",
+    "sha16": "178c1011ffad0cea",
+    "bytes": 17143
+  },
+  "data/sycophancy_custom_claims.json": {
+    "sha256": "121a4aaec475f79c021234560b824ee7facbe17c7adfa337bb17a742c785e4d4",
+    "sha16": "121a4aaec475f79c",
+    "bytes": 59468
+  },
+  "data/sycophancy_goemotions_bank.json": {
+    "sha256": "be72dc2a0c86d8e2308422c35f78755a8cdde28340385cd5d4896dc42b93c16b",
+    "sha16": "be72dc2a0c86d8e2",
+    "bytes": 12878
+  },
+  "data/sycophancy_affect_lexicon.json": {
+    "sha256": "869ee0a072d9cd4a8400a3b28ae5dfb9ee7f6a6ed7b08393ed69be440c8acfdf",
+    "sha16": "869ee0a072d9cd4a",
+    "bytes": 1345
+  },
+  "scripts/e2e_sycophancy_affect.py": {
+    "sha256": "90d22681b61c0a297229e65139f4eb9f6a3d67a79e5a601dcaa30ffa7291b848",
+    "sha16": "90d22681b61c0a29",
+    "bytes": 81340
+  },
+  "scripts/_restore_sycophancy_boot.py": {
+    "sha256": "dcecc0c8de03bf914d551e0c7a6d58cc265b6b2bea2baddef197ed171fe3c03a",
+    "sha16": "dcecc0c8de03bf91",
+    "bytes": 8291
+  },
+  "scripts/_sycophancy_colab_cell.py": {
+    "sha256": "34c2dca6b22ed8a4ebdfc6d5d4d378a805c558c49d687f4e05d5f0204a9c363c",
+    "sha16": "34c2dca6b22ed8a4",
+    "bytes": 1356
+  },
+  "gist": {
+    "id": "d888da53224aac15e38a1f0d30f75805",
+    "script_sha": "0a19bbfb0205b6ef2f4e23499a262f7d5dc30e2d",
+    "cell_sha": "2bfc44d9b8c780be3226e9db9e6e7d6ac060f75d",
+    "original_prereg": "051e1ea79cd116fce56edeb43848ae10526e2830efc49ab0df2cd7d904a20876",
+    "plan_file": "834cd8959d0be2dcb1ab5de8d2d84460ea8d1c0420390199ce758cf218ae2179",
+    "amendment": "38572a77f4fad6c72776ccf12aeafdd0321c72a96720eef8e1c00368d9b3e19c",
+    "history_sha": "f29a1e7179f5ee17d41ed3daf5c613c1e1abe883",
+    "plan_file_likert_amend": "834cd8959d0be2dcb1ab5de8d2d84460ea8d1c0420390199ce758cf218ae2179",
+    "plan_file_va_construction": "178c1011ffad0cea5df6ab33be46776dd4fbf9cd844c16f041e0ac9a5f24a5a0"
+  }
+}

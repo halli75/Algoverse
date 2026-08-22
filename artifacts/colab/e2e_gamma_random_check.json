@@ -1,0 +1,15 @@
+{
+  "source": "artifacts/colab/e2e_results_full_gemma4.json",
+  "note": "Exact random refuse rates from full Gemma-4 run gamma phase",
+  "gamma_50": {
+    "emotion_refuse": 0.95,
+    "random_refuse": 1.0,
+    "coherent_frac": 1.0
+  },
+  "gamma_100": {
+    "emotion_refuse": 0.475,
+    "random_refuse": 0.1,
+    "coherent_frac": 1.0
+  },
+  "interpretation": "At γ=100 random collapses harder (0.1) than emotion (0.475). The drop is generic huge-perturbation collapse, not an emotion-specific jailbreak/refusal flip. At γ=50 random stays at 1.0 while emotion is 0.95 — still not an emotion-special effect."
+}

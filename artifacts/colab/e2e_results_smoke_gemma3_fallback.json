@@ -1,0 +1,31 @@
+{
+  "started": "2026-08-06 06:48:38",
+  "plan": "docs/colab_publish_experiment_plan.md",
+  "primary_model_policy": "gemma-4-E4B-it first; gemma-3-4b-it fallback only",
+  "prereg_hash": "3111c3af7f7b12656cb0792bea4a21b4302a0c42",
+  "final_decision": "INVERTED",
+  "complete": true,
+  "finished": "2026-08-06 07:23:12",
+  "headline": {
+    "model": "google/gemma-3-4b-it",
+    "fallback_used": true,
+    "tier": "smoke",
+    "kill_switch": "INVERTED",
+    "ratio_a": 0.6652608380539208,
+    "ratio_h": 0.027686745192520228,
+    "h_valid": true,
+    "gap_ratio": 1.4833361030529126,
+    "judge_fallback_pct": 0.0,
+    "split_hash": "ef2a7d2a84a803c7",
+    "prereg_hash": "3111c3af7f7b12656cb0792bea4a21b4302a0c42",
+    "note": "Gemma-4 loaded nf4+hooks OK; gate8 emotion 2/8 → plan fallback to Gemma-3; science phases completed on Gemma-3"
+  },
+  "phases_summary": {
+    "gate8_emotion": {"ok": 2, "n": 8},
+    "gate7_steer": {"harmless_base": 0.0625, "harmless_plus_r": 1.0},
+    "h_validate": {"valid": true},
+    "kill": {"decision": "INVERTED", "ratio_a": 0.665, "ratio_h": 0.028},
+    "gap": {"gap_ratio_B_over_A": 1.483},
+    "checkpoint": {"skip_heavy": true}
+  }
+}

@@ -1,0 +1,1 @@
+{"expression": "(() => {\n  const code = \"open('/content/_pub.b64','w').write(''); print('CLEARED')\";\n  const cell = window.colab.global.notebookModel.cells[0];\n  cell.textModel.setValue(code);\n  return {ok:true, n:code.length};\n})()", "returnByValue": true}

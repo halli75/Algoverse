@@ -1,0 +1,504 @@
+{
+  "version": 1,
+  "role": "direction_fit_only",
+  "source": "fixed single-label GoEmotions-style bank with circumplex-style V/A targets",
+  "n": 62,
+  "items": [
+    {
+      "id": "goe_admiration_0",
+      "label": "admiration",
+      "text": "I admire how carefully they finished the work.",
+      "valence": 0.75,
+      "arousal": 0.45,
+      "split": "heldout"
+    },
+    {
+      "id": "goe_admiration_1",
+      "label": "admiration",
+      "text": "That performance deserves real respect.",
+      "valence": 0.75,
+      "arousal": 0.45,
+      "split": "train"
+    },
+    {
+      "id": "goe_amusement_0",
+      "label": "amusement",
+      "text": "That joke actually made me laugh out loud.",
+      "valence": 0.8,
+      "arousal": 0.55,
+      "split": "heldout"
+    },
+    {
+      "id": "goe_amusement_1",
+      "label": "amusement",
+      "text": "The comic timing was genuinely funny.",
+      "valence": 0.8,
+      "arousal": 0.55,
+      "split": "train"
+    },
+    {
+      "id": "goe_anger_0",
+      "label": "anger",
+      "text": "I am angry about how they handled that.",
+      "valence": 0.15,
+      "arousal": 0.8,
+      "split": "heldout"
+    },
+    {
+      "id": "goe_anger_1",
+      "label": "anger",
+      "text": "That decision makes me furious.",
+      "valence": 0.15,
+      "arousal": 0.8,
+      "split": "train"
+    },
+    {
+      "id": "goe_annoyance_0",
+      "label": "annoyance",
+      "text": "This delay is getting on my nerves.",
+      "valence": 0.25,
+      "arousal": 0.55,
+      "split": "heldout"
+    },
+    {
+      "id": "goe_annoyance_1",
+      "label": "annoyance",
+      "text": "The constant interruptions are annoying.",
+      "valence": 0.25,
+      "arousal": 0.55,
+      "split": "train"
+    },
+    {
+      "id": "goe_approval_0",
+      "label": "approval",
+      "text": "Yes, that plan looks sound to me.",
+      "valence": 0.7,
+      "arousal": 0.35,
+      "split": "heldout"
+    },
+    {
+      "id": "goe_approval_1",
+      "label": "approval",
+      "text": "I approve of the careful approach they took.",
+      "valence": 0.7,
+      "arousal": 0.35,
+      "split": "train"
+    },
+    {
+      "id": "goe_caring_0",
+      "label": "caring",
+      "text": "I want to make sure they are alright.",
+      "valence": 0.75,
+      "arousal": 0.4,
+      "split": "heldout"
+    },
+    {
+      "id": "goe_caring_1",
+      "label": "caring",
+      "text": "I care about how this turns out for them.",
+      "valence": 0.75,
+      "arousal": 0.4,
+      "split": "train"
+    },
+    {
+      "id": "goe_confusion_0",
+      "label": "confusion",
+      "text": "I am not sure what this result is supposed to mean.",
+      "valence": 0.4,
+      "arousal": 0.5,
+      "split": "heldout"
+    },
+    {
+      "id": "goe_confusion_1",
+      "label": "confusion",
+      "text": "The instructions left me confused.",
+      "valence": 0.4,
+      "arousal": 0.5,
+      "split": "train"
+    },
+    {
+      "id": "goe_curiosity_0",
+      "label": "curiosity",
+      "text": "I want to know how this mechanism works.",
+      "valence": 0.6,
+      "arousal": 0.5,
+      "split": "heldout"
+    },
+    {
+      "id": "goe_curiosity_1",
+      "label": "curiosity",
+      "text": "What happens if we change that one step?",
+      "valence": 0.6,
+      "arousal": 0.5,
+      "split": "train"
+    },
+    {
+      "id": "goe_desire_0",
+      "label": "desire",
+      "text": "I really want to finish this project this week.",
+      "valence": 0.7,
+      "arousal": 0.6,
+      "split": "heldout"
+    },
+    {
+      "id": "goe_desire_1",
+      "label": "desire",
+      "text": "I want that outcome more than the alternative.",
+      "valence": 0.7,
+      "arousal": 0.6,
+      "split": "train"
+    },
+    {
+      "id": "goe_disappointment_0",
+      "label": "disappointment",
+      "text": "The result was disappointing after all that work.",
+      "valence": 0.25,
+      "arousal": 0.4,
+      "split": "heldout"
+    },
+    {
+      "id": "goe_disappointment_1",
+      "label": "disappointment",
+      "text": "I expected better than this outcome.",
+      "valence": 0.25,
+      "arousal": 0.4,
+      "split": "train"
+    },
+    {
+      "id": "goe_disapproval_0",
+      "label": "disapproval",
+      "text": "I do not think that was the right call.",
+      "valence": 0.25,
+      "arousal": 0.45,
+      "split": "heldout"
+    },
+    {
+      "id": "goe_disapproval_1",
+      "label": "disapproval",
+      "text": "That choice deserves disapproval.",
+      "valence": 0.25,
+      "arousal": 0.45,
+      "split": "train"
+    },
+    {
+      "id": "goe_disgust_0",
+      "label": "disgust",
+      "text": "That spoiled smell is disgusting.",
+      "valence": 0.15,
+      "arousal": 0.55,
+      "split": "heldout"
+    },
+    {
+      "id": "goe_disgust_1",
+      "label": "disgust",
+      "text": "The mess on the floor is revolting.",
+      "valence": 0.15,
+      "arousal": 0.55,
+      "split": "train"
+    },
+    {
+      "id": "goe_embarrassment_0",
+      "label": "embarrassment",
+      "text": "I felt embarrassed after the awkward pause.",
+      "valence": 0.25,
+      "arousal": 0.55,
+      "split": "heldout"
+    },
+    {
+      "id": "goe_embarrassment_1",
+      "label": "embarrassment",
+      "text": "That public mistake was embarrassing.",
+      "valence": 0.25,
+      "arousal": 0.55,
+      "split": "train"
+    },
+    {
+      "id": "goe_excitement_0",
+      "label": "excitement",
+      "text": "I am excited to start the next stage.",
+      "valence": 0.8,
+      "arousal": 0.75,
+      "split": "heldout"
+    },
+    {
+      "id": "goe_excitement_1",
+      "label": "excitement",
+      "text": "This news is genuinely thrilling.",
+      "valence": 0.8,
+      "arousal": 0.75,
+      "split": "train"
+    },
+    {
+      "id": "goe_fear_0",
+      "label": "fear",
+      "text": "I am afraid this will go badly.",
+      "valence": 0.15,
+      "arousal": 0.8,
+      "split": "heldout"
+    },
+    {
+      "id": "goe_fear_1",
+      "label": "fear",
+      "text": "That sudden noise scared me.",
+      "valence": 0.15,
+      "arousal": 0.8,
+      "split": "train"
+    },
+    {
+      "id": "goe_gratitude_0",
+      "label": "gratitude",
+      "text": "I am grateful for the help they gave.",
+      "valence": 0.8,
+      "arousal": 0.4,
+      "split": "heldout"
+    },
+    {
+      "id": "goe_gratitude_1",
+      "label": "gratitude",
+      "text": "Thank you, that made a real difference.",
+      "valence": 0.8,
+      "arousal": 0.4,
+      "split": "train"
+    },
+    {
+      "id": "goe_grief_0",
+      "label": "grief",
+      "text": "The loss still sits heavily with me.",
+      "valence": 0.1,
+      "arousal": 0.35,
+      "split": "heldout"
+    },
+    {
+      "id": "goe_grief_1",
+      "label": "grief",
+      "text": "I am grieving what we cannot get back.",
+      "valence": 0.1,
+      "arousal": 0.35,
+      "split": "train"
+    },
+    {
+      "id": "goe_joy_0",
+      "label": "joy",
+      "text": "I feel genuine joy about this news.",
+      "valence": 0.85,
+      "arousal": 0.55,
+      "split": "heldout"
+    },
+    {
+      "id": "goe_joy_1",
+      "label": "joy",
+      "text": "This is a joyful, bright moment.",
+      "valence": 0.85,
+      "arousal": 0.55,
+      "split": "train"
+    },
+    {
+      "id": "goe_love_0",
+      "label": "love",
+      "text": "I love this quiet evening at home.",
+      "valence": 0.9,
+      "arousal": 0.5,
+      "split": "heldout"
+    },
+    {
+      "id": "goe_love_1",
+      "label": "love",
+      "text": "I love how kind they were today.",
+      "valence": 0.9,
+      "arousal": 0.5,
+      "split": "train"
+    },
+    {
+      "id": "goe_nervousness_0",
+      "label": "nervousness",
+      "text": "I am nervous about speaking first.",
+      "valence": 0.3,
+      "arousal": 0.7,
+      "split": "heldout"
+    },
+    {
+      "id": "goe_nervousness_1",
+      "label": "nervousness",
+      "text": "My hands feel shaky before the start.",
+      "valence": 0.3,
+      "arousal": 0.7,
+      "split": "train"
+    },
+    {
+      "id": "goe_optimism_0",
+      "label": "optimism",
+      "text": "I think this can still work out well.",
+      "valence": 0.75,
+      "arousal": 0.45,
+      "split": "heldout"
+    },
+    {
+      "id": "goe_optimism_1",
+      "label": "optimism",
+      "text": "I am optimistic about the next attempt.",
+      "valence": 0.75,
+      "arousal": 0.45,
+      "split": "train"
+    },
+    {
+      "id": "goe_pride_0",
+      "label": "pride",
+      "text": "I am proud of the work we finished.",
+      "valence": 0.8,
+      "arousal": 0.55,
+      "split": "heldout"
+    },
+    {
+      "id": "goe_pride_1",
+      "label": "pride",
+      "text": "That result is something to be proud of.",
+      "valence": 0.8,
+      "arousal": 0.55,
+      "split": "train"
+    },
+    {
+      "id": "goe_realization_0",
+      "label": "realization",
+      "text": "I just realized what the missing step was.",
+      "valence": 0.55,
+      "arousal": 0.45,
+      "split": "heldout"
+    },
+    {
+      "id": "goe_realization_1",
+      "label": "realization",
+      "text": "Oh \u2014 that explains the earlier error.",
+      "valence": 0.55,
+      "arousal": 0.45,
+      "split": "train"
+    },
+    {
+      "id": "goe_relief_0",
+      "label": "relief",
+      "text": "I am relieved that the wait is over.",
+      "valence": 0.7,
+      "arousal": 0.3,
+      "split": "heldout"
+    },
+    {
+      "id": "goe_relief_1",
+      "label": "relief",
+      "text": "It is a relief to have that settled.",
+      "valence": 0.7,
+      "arousal": 0.3,
+      "split": "train"
+    },
+    {
+      "id": "goe_remorse_0",
+      "label": "remorse",
+      "text": "I regret how I handled that conversation.",
+      "valence": 0.25,
+      "arousal": 0.45,
+      "split": "heldout"
+    },
+    {
+      "id": "goe_remorse_1",
+      "label": "remorse",
+      "text": "I feel remorse for the careless remark.",
+      "valence": 0.25,
+      "arousal": 0.45,
+      "split": "train"
+    },
+    {
+      "id": "goe_sadness_0",
+      "label": "sadness",
+      "text": "I feel sad about how that ended.",
+      "valence": 0.2,
+      "arousal": 0.3,
+      "split": "heldout"
+    },
+    {
+      "id": "goe_sadness_1",
+      "label": "sadness",
+      "text": "There is a quiet sadness in the room.",
+      "valence": 0.2,
+      "arousal": 0.3,
+      "split": "train"
+    },
+    {
+      "id": "goe_surprise_0",
+      "label": "surprise",
+      "text": "I did not expect that at all.",
+      "valence": 0.6,
+      "arousal": 0.75,
+      "split": "heldout"
+    },
+    {
+      "id": "goe_surprise_1",
+      "label": "surprise",
+      "text": "That outcome was a real surprise.",
+      "valence": 0.6,
+      "arousal": 0.75,
+      "split": "train"
+    },
+    {
+      "id": "goe_neutral_0",
+      "label": "neutral",
+      "text": "The library opens at nine and the tables are usually free.",
+      "valence": 0.5,
+      "arousal": 0.3,
+      "split": "heldout"
+    },
+    {
+      "id": "goe_neutral_1",
+      "label": "neutral",
+      "text": "I sorted the mail into bills, catalogs, and neighborhood flyers.",
+      "valence": 0.5,
+      "arousal": 0.3,
+      "split": "train"
+    },
+    {
+      "id": "goe_neutral_2",
+      "label": "neutral",
+      "text": "The kettle clicked off just as the toast finished browning.",
+      "valence": 0.5,
+      "arousal": 0.3,
+      "split": "train"
+    },
+    {
+      "id": "goe_neutral_3",
+      "label": "neutral",
+      "text": "Afternoon light fell across the desk in a narrow rectangle.",
+      "valence": 0.5,
+      "arousal": 0.3,
+      "split": "train"
+    },
+    {
+      "id": "goe_neutral_4",
+      "label": "neutral",
+      "text": "I rinsed the mug and set it on the drying rack to air.",
+      "valence": 0.5,
+      "arousal": 0.3,
+      "split": "train"
+    },
+    {
+      "id": "goe_neutral_5",
+      "label": "neutral",
+      "text": "The grocery list includes milk, rice, apples, and dish soap.",
+      "valence": 0.5,
+      "arousal": 0.3,
+      "split": "train"
+    },
+    {
+      "id": "goe_neutral_6",
+      "label": "neutral",
+      "text": "Traffic moved slowly through the intersection with the long light.",
+      "valence": 0.5,
+      "arousal": 0.3,
+      "split": "train"
+    },
+    {
+      "id": "goe_neutral_7",
+      "label": "neutral",
+      "text": "I folded a sweater and placed it on the middle shelf quietly.",
+      "valence": 0.5,
+      "arousal": 0.3,
+      "split": "train"
+    }
+  ]
+}

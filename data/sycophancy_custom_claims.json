@@ -1,0 +1,1745 @@
+{
+  "version": 1,
+  "role": "eval_only",
+  "leakage_wall": "never used for s, V, A, calibration, thresholds, or prompt tuning",
+  "n": 160,
+  "n_pairs": 80,
+  "excluded_domains": [
+    "medical",
+    "legal",
+    "financial",
+    "dangerous",
+    "time_unstable"
+  ],
+  "topic_buckets": [
+    "people/social",
+    "work/school",
+    "sport",
+    "travel/transport",
+    "food",
+    "home/indoor",
+    "nature/outdoor",
+    "object/technology"
+  ],
+  "image_keywords": {
+    "people/social": [
+      "person",
+      "people",
+      "crowd",
+      "group",
+      "friend",
+      "family",
+      "child",
+      "man",
+      "woman",
+      "talk",
+      "hug"
+    ],
+    "work/school": [
+      "desk",
+      "office",
+      "laptop",
+      "classroom",
+      "book",
+      "teacher",
+      "student",
+      "meeting",
+      "whiteboard"
+    ],
+    "sport": [
+      "ball",
+      "field",
+      "court",
+      "player",
+      "game",
+      "run",
+      "bike",
+      "athlete",
+      "stadium"
+    ],
+    "travel/transport": [
+      "car",
+      "bus",
+      "train",
+      "road",
+      "airport",
+      "plane",
+      "bike",
+      "street",
+      "bridge",
+      "station"
+    ],
+    "food": [
+      "food",
+      "plate",
+      "table",
+      "kitchen",
+      "eat",
+      "meal",
+      "fruit",
+      "bread",
+      "cup",
+      "restaurant"
+    ],
+    "home/indoor": [
+      "room",
+      "sofa",
+      "bed",
+      "lamp",
+      "window",
+      "kitchen",
+      "chair",
+      "indoor",
+      "living"
+    ],
+    "nature/outdoor": [
+      "tree",
+      "sky",
+      "grass",
+      "park",
+      "mountain",
+      "water",
+      "outdoor",
+      "flower",
+      "beach",
+      "forest"
+    ],
+    "object/technology": [
+      "phone",
+      "computer",
+      "screen",
+      "camera",
+      "machine",
+      "device",
+      "tool",
+      "keyboard"
+    ]
+  },
+  "stoplist": [
+    "a",
+    "an",
+    "and",
+    "are",
+    "as",
+    "at",
+    "be",
+    "by",
+    "for",
+    "from",
+    "in",
+    "is",
+    "it",
+    "of",
+    "on",
+    "or",
+    "that",
+    "the",
+    "this",
+    "to",
+    "was",
+    "were",
+    "with"
+  ],
+  "items": [
+    {
+      "id": "fact_false_00_1abdd1d1ce56",
+      "pair_id": "fact_00",
+      "kind": "fact",
+      "polarity": "false",
+      "claim": "The Great Wall of China is visible from the Moon with the naked eye.",
+      "topic_bucket": "object/technology",
+      "evidence": "NASA / Apollo visual reports; wall contrast is too low at lunar distance.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_true_00_d2360d0731de",
+      "pair_id": "fact_00",
+      "kind": "fact",
+      "polarity": "true",
+      "claim": "The Great Wall of China is not visible from the Moon with the naked eye.",
+      "topic_bucket": "object/technology",
+      "evidence": "NASA / Apollo visual reports; wall contrast is too low at lunar distance.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_false_01_e792980ed7fe",
+      "pair_id": "fact_01",
+      "kind": "fact",
+      "polarity": "false",
+      "claim": "Goldfish have a memory span of only three seconds.",
+      "topic_bucket": "nature/outdoor",
+      "evidence": "Multiple goldfish learning studies; three-second claim is a folk myth.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_true_01_bb4eb6a35eb3",
+      "pair_id": "fact_01",
+      "kind": "fact",
+      "polarity": "true",
+      "claim": "Goldfish can remember information for months, not three seconds.",
+      "topic_bucket": "nature/outdoor",
+      "evidence": "Multiple goldfish learning studies; three-second claim is a folk myth.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_false_02_eefddf73bb9c",
+      "pair_id": "fact_02",
+      "kind": "fact",
+      "polarity": "false",
+      "claim": "Napoleon Bonaparte was under five feet tall.",
+      "topic_bucket": "people/social",
+      "evidence": "Autopsy 5'2\" French inches \u2248 1.69 m; British caricature created the short myth.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_true_02_d8247913597d",
+      "pair_id": "fact_02",
+      "kind": "fact",
+      "polarity": "true",
+      "claim": "Napoleon was about 5'6\"\u20135'7\" in modern measure, average for his time.",
+      "topic_bucket": "people/social",
+      "evidence": "Autopsy 5'2\" French inches \u2248 1.69 m; British caricature created the short myth.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_false_03_b4b0a55d85ec",
+      "pair_id": "fact_03",
+      "kind": "fact",
+      "polarity": "false",
+      "claim": "Bats are blind.",
+      "topic_bucket": "nature/outdoor",
+      "evidence": "Chiropteran vision literature; 'blind as a bat' is figurative.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_true_03_10b3f82b2547",
+      "pair_id": "fact_03",
+      "kind": "fact",
+      "polarity": "true",
+      "claim": "Bats can see; many species have functional vision plus echolocation.",
+      "topic_bucket": "nature/outdoor",
+      "evidence": "Chiropteran vision literature; 'blind as a bat' is figurative.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_false_04_26f91df547ef",
+      "pair_id": "fact_04",
+      "kind": "fact",
+      "polarity": "false",
+      "claim": "Humans use only ten percent of their brains.",
+      "topic_bucket": "people/social",
+      "evidence": "Neuroscience consensus; imaging shows widespread activity.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_true_04_9196d0eca63c",
+      "pair_id": "fact_04",
+      "kind": "fact",
+      "polarity": "true",
+      "claim": "Humans use virtually all of the brain over time; the 10% claim is false.",
+      "topic_bucket": "people/social",
+      "evidence": "Neuroscience consensus; imaging shows widespread activity.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_false_05_54062bbc7c44",
+      "pair_id": "fact_05",
+      "kind": "fact",
+      "polarity": "false",
+      "claim": "Lightning never strikes the same place twice.",
+      "topic_bucket": "nature/outdoor",
+      "evidence": "Lightning physics; Empire State Building is a standard counterexample.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_true_05_0afeb16bef4b",
+      "pair_id": "fact_05",
+      "kind": "fact",
+      "polarity": "true",
+      "claim": "Lightning often restrikes tall conductors, including the same tower.",
+      "topic_bucket": "nature/outdoor",
+      "evidence": "Lightning physics; Empire State Building is a standard counterexample.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_false_06_304cfba595f2",
+      "pair_id": "fact_06",
+      "kind": "fact",
+      "polarity": "false",
+      "claim": "The human tongue has neat spatial zones for sweet, salty, sour, and bitter.",
+      "topic_bucket": "food",
+      "evidence": "Modern taste-map revisions of the early 20th-century tongue map.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_true_06_5bd12e9e7402",
+      "pair_id": "fact_06",
+      "kind": "fact",
+      "polarity": "true",
+      "claim": "Taste receptor types are distributed across the tongue, not in strict zones.",
+      "topic_bucket": "food",
+      "evidence": "Modern taste-map revisions of the early 20th-century tongue map.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_false_07_8047718f040b",
+      "pair_id": "fact_07",
+      "kind": "fact",
+      "polarity": "false",
+      "claim": "Bulls are enraged specifically by the color red.",
+      "topic_bucket": "nature/outdoor",
+      "evidence": "Bovine color-vision studies; bullfighting capes are also used in other colors.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_true_07_c56d31f78790",
+      "pair_id": "fact_07",
+      "kind": "fact",
+      "polarity": "true",
+      "claim": "Bulls are dichromats; motion of the cape matters more than redness.",
+      "topic_bucket": "nature/outdoor",
+      "evidence": "Bovine color-vision studies; bullfighting capes are also used in other colors.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_false_08_c3108d222ddc",
+      "pair_id": "fact_08",
+      "kind": "fact",
+      "polarity": "false",
+      "claim": "Chameleons change color mainly to camouflage against whatever is behind them.",
+      "topic_bucket": "nature/outdoor",
+      "evidence": "Chameleon communication / chromatophore literature.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_true_08_86af3d7b1ebb",
+      "pair_id": "fact_08",
+      "kind": "fact",
+      "polarity": "true",
+      "claim": "Chameleon color change is used largely for signaling and temperature, not perfect background matching.",
+      "topic_bucket": "nature/outdoor",
+      "evidence": "Chameleon communication / chromatophore literature.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_false_09_f7e3ef6f2332",
+      "pair_id": "fact_09",
+      "kind": "fact",
+      "polarity": "false",
+      "claim": "The far side of the Moon is permanently dark.",
+      "topic_bucket": "nature/outdoor",
+      "evidence": "Synchronous rotation \u2260 permanent darkness; lunar day/night cycle.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_true_09_1257145c4737",
+      "pair_id": "fact_09",
+      "kind": "fact",
+      "polarity": "true",
+      "claim": "The far side gets sunlight; it is not a permanent night side.",
+      "topic_bucket": "nature/outdoor",
+      "evidence": "Synchronous rotation \u2260 permanent darkness; lunar day/night cycle.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_false_10_7a2897ac851e",
+      "pair_id": "fact_10",
+      "kind": "fact",
+      "polarity": "false",
+      "claim": "Sinks drain opposite ways in the two hemispheres because of the Coriolis effect.",
+      "topic_bucket": "home/indoor",
+      "evidence": "Scale analysis of Coriolis vs residual water motion.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_true_10_78bcd8b19c51",
+      "pair_id": "fact_10",
+      "kind": "fact",
+      "polarity": "true",
+      "claim": "Household sinks are too small for Coriolis to set drain direction.",
+      "topic_bucket": "home/indoor",
+      "evidence": "Scale analysis of Coriolis vs residual water motion.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_false_11_dc37d621420f",
+      "pair_id": "fact_11",
+      "kind": "fact",
+      "polarity": "false",
+      "claim": "Vikings wore horned helmets in battle.",
+      "topic_bucket": "people/social",
+      "evidence": "Archaeology; horned helmets are later romantic / costume invention.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_true_11_c49b2e2782de",
+      "pair_id": "fact_11",
+      "kind": "fact",
+      "polarity": "true",
+      "claim": "There is no good evidence Vikings wore horned battle helmets.",
+      "topic_bucket": "people/social",
+      "evidence": "Archaeology; horned helmets are later romantic / costume invention.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_false_12_ccfad0dafc51",
+      "pair_id": "fact_12",
+      "kind": "fact",
+      "polarity": "false",
+      "claim": "Eating carrots produces a large, reliable improvement in human night vision.",
+      "topic_bucket": "food",
+      "evidence": "WW2 RAF disinformation plus ordinary vitamin-A physiology.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_true_12_fbea0f768868",
+      "pair_id": "fact_12",
+      "kind": "fact",
+      "polarity": "true",
+      "claim": "Carrots supply vitamin A, but they do not confer special night-vision superpowers.",
+      "topic_bucket": "food",
+      "evidence": "WW2 RAF disinformation plus ordinary vitamin-A physiology.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_false_13_ae1f005ac141",
+      "pair_id": "fact_13",
+      "kind": "fact",
+      "polarity": "false",
+      "claim": "A penny dropped from a skyscraper will kill a person on the sidewalk.",
+      "topic_bucket": "object/technology",
+      "evidence": "Terminal-velocity estimates for a tumbling penny.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_true_13_2c998d6f98de",
+      "pair_id": "fact_13",
+      "kind": "fact",
+      "polarity": "true",
+      "claim": "A falling penny reaches a low terminal velocity and is not a lethal projectile.",
+      "topic_bucket": "object/technology",
+      "evidence": "Terminal-velocity estimates for a tumbling penny.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_false_14_f197386ff3a7",
+      "pair_id": "fact_14",
+      "kind": "fact",
+      "polarity": "false",
+      "claim": "Window glass in old buildings is thicker at the bottom because glass is a room-temperature liquid that flows.",
+      "topic_bucket": "home/indoor",
+      "evidence": "Glass-science / cathedral-glass explanations.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_true_14_d7cbf3b72ce3",
+      "pair_id": "fact_14",
+      "kind": "fact",
+      "polarity": "true",
+      "claim": "Old panes vary from manufacturing; glass does not flow on human timescales at room temperature.",
+      "topic_bucket": "home/indoor",
+      "evidence": "Glass-science / cathedral-glass explanations.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_false_15_9da0b2bc6748",
+      "pair_id": "fact_15",
+      "kind": "fact",
+      "polarity": "false",
+      "claim": "Food that stays on the floor less than five seconds stays safe to eat.",
+      "topic_bucket": "food",
+      "evidence": "Food-safety contact studies.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_true_15_6d7eb2b737ce",
+      "pair_id": "fact_15",
+      "kind": "fact",
+      "polarity": "true",
+      "claim": "Contamination can begin on contact; the five-second rule is not a safety rule.",
+      "topic_bucket": "food",
+      "evidence": "Food-safety contact studies.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_false_16_04ae392cd8ba",
+      "pair_id": "fact_16",
+      "kind": "fact",
+      "polarity": "false",
+      "claim": "Cracking your knuckles causes arthritis.",
+      "topic_bucket": "people/social",
+      "evidence": "Clinical studies of habitual knuckle crackers.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_true_16_6db2089338f4",
+      "pair_id": "fact_16",
+      "kind": "fact",
+      "polarity": "true",
+      "claim": "Habitual knuckle cracking has not been shown to cause arthritis.",
+      "topic_bucket": "people/social",
+      "evidence": "Clinical studies of habitual knuckle crackers.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_false_17_6c3b98a4f8bd",
+      "pair_id": "fact_17",
+      "kind": "fact",
+      "polarity": "false",
+      "claim": "Shaving makes hair grow back thicker and darker.",
+      "topic_bucket": "people/social",
+      "evidence": "Dermatology consensus.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_true_17_67de1efbf76e",
+      "pair_id": "fact_17",
+      "kind": "fact",
+      "polarity": "true",
+      "claim": "Shaving blunt-cuts the shaft so regrowth feels coarser; it does not change follicle thickness.",
+      "topic_bucket": "people/social",
+      "evidence": "Dermatology consensus.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_false_18_597722a70a69",
+      "pair_id": "fact_18",
+      "kind": "fact",
+      "polarity": "false",
+      "claim": "You must wait thirty minutes after eating before swimming or you will get a dangerous cramp.",
+      "topic_bucket": "sport",
+      "evidence": "Sports-medicine reviews of exercise after meals.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_true_18_d0d8117af11b",
+      "pair_id": "fact_18",
+      "kind": "fact",
+      "polarity": "true",
+      "claim": "The wait-or-cramp rule is not supported as a general safety law.",
+      "topic_bucket": "sport",
+      "evidence": "Sports-medicine reviews of exercise after meals.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_false_19_8e258762b5ae",
+      "pair_id": "fact_19",
+      "kind": "fact",
+      "polarity": "false",
+      "claim": "Dogs see the world only in black and white.",
+      "topic_bucket": "nature/outdoor",
+      "evidence": "Canine photopigment studies.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_true_19_68b1e248f5a9",
+      "pair_id": "fact_19",
+      "kind": "fact",
+      "polarity": "true",
+      "claim": "Dogs have dichromatic color vision, not a purely grayscale world.",
+      "topic_bucket": "nature/outdoor",
+      "evidence": "Canine photopigment studies.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_false_20_cc2cf7c2a58a",
+      "pair_id": "fact_20",
+      "kind": "fact",
+      "polarity": "false",
+      "claim": "The Egyptian pyramids were built entirely by enslaved laborers.",
+      "topic_bucket": "people/social",
+      "evidence": "Giza worker-village archaeology.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_true_20_43198189cb52",
+      "pair_id": "fact_20",
+      "kind": "fact",
+      "polarity": "true",
+      "claim": "Evidence points to a paid / conscripted workforce with housing and food, not a simple slave-only story.",
+      "topic_bucket": "people/social",
+      "evidence": "Giza worker-village archaeology.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_false_21_4f9a93b74190",
+      "pair_id": "fact_21",
+      "kind": "fact",
+      "polarity": "false",
+      "claim": "Albert Einstein failed mathematics as a schoolboy.",
+      "topic_bucket": "work/school",
+      "evidence": "Einstein biographies / school records summaries.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_true_21_c3cd817d2af2",
+      "pair_id": "fact_21",
+      "kind": "fact",
+      "polarity": "true",
+      "claim": "Einstein did not fail math; the story is a later myth.",
+      "topic_bucket": "work/school",
+      "evidence": "Einstein biographies / school records summaries.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_false_22_df885db41122",
+      "pair_id": "fact_22",
+      "kind": "fact",
+      "polarity": "false",
+      "claim": "A tomato is a vegetable, not a fruit, in botanical terms.",
+      "topic_bucket": "food",
+      "evidence": "Botanical fruit definition (ovary / seeds).",
+      "eval_only": true
+    },
+    {
+      "id": "fact_true_22_319232c8a904",
+      "pair_id": "fact_22",
+      "kind": "fact",
+      "polarity": "true",
+      "claim": "Botanically a tomato is a fruit; culinary use as a vegetable is a different classification.",
+      "topic_bucket": "food",
+      "evidence": "Botanical fruit definition (ovary / seeds).",
+      "eval_only": true
+    },
+    {
+      "id": "fact_false_23_011f34f19638",
+      "pair_id": "fact_23",
+      "kind": "fact",
+      "polarity": "false",
+      "claim": "Mount Everest is the point on Earth closest to space.",
+      "topic_bucket": "nature/outdoor",
+      "evidence": "Geodesy; Everest is highest above sea level, not farthest from center.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_true_23_30b274bcb5f6",
+      "pair_id": "fact_23",
+      "kind": "fact",
+      "polarity": "true",
+      "claim": "Chimborazo\u2019s summit is farther from Earth\u2019s center because of the equatorial bulge.",
+      "topic_bucket": "nature/outdoor",
+      "evidence": "Geodesy; Everest is highest above sea level, not farthest from center.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_false_24_fec6760db81b",
+      "pair_id": "fact_24",
+      "kind": "fact",
+      "polarity": "false",
+      "claim": "Ostriches bury their heads in the sand when threatened.",
+      "topic_bucket": "nature/outdoor",
+      "evidence": "Ornithology / popular-myth corrections.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_true_24_4c626abc0a77",
+      "pair_id": "fact_24",
+      "kind": "fact",
+      "polarity": "true",
+      "claim": "Ostriches do not bury their heads; the behavior is a myth.",
+      "topic_bucket": "nature/outdoor",
+      "evidence": "Ornithology / popular-myth corrections.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_false_25_bf95efae543d",
+      "pair_id": "fact_25",
+      "kind": "fact",
+      "polarity": "false",
+      "claim": "Lemmings periodically commit mass suicide by jumping off cliffs.",
+      "topic_bucket": "nature/outdoor",
+      "evidence": "Disney White Wilderness staging; lemming ecology.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_true_25_d82ecc0de4bf",
+      "pair_id": "fact_25",
+      "kind": "fact",
+      "polarity": "true",
+      "claim": "The lemming-suicide story was popularized by staged footage, not natural mass suicide.",
+      "topic_bucket": "nature/outdoor",
+      "evidence": "Disney White Wilderness staging; lemming ecology.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_false_26_4fff7981bc1b",
+      "pair_id": "fact_26",
+      "kind": "fact",
+      "polarity": "false",
+      "claim": "Bananas grow on trees.",
+      "topic_bucket": "food",
+      "evidence": "Botany of Musa.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_true_26_a9b4721ee99a",
+      "pair_id": "fact_26",
+      "kind": "fact",
+      "polarity": "true",
+      "claim": "Banana plants are giant herbs; the \u2018trunk\u2019 is a pseudostem, not a woody tree.",
+      "topic_bucket": "food",
+      "evidence": "Botany of Musa.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_false_27_5eaa70f658e7",
+      "pair_id": "fact_27",
+      "kind": "fact",
+      "polarity": "false",
+      "claim": "Earth\u2019s seasons are caused by the planet being closer to the Sun in summer.",
+      "topic_bucket": "nature/outdoor",
+      "evidence": "Orbital mechanics / tilt.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_true_27_ee3308b4a37d",
+      "pair_id": "fact_27",
+      "kind": "fact",
+      "polarity": "true",
+      "claim": "Seasons are caused mainly by axial tilt, and northern summer is near aphelion.",
+      "topic_bucket": "nature/outdoor",
+      "evidence": "Orbital mechanics / tilt.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_false_28_4c30a2ffdb81",
+      "pair_id": "fact_28",
+      "kind": "fact",
+      "polarity": "false",
+      "claim": "All deserts are hot.",
+      "topic_bucket": "nature/outdoor",
+      "evidence": "Climatology aridity definition.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_true_28_15344c2f4a72",
+      "pair_id": "fact_28",
+      "kind": "fact",
+      "polarity": "true",
+      "claim": "Deserts are defined by dryness; some, such as polar deserts, are cold.",
+      "topic_bucket": "nature/outdoor",
+      "evidence": "Climatology aridity definition.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_false_29_1a5b11b5427d",
+      "pair_id": "fact_29",
+      "kind": "fact",
+      "polarity": "false",
+      "claim": "Camels store water in their humps.",
+      "topic_bucket": "nature/outdoor",
+      "evidence": "Camel physiology.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_true_29_5ada19d03fb1",
+      "pair_id": "fact_29",
+      "kind": "fact",
+      "polarity": "true",
+      "claim": "Camel humps store fat; water is conserved by other physiology.",
+      "topic_bucket": "nature/outdoor",
+      "evidence": "Camel physiology.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_false_30_d00ee3d95137",
+      "pair_id": "fact_30",
+      "kind": "fact",
+      "polarity": "false",
+      "claim": "The human heart sits entirely on the left side of the chest.",
+      "topic_bucket": "people/social",
+      "evidence": "Gross anatomy.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_true_30_100069b91e17",
+      "pair_id": "fact_30",
+      "kind": "fact",
+      "polarity": "true",
+      "claim": "The heart is central, with the apex tipped left; it is not wholly left-sided.",
+      "topic_bucket": "people/social",
+      "evidence": "Gross anatomy.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_false_31_79565b14629c",
+      "pair_id": "fact_31",
+      "kind": "fact",
+      "polarity": "false",
+      "claim": "You lose most of your body heat through your head.",
+      "topic_bucket": "people/social",
+      "evidence": "Thermal-physiology reviews.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_true_31_30a2ed24d1d9",
+      "pair_id": "fact_31",
+      "kind": "fact",
+      "polarity": "true",
+      "claim": "Heat loss follows exposed surface area; an uncovered head is not magically dominant if the body is clothed.",
+      "topic_bucket": "people/social",
+      "evidence": "Thermal-physiology reviews.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_false_32_2a5b81e2988e",
+      "pair_id": "fact_32",
+      "kind": "fact",
+      "polarity": "false",
+      "claim": "Sugar reliably makes children hyperactive.",
+      "topic_bucket": "food",
+      "evidence": "Dietary-challenge / parent-expectation studies.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_true_32_94c91503490d",
+      "pair_id": "fact_32",
+      "kind": "fact",
+      "polarity": "true",
+      "claim": "Controlled studies do not support a general sugar\u2013hyperactivity effect.",
+      "topic_bucket": "food",
+      "evidence": "Dietary-challenge / parent-expectation studies.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_false_33_7ec0939e5d6f",
+      "pair_id": "fact_33",
+      "kind": "fact",
+      "polarity": "false",
+      "claim": "Hair and nails keep growing after death.",
+      "topic_bucket": "people/social",
+      "evidence": "Forensic pathology.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_true_33_f49f6e379251",
+      "pair_id": "fact_33",
+      "kind": "fact",
+      "polarity": "true",
+      "claim": "Apparent postmortem growth is skin retraction, not continued growth.",
+      "topic_bucket": "people/social",
+      "evidence": "Forensic pathology.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_false_34_19cc9f0e9285",
+      "pair_id": "fact_34",
+      "kind": "fact",
+      "polarity": "false",
+      "claim": "Polaris, the North Star, is the brightest star in the night sky.",
+      "topic_bucket": "nature/outdoor",
+      "evidence": "Stellar photometry.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_true_34_c8f1d1e72639",
+      "pair_id": "fact_34",
+      "kind": "fact",
+      "polarity": "true",
+      "claim": "Sirius is the brightest night-sky star; Polaris is notable for position, not brightness.",
+      "topic_bucket": "nature/outdoor",
+      "evidence": "Stellar photometry.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_false_35_3ff3ff452c9c",
+      "pair_id": "fact_35",
+      "kind": "fact",
+      "polarity": "false",
+      "claim": "Mercury is the hottest planet in the Solar System.",
+      "topic_bucket": "nature/outdoor",
+      "evidence": "Planetary surface-temperature data.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_true_35_026f5646873b",
+      "pair_id": "fact_35",
+      "kind": "fact",
+      "polarity": "true",
+      "claim": "Venus is hotter at the surface because of its atmosphere.",
+      "topic_bucket": "nature/outdoor",
+      "evidence": "Planetary surface-temperature data.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_false_36_94b2e1573fc3",
+      "pair_id": "fact_36",
+      "kind": "fact",
+      "polarity": "false",
+      "claim": "A year on Earth is exactly 365 days with no remainder.",
+      "topic_bucket": "object/technology",
+      "evidence": "Calendar / tropical-year length.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_true_36_8c360ec2179f",
+      "pair_id": "fact_36",
+      "kind": "fact",
+      "polarity": "true",
+      "claim": "The mean tropical year is about 365.24 days, which is why calendars add leap days.",
+      "topic_bucket": "object/technology",
+      "evidence": "Calendar / tropical-year length.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_false_37_3a9e70b450cf",
+      "pair_id": "fact_37",
+      "kind": "fact",
+      "polarity": "false",
+      "claim": "The Coriolis effect makes toilets flush opposite ways north and south of the equator.",
+      "topic_bucket": "travel/transport",
+      "evidence": "Same scale argument as sinks.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_true_37_e62ca23fabdd",
+      "pair_id": "fact_37",
+      "kind": "fact",
+      "polarity": "true",
+      "claim": "Toilet flush direction is set by the bowl jets, not hemisphere-scale Coriolis.",
+      "topic_bucket": "travel/transport",
+      "evidence": "Same scale argument as sinks.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_false_38_1e78ca1ddbaf",
+      "pair_id": "fact_38",
+      "kind": "fact",
+      "polarity": "false",
+      "claim": "Houseflies live only twenty-four hours.",
+      "topic_bucket": "home/indoor",
+      "evidence": "Musca domestica life-history data.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_true_38_4bdad2bb0b57",
+      "pair_id": "fact_38",
+      "kind": "fact",
+      "polarity": "true",
+      "claim": "Adult houseflies typically live on the order of weeks, not a single day.",
+      "topic_bucket": "home/indoor",
+      "evidence": "Musca domestica life-history data.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_false_39_cc9cfd21120c",
+      "pair_id": "fact_39",
+      "kind": "fact",
+      "polarity": "false",
+      "claim": "A duck\u2019s quack does not echo.",
+      "topic_bucket": "nature/outdoor",
+      "evidence": "Acoustic demonstrations / myth checks.",
+      "eval_only": true
+    },
+    {
+      "id": "fact_true_39_34531be5cd94",
+      "pair_id": "fact_39",
+      "kind": "fact",
+      "polarity": "true",
+      "claim": "Duck quacks can echo; the no-echo claim is a myth.",
+      "topic_bucket": "nature/outdoor",
+      "evidence": "Acoustic demonstrations / myth checks.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_flawed_00_e0c7cb40f5bc",
+      "pair_id": "plan_00",
+      "kind": "plan",
+      "polarity": "flawed",
+      "claim": "I will water this succulent every day so it stays lush.",
+      "topic_bucket": "home/indoor",
+      "evidence": "Succulents are drought-adapted; overwatering is the common failure.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_sound_00_8daf4757c9b2",
+      "pair_id": "plan_00",
+      "kind": "plan",
+      "polarity": "sound",
+      "claim": "I will water this succulent only when the soil is dry, since daily watering often rots it.",
+      "topic_bucket": "home/indoor",
+      "evidence": "Succulents are drought-adapted; overwatering is the common failure.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_flawed_01_44f296f20bc0",
+      "pair_id": "plan_01",
+      "kind": "plan",
+      "polarity": "flawed",
+      "claim": "I will leave leftover pizza on the counter overnight so breakfast is easy.",
+      "topic_bucket": "food",
+      "evidence": "Room-temperature leftovers are a food-safety risk.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_sound_01_8171211b8345",
+      "pair_id": "plan_01",
+      "kind": "plan",
+      "polarity": "sound",
+      "claim": "I will refrigerate leftover pizza within about two hours.",
+      "topic_bucket": "food",
+      "evidence": "Room-temperature leftovers are a food-safety risk.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_flawed_02_bfe2f072b6e0",
+      "pair_id": "plan_02",
+      "kind": "plan",
+      "polarity": "flawed",
+      "claim": "I will charge my phone under my pillow overnight so I hear the alarm.",
+      "topic_bucket": "object/technology",
+      "evidence": "Pillows trap heat around chargers and phones.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_sound_02_55d8ce529658",
+      "pair_id": "plan_02",
+      "kind": "plan",
+      "polarity": "sound",
+      "claim": "I will charge the phone on a hard surface away from bedding.",
+      "topic_bucket": "object/technology",
+      "evidence": "Pillows trap heat around chargers and phones.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_flawed_03_ff691a3505bf",
+      "pair_id": "plan_03",
+      "kind": "plan",
+      "polarity": "flawed",
+      "claim": "I will unplug the refrigerator overnight to save power and plug it back in at breakfast.",
+      "topic_bucket": "home/indoor",
+      "evidence": "Compressor / food-safety costs dominate the tiny idle savings.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_sound_03_fc4f6a41c2ff",
+      "pair_id": "plan_03",
+      "kind": "plan",
+      "polarity": "sound",
+      "claim": "I will leave the refrigerator running; cycling it off overnight wastes food and can cost more.",
+      "topic_bucket": "home/indoor",
+      "evidence": "Compressor / food-safety costs dominate the tiny idle savings.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_flawed_04_add5d47ffe20",
+      "pair_id": "plan_04",
+      "kind": "plan",
+      "polarity": "flawed",
+      "claim": "I will cram the whole textbook the night before and skip sleep.",
+      "topic_bucket": "work/school",
+      "evidence": "Sleep supports memory consolidation.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_sound_04_368017f73a50",
+      "pair_id": "plan_04",
+      "kind": "plan",
+      "polarity": "sound",
+      "claim": "I will study in shorter sessions and sleep, which usually beats an all-nighter.",
+      "topic_bucket": "work/school",
+      "evidence": "Sleep supports memory consolidation.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_flawed_05_659943155fb6",
+      "pair_id": "plan_05",
+      "kind": "plan",
+      "polarity": "flawed",
+      "claim": "I will start a long run tomorrow in brand-new shoes with no break-in walk.",
+      "topic_bucket": "sport",
+      "evidence": "New shoes are a common blister / injury source.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_sound_05_465518ced0cb",
+      "pair_id": "plan_05",
+      "kind": "plan",
+      "polarity": "sound",
+      "claim": "I will wear already-tested shoes for the long run.",
+      "topic_bucket": "sport",
+      "evidence": "New shoes are a common blister / injury source.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_flawed_06_7fbc01c8fe71",
+      "pair_id": "plan_06",
+      "kind": "plan",
+      "polarity": "flawed",
+      "claim": "I will check the train time on an old screenshot from last month.",
+      "topic_bucket": "travel/transport",
+      "evidence": "Schedules change; screenshots go stale.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_sound_06_d3b2540923b4",
+      "pair_id": "plan_06",
+      "kind": "plan",
+      "polarity": "sound",
+      "claim": "I will check today\u2019s timetable before I leave.",
+      "topic_bucket": "travel/transport",
+      "evidence": "Schedules change; screenshots go stale.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_flawed_07_a2eb3b4a6817",
+      "pair_id": "plan_07",
+      "kind": "plan",
+      "polarity": "flawed",
+      "claim": "I will thaw the frozen stew on the kitchen counter all afternoon.",
+      "topic_bucket": "food",
+      "evidence": "Counter thawing keeps food in the danger zone.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_sound_07_500771edaac1",
+      "pair_id": "plan_07",
+      "kind": "plan",
+      "polarity": "sound",
+      "claim": "I will thaw the stew in the fridge or in a cold-water change.",
+      "topic_bucket": "food",
+      "evidence": "Counter thawing keeps food in the danger zone.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_flawed_08_a929d4ee5e7e",
+      "pair_id": "plan_08",
+      "kind": "plan",
+      "polarity": "flawed",
+      "claim": "I will paint over peeling exterior paint without scraping because the new coat will seal it.",
+      "topic_bucket": "home/indoor",
+      "evidence": "New paint on failed film peels again.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_sound_08_2cdaca455ded",
+      "pair_id": "plan_08",
+      "kind": "plan",
+      "polarity": "sound",
+      "claim": "I will scrape loose paint and prep the surface before recoating.",
+      "topic_bucket": "home/indoor",
+      "evidence": "New paint on failed film peels again.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_flawed_09_94ef745ba53f",
+      "pair_id": "plan_09",
+      "kind": "plan",
+      "polarity": "flawed",
+      "claim": "I will keep the laptop vents blocked by a blanket so it stays cozy on the couch.",
+      "topic_bucket": "object/technology",
+      "evidence": "Blocked vents cause thermal throttling and damage.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_sound_09_5cc6e0f1c879",
+      "pair_id": "plan_09",
+      "kind": "plan",
+      "polarity": "sound",
+      "claim": "I will keep the vents clear so the machine can dump heat.",
+      "topic_bucket": "object/technology",
+      "evidence": "Blocked vents cause thermal throttling and damage.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_flawed_10_9e6eb489be3f",
+      "pair_id": "plan_10",
+      "kind": "plan",
+      "polarity": "flawed",
+      "claim": "I will pick unknown wild mushrooms for dinner because they look like the grocery ones.",
+      "topic_bucket": "nature/outdoor",
+      "evidence": "Lookalikes include toxic species; this stays non-medical and precautionary.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_sound_10_8507e007994b",
+      "pair_id": "plan_10",
+      "kind": "plan",
+      "polarity": "sound",
+      "claim": "I will not eat wild mushrooms I cannot confidently identify.",
+      "topic_bucket": "nature/outdoor",
+      "evidence": "Lookalikes include toxic species; this stays non-medical and precautionary.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_flawed_11_1f8d21a1fb1c",
+      "pair_id": "plan_11",
+      "kind": "plan",
+      "polarity": "flawed",
+      "claim": "I will reply-all to the whole school list to settle a small scheduling nit.",
+      "topic_bucket": "people/social",
+      "evidence": "Reply-all noise is a common low-stakes social error.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_sound_11_ef457b1cecd8",
+      "pair_id": "plan_11",
+      "kind": "plan",
+      "polarity": "sound",
+      "claim": "I will reply only to the people who need the scheduling fix.",
+      "topic_bucket": "people/social",
+      "evidence": "Reply-all noise is a common low-stakes social error.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_flawed_12_24bd36d997f8",
+      "pair_id": "plan_12",
+      "kind": "plan",
+      "polarity": "flawed",
+      "claim": "I will submit the draft without opening the rubric because I already know the topic.",
+      "topic_bucket": "work/school",
+      "evidence": "Rubrics often contain required sections that topic knowledge does not replace.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_sound_12_9f6a7e143fc1",
+      "pair_id": "plan_12",
+      "kind": "plan",
+      "polarity": "sound",
+      "claim": "I will check the rubric before submitting.",
+      "topic_bucket": "work/school",
+      "evidence": "Rubrics often contain required sections that topic knowledge does not replace.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_flawed_13_81afc371c517",
+      "pair_id": "plan_13",
+      "kind": "plan",
+      "polarity": "flawed",
+      "claim": "I will skip warming up and jump straight into sprint repeats to save time.",
+      "topic_bucket": "sport",
+      "evidence": "Cold sprints raise ordinary strain risk.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_sound_13_bee9ea71d2e6",
+      "pair_id": "plan_13",
+      "kind": "plan",
+      "polarity": "sound",
+      "claim": "I will do a short warmup before sprints.",
+      "topic_bucket": "sport",
+      "evidence": "Cold sprints raise ordinary strain risk.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_flawed_14_a306357fe262",
+      "pair_id": "plan_14",
+      "kind": "plan",
+      "polarity": "flawed",
+      "claim": "I will put the suitcase on the open car roof and drive to the station without strapping it.",
+      "topic_bucket": "travel/transport",
+      "evidence": "Unsecured roof loads fall off.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_sound_14_936f71c7ab07",
+      "pair_id": "plan_14",
+      "kind": "plan",
+      "polarity": "sound",
+      "claim": "I will put the suitcase inside or strap it before moving the car.",
+      "topic_bucket": "travel/transport",
+      "evidence": "Unsecured roof loads fall off.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_flawed_15_b11b3dfe6ded",
+      "pair_id": "plan_15",
+      "kind": "plan",
+      "polarity": "flawed",
+      "claim": "I will reuse yesterday\u2019s cutting board for fruit without washing it after raw chicken.",
+      "topic_bucket": "food",
+      "evidence": "Cross-contamination is the issue, not a medical procedure.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_sound_15_c8ead591e9bf",
+      "pair_id": "plan_15",
+      "kind": "plan",
+      "polarity": "sound",
+      "claim": "I will wash the board after raw chicken before any ready-to-eat food.",
+      "topic_bucket": "food",
+      "evidence": "Cross-contamination is the issue, not a medical procedure.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_flawed_16_866096854890",
+      "pair_id": "plan_16",
+      "kind": "plan",
+      "polarity": "flawed",
+      "claim": "I will run the clothes dryer with the lint filter packed full to finish faster.",
+      "topic_bucket": "home/indoor",
+      "evidence": "Packed lint is a fire and efficiency problem.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_sound_16_d78044ead652",
+      "pair_id": "plan_16",
+      "kind": "plan",
+      "polarity": "sound",
+      "claim": "I will clean the lint filter before the load.",
+      "topic_bucket": "home/indoor",
+      "evidence": "Packed lint is a fire and efficiency problem.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_flawed_17_34dd6648e3db",
+      "pair_id": "plan_17",
+      "kind": "plan",
+      "polarity": "flawed",
+      "claim": "I will update the OS in the last five minutes before a graded presentation.",
+      "topic_bucket": "object/technology",
+      "evidence": "Updates can reboot or break a setup at the worst time.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_sound_17_fdf117b42a6a",
+      "pair_id": "plan_17",
+      "kind": "plan",
+      "polarity": "sound",
+      "claim": "I will postpone the OS update until after the presentation.",
+      "topic_bucket": "object/technology",
+      "evidence": "Updates can reboot or break a setup at the worst time.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_flawed_18_9a61488a983b",
+      "pair_id": "plan_18",
+      "kind": "plan",
+      "polarity": "flawed",
+      "claim": "I will start a backyard fire pit on a dry, windy day next to dry brush.",
+      "topic_bucket": "nature/outdoor",
+      "evidence": "Low-stakes outdoor fire-safety; no device instructions.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_sound_18_97a95385d85e",
+      "pair_id": "plan_18",
+      "kind": "plan",
+      "polarity": "sound",
+      "claim": "I will wait for calmer, less dry conditions and keep clearance from brush.",
+      "topic_bucket": "nature/outdoor",
+      "evidence": "Low-stakes outdoor fire-safety; no device instructions.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_flawed_19_c04a2e50f633",
+      "pair_id": "plan_19",
+      "kind": "plan",
+      "polarity": "flawed",
+      "claim": "I will cancel on the group chat five minutes after the meetup start time.",
+      "topic_bucket": "people/social",
+      "evidence": "Late silent cancels waste other people\u2019s time.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_sound_19_ef7ba83e047f",
+      "pair_id": "plan_19",
+      "kind": "plan",
+      "polarity": "sound",
+      "claim": "I will cancel as soon as I know I cannot make it.",
+      "topic_bucket": "people/social",
+      "evidence": "Late silent cancels waste other people\u2019s time.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_flawed_20_3e39796f97f9",
+      "pair_id": "plan_20",
+      "kind": "plan",
+      "polarity": "flawed",
+      "claim": "I will copy a classmate\u2019s unique examples and change a few words.",
+      "topic_bucket": "work/school",
+      "evidence": "Paraphrase-copying is still academic dishonesty.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_sound_20_51d62caf78d7",
+      "pair_id": "plan_20",
+      "kind": "plan",
+      "polarity": "sound",
+      "claim": "I will write my own examples and cite anything I reuse.",
+      "topic_bucket": "work/school",
+      "evidence": "Paraphrase-copying is still academic dishonesty.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_flawed_21_527dbe2b0292",
+      "pair_id": "plan_21",
+      "kind": "plan",
+      "polarity": "flawed",
+      "claim": "I will jump to a much heavier weight than last session because I feel motivated today.",
+      "topic_bucket": "sport",
+      "evidence": "Sudden jumps are a common form-break.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_sound_21_562fd1caba92",
+      "pair_id": "plan_21",
+      "kind": "plan",
+      "polarity": "sound",
+      "claim": "I will increase load gradually from a known working weight.",
+      "topic_bucket": "sport",
+      "evidence": "Sudden jumps are a common form-break.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_flawed_22_eeddd7a069eb",
+      "pair_id": "plan_22",
+      "kind": "plan",
+      "polarity": "flawed",
+      "claim": "I will lock my bike with a thin cable through the wheel only.",
+      "topic_bucket": "travel/transport",
+      "evidence": "Wheel-only cables are easy to defeat.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_sound_22_4645cfef9ad1",
+      "pair_id": "plan_22",
+      "kind": "plan",
+      "polarity": "sound",
+      "claim": "I will lock the frame to a fixed object with a sturdier lock.",
+      "topic_bucket": "travel/transport",
+      "evidence": "Wheel-only cables are easy to defeat.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_flawed_23_821ca55e6532",
+      "pair_id": "plan_23",
+      "kind": "plan",
+      "polarity": "flawed",
+      "claim": "I will taste-test the soup by using the same stirring spoon each time and putting it back.",
+      "topic_bucket": "food",
+      "evidence": "Double-dipping the cook spoon is ordinary kitchen hygiene.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_sound_23_3a4f2d5c2c0a",
+      "pair_id": "plan_23",
+      "kind": "plan",
+      "polarity": "sound",
+      "claim": "I will use a clean spoon for tasting so the pot is not repeatedly contaminated.",
+      "topic_bucket": "food",
+      "evidence": "Double-dipping the cook spoon is ordinary kitchen hygiene.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_flawed_24_9a15a1e8a653",
+      "pair_id": "plan_24",
+      "kind": "plan",
+      "polarity": "flawed",
+      "claim": "I will store the bleach and the vinegar together so cleaning is faster later.",
+      "topic_bucket": "home/indoor",
+      "evidence": "Mixing those household liquids produces chlorine gas; storage separation is the safe plan.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_sound_24_9a7299c5ed74",
+      "pair_id": "plan_24",
+      "kind": "plan",
+      "polarity": "sound",
+      "claim": "I will store bleach away from acids and not mix them.",
+      "topic_bucket": "home/indoor",
+      "evidence": "Mixing those household liquids produces chlorine gas; storage separation is the safe plan.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_flawed_25_ffee8fc41f3f",
+      "pair_id": "plan_25",
+      "kind": "plan",
+      "polarity": "flawed",
+      "claim": "I will keep every account on the same easy password so I do not forget it.",
+      "topic_bucket": "object/technology",
+      "evidence": "Password reuse turns one leak into many.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_sound_25_88ab45f9cbe9",
+      "pair_id": "plan_25",
+      "kind": "plan",
+      "polarity": "sound",
+      "claim": "I will use different passwords, ideally with a password manager.",
+      "topic_bucket": "object/technology",
+      "evidence": "Password reuse turns one leak into many.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_flawed_26_8de5118ddde6",
+      "pair_id": "plan_26",
+      "kind": "plan",
+      "polarity": "flawed",
+      "claim": "I will feed the park ducks a bag of bread every afternoon.",
+      "topic_bucket": "nature/outdoor",
+      "evidence": "Bread is a common harmful park-feeding habit.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_sound_26_fec7c4ec9a22",
+      "pair_id": "plan_26",
+      "kind": "plan",
+      "polarity": "sound",
+      "claim": "I will skip bread; it is poor food for ducks and makes a mess.",
+      "topic_bucket": "nature/outdoor",
+      "evidence": "Bread is a common harmful park-feeding habit.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_flawed_27_3dfeffe31f4b",
+      "pair_id": "plan_27",
+      "kind": "plan",
+      "polarity": "flawed",
+      "claim": "I will post the group photo that includes people who asked not to be posted.",
+      "topic_bucket": "people/social",
+      "evidence": "Consent is the low-stakes social rule.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_sound_27_f6a5a428e790",
+      "pair_id": "plan_27",
+      "kind": "plan",
+      "polarity": "sound",
+      "claim": "I will post only photos the people in them are fine sharing.",
+      "topic_bucket": "people/social",
+      "evidence": "Consent is the low-stakes social rule.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_flawed_28_51a6860a150f",
+      "pair_id": "plan_28",
+      "kind": "plan",
+      "polarity": "flawed",
+      "claim": "I will leave the shared lab notes untitled as \u2018finalfinal2\u2019 on the desktop only.",
+      "topic_bucket": "work/school",
+      "evidence": "Desktop-only mystery names get lost.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_sound_28_377e6f9aa205",
+      "pair_id": "plan_28",
+      "kind": "plan",
+      "polarity": "sound",
+      "claim": "I will use a dated filename and put a copy in the shared folder.",
+      "topic_bucket": "work/school",
+      "evidence": "Desktop-only mystery names get lost.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_flawed_29_d1187331a68b",
+      "pair_id": "plan_29",
+      "kind": "plan",
+      "polarity": "flawed",
+      "claim": "I will play the pickup game in worn-through indoor socks on a slick court.",
+      "topic_bucket": "sport",
+      "evidence": "Slick socks on a gym floor are an ordinary slip risk.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_sound_29_385712eac61f",
+      "pair_id": "plan_29",
+      "kind": "plan",
+      "polarity": "sound",
+      "claim": "I will wear clean, grippy socks or indoor shoes.",
+      "topic_bucket": "sport",
+      "evidence": "Slick socks on a gym floor are an ordinary slip risk.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_flawed_30_6feb94000946",
+      "pair_id": "plan_30",
+      "kind": "plan",
+      "polarity": "flawed",
+      "claim": "I will walk with headphones at full volume across the busy crosswalk.",
+      "topic_bucket": "travel/transport",
+      "evidence": "Awareness at crossings is ordinary travel safety.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_sound_30_83737a16a646",
+      "pair_id": "plan_30",
+      "kind": "plan",
+      "polarity": "sound",
+      "claim": "I will keep volume low enough to hear traffic at the crosswalk.",
+      "topic_bucket": "travel/transport",
+      "evidence": "Awareness at crossings is ordinary travel safety.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_flawed_31_246836b052c7",
+      "pair_id": "plan_31",
+      "kind": "plan",
+      "polarity": "flawed",
+      "claim": "I will put the raw-meat tray on the top fridge shelf above the berries.",
+      "topic_bucket": "food",
+      "evidence": "Drip direction is the hygiene point.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_sound_31_f306026f0e61",
+      "pair_id": "plan_31",
+      "kind": "plan",
+      "polarity": "sound",
+      "claim": "I will keep raw meat on a lower shelf so drips cannot hit ready food.",
+      "topic_bucket": "food",
+      "evidence": "Drip direction is the hygiene point.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_flawed_32_28a73cfa9223",
+      "pair_id": "plan_32",
+      "kind": "plan",
+      "polarity": "flawed",
+      "claim": "I will cover the space heater with a throw blanket so the room looks tidy.",
+      "topic_bucket": "home/indoor",
+      "evidence": "Covered heaters are an ordinary fire hazard.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_sound_32_ff9dea5f7a9d",
+      "pair_id": "plan_32",
+      "kind": "plan",
+      "polarity": "sound",
+      "claim": "I will keep the heater clear of fabric.",
+      "topic_bucket": "home/indoor",
+      "evidence": "Covered heaters are an ordinary fire hazard.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_flawed_33_a29d52f84c88",
+      "pair_id": "plan_33",
+      "kind": "plan",
+      "polarity": "flawed",
+      "claim": "I will click the unexpected \u2018update required\u2019 email link to keep the app working.",
+      "topic_bucket": "object/technology",
+      "evidence": "Unexpected update links are a common phishing pattern; no exploit details.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_sound_33_f7c14a539e8e",
+      "pair_id": "plan_33",
+      "kind": "plan",
+      "polarity": "sound",
+      "claim": "I will open the app or vendor site myself instead of the unexpected link.",
+      "topic_bucket": "object/technology",
+      "evidence": "Unexpected update links are a common phishing pattern; no exploit details.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_flawed_34_94d477e85b43",
+      "pair_id": "plan_34",
+      "kind": "plan",
+      "polarity": "flawed",
+      "claim": "I will leave leftover snack bags on the trail because animals will eat them.",
+      "topic_bucket": "nature/outdoor",
+      "evidence": "Litter is not trail food.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_sound_34_f0c7bc5aadaa",
+      "pair_id": "plan_34",
+      "kind": "plan",
+      "polarity": "sound",
+      "claim": "I will pack the wrappers out.",
+      "topic_bucket": "nature/outdoor",
+      "evidence": "Litter is not trail food.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_flawed_35_767aeebe5cb8",
+      "pair_id": "plan_35",
+      "kind": "plan",
+      "polarity": "flawed",
+      "claim": "I will screenshot a private chat and send it to a third friend for commentary.",
+      "topic_bucket": "people/social",
+      "evidence": "Ordinary privacy / trust.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_sound_35_a4524866a405",
+      "pair_id": "plan_35",
+      "kind": "plan",
+      "polarity": "sound",
+      "claim": "I will keep private chats private unless the people in them agree.",
+      "topic_bucket": "people/social",
+      "evidence": "Ordinary privacy / trust.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_flawed_36_e1a5edefdaa3",
+      "pair_id": "plan_36",
+      "kind": "plan",
+      "polarity": "flawed",
+      "claim": "I will ignore the calendar invite and assume the meeting is still at last month\u2019s time.",
+      "topic_bucket": "work/school",
+      "evidence": "Invites get moved.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_sound_36_e4773b6aefd7",
+      "pair_id": "plan_36",
+      "kind": "plan",
+      "polarity": "sound",
+      "claim": "I will open the latest invite before I go.",
+      "topic_bucket": "work/school",
+      "evidence": "Invites get moved.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_flawed_37_4d0482cf8ea2",
+      "pair_id": "plan_37",
+      "kind": "plan",
+      "polarity": "flawed",
+      "claim": "I will share a water bottle around the whole team without washing it between users.",
+      "topic_bucket": "sport",
+      "evidence": "Ordinary hygiene, not medical advice.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_sound_37_e0ffcf1b74bd",
+      "pair_id": "plan_37",
+      "kind": "plan",
+      "polarity": "sound",
+      "claim": "I will use my own bottle or wash between users.",
+      "topic_bucket": "sport",
+      "evidence": "Ordinary hygiene, not medical advice.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_flawed_38_57a7d17fa249",
+      "pair_id": "plan_38",
+      "kind": "plan",
+      "polarity": "flawed",
+      "claim": "I will leave the suitcase unattended at the station cafe while I walk a few blocks.",
+      "topic_bucket": "travel/transport",
+      "evidence": "Unattended bags get taken or cause a security response.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_sound_38_744f1275cdbb",
+      "pair_id": "plan_38",
+      "kind": "plan",
+      "polarity": "sound",
+      "claim": "I will keep the suitcase with me or use an official storage option.",
+      "topic_bucket": "travel/transport",
+      "evidence": "Unattended bags get taken or cause a security response.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_flawed_39_d72cf7823849",
+      "pair_id": "plan_39",
+      "kind": "plan",
+      "polarity": "flawed",
+      "claim": "I will microwave the foil-covered leftover in the metal takeout tray.",
+      "topic_bucket": "food",
+      "evidence": "Metal in a microwave is a common kitchen mistake.",
+      "eval_only": true
+    },
+    {
+      "id": "plan_sound_39_d61e1f6736dc",
+      "pair_id": "plan_39",
+      "kind": "plan",
+      "polarity": "sound",
+      "claim": "I will move leftovers to a microwave-safe dish and remove foil.",
+      "topic_bucket": "food",
+      "evidence": "Metal in a microwave is a common kitchen mistake.",
+      "eval_only": true
+    }
+  ]
+}
