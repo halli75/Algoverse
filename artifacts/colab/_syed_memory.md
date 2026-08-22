@@ -1,0 +1,215 @@
+# MEMORY — operational notes
+
+Validated, durable operational findings for this repo. Keep entries short and actionable.
+Broad/stable onboarding rules live in `CLAUDE.md`; this file is for evolving lessons.
+Use the `/update-memory` skill to add entries.
+
+## Environment / versions
+- Verified: Gemma is **gated** — set `HF_TOKEN` and accept the license on the Hub before boot,
+  or loading errors link to the agreement page.
+- Verified: **bf16 required** for Gemma 3 — boot with `dtype=torch.bfloat16`.
+- Known issue: TransformerBridge version metadata is inconsistent (PyPI 3.4.0 vs GitHub tag 3.3.0).
+  The Gemma3 multimodal hotfix is **v3.2.1** (PR #1295) — pin `>=3.2.1`, ideally newest 3.x.
+- Next-time rule: after any TransformerBridge/transformers upgrade, re-run `scripts/smoke_test.py`
+  and confirm `bridge.cfg.is_multimodal is True`.
+- Known issue: Qwen3-VL needs `transformers>=4.57.0`, which conflicts with the Gemma 5.x line —
+  keep Qwen in a SEPARATE venv (`requirements-qwen.txt`).
+
+## TransformerBridge quirks
+- Avoid: `start_at_layer` — raises `NotImplementedError` in the bridge. Only `stop_at_layer` works.
+  Plan layer sweeps around full forward passes.
+- Known issue: the SAME alias hook strings (`hook_resid_post`, `hook_attn_out`, `hook_mlp_out`)
+  exist on BOTH vision-encoder layers and LM blocks. Always qualify by path: `blocks.{i}...` = LM.
+- Verified: default bridge numerics = raw HF (no LayerNorm folding). Call
+  `bridge.enable_compatibility_mode()` only if porting HookedTransformer-era folded-weight code.
+- Avoid: full-sequence caching of all hooks — it blows memory. Use `names_filter` + last-token only.
+
+## Tokenization / labels
+- Avoid: assuming emotion labels are single-token. Verify per model with `bridge.tokenizer.encode(" "+w)`
+  (keep the leading space for the SentencePiece ▁ prefix).
+- Verified (Gemma-3-4b-it, 2026-07): ALL 13 crowd-enVENT emotion labels are SINGLE-token — closed-vocab
+  scoring needs no first-subtoken/summed-logprob workaround. Re-verify if the model changes.
+
+## Stage A localization RESULT (verified 2026-07, A100, seed 0)
+- Verified: Tak-style localization REPLICATES on Gemma-3-4b-it. All 6 appraisals peak mid-network
+  (MHSA `hook_attn_out`, layers 17-21) with val r2 far above the shuffled baseline (~0):
+  pleasantness L18 r2=0.64, unpleasantness L18 0.60, self_responsblt L21 0.44, suddenness L17 0.32,
+  other_responsblt L19 0.31, predict_event L17 0.24. critical_layer=18. n_train=4320 n_val=1080.
+- Frozen probes saved to results/stage_a/probes.npz (unique-effect steering vectors ready for Stage C).
+- This clears the LOCALIZATION half of the go/no-go gate.
+- Analyzer: `python -m src.experiments.analyze_stage_a` -> table + results/figures/stage_a_localization.png.
+
+## Stage A steering RESULT: SUPPORTS (via diff-of-means, verified 2026-07)
+- KEY METHOD FINDING: the read-out direction is NOT the steering direction. v1 (probe/ridge
+  unique-effect vector, scaled as a fraction of residual norm) NEVER beat a random control at any
+  beta (swamped <0.02, control moves as much 0.02-0.08, chaos >0.1). v2 (difference-of-means
+  Δμ_a = mean(act|rating high) − mean(act|rating low), steered by beta*Δμ in natural units) gives a
+  CLEAN causal effect at a SINGLE layer (L18 resid_post): pleasantness slope +0.084 (monotonic, +sign),
+  unpleasantness -0.074 (monotonic, -sign), random control ~10x smaller and flat (slope -0.007).
+- Verdict: BOTH halves of the Stage A gate pass — read-out replicates AND diff-of-means steering is
+  causal (theory-predicted signs, control flat). Run: `python -m src.experiments.stage_a_steering_v2`.
+- Avoid: steering with probe weights or brute-forcing beta as a fraction of residual norm (v1 dead end).
+  Use diff-of-means at natural scale; optional multi-layer band strengthens but single layer already works.
+- Stage C: PRIMARY test is read-out transfer (frozen probes on image acts). Cross-modal steering (Stage D)
+  should reuse the diff-of-means recipe, NOT the probe-direction/residual-fraction approach.
+
+## Stage C read-out RESULT: SUPPORTS transfer (verified 2026-07, EMOTIC test n=1000, seed 0)
+- Frozen text pleasantness probe (L18 hook_attn_out) applied UNCHANGED to image-conditioned last-token
+  activations tracks EMOTIC continuous valence: Spearman +0.482 (Pearson +0.499, n=1000); unpleasantness
+  MIRRORS at -0.442. Polarity AUC (shared-7 pos vs neg) 0.936 / 0.080 — but only n=58 single-label images.
+  Retention = |image rho| / |text rho| ~0.60-0.63 (keeps ~60% of the text effect crossing to images).
+- Beats a 100-draw random-direction null at p=0.010 (empirical floor). BUT the null is WIDE: mean|rho|=0.131,
+  p95=0.319, max=0.372 — Gemma activations are strongly ANISOTROPIC, so random dirs correlate ~0.37 with
+  valence. Probe (0.48) clears all 100 but the margin over the best random dir is modest. Report the null
+  distribution, never a single control number.
+- METRIC LESSON: probe is 1-5, EMOTIC valence is 1-10 → raw r2 is scale-confounded and reads as false null.
+  Use SCALE-INVARIANT metrics (Spearman/Pearson + polarity AUC). data.emotic has NO appraisal columns;
+  only pleasantness/unpleasantness have an image-side anchor (valence) — the other 4 appraisals can only be
+  tested via Stage D steering.
+- CODE LESSON: image forwards MUST be wrapped in torch.no_grad() — SigLIP does 4096-patch eager attention
+  ([1,16,4096,4096] fp32 ~4GB/layer); without no_grad the retained graph OOMs a 40GB A100 on image 1.
+- OPEN QUESTION (mechanism): read-out transfer alone cannot separate SHARED-GEOMETRY from VERBALIZATION-
+  MEDIATED (model internally captions the image). NEXT = caption baseline (neutral caption -> text pipeline
+  -> pleasantness read-out vs valence); if caption rho >= image rho the signal is plausibly verbal.
+- Run: `python -m src.experiments.stage_c_transfer` (config/stage_c.yaml, n_images=1000, n_random=100).
+
+## Stage C caption baseline + SEMIPARTIAL RESULT: neutral verbalization is INSUFFICIENT (verified 2026-07, n=1000)
+- Test: neutral caption per image ("Describe this image in one sentence.", greedy, preamble stripped,
+  64 tok) -> TEXT pipeline -> frozen probe -> valence; vs the direct IMAGE read-out, same images/probe.
+  `python -m src.experiments.stage_c_caption` (--preview N first). Persists caption_readout.parquet
+  (per-image image+caption preds + captions) so re-analyses skip the 1h43m generation.
+- Aggregate: pleasantness image rho=+0.482, caption rho=+0.379 (unpleasantness -0.442 / -0.356). The
+  caption ratio (~79%) initially looked "largely verbalization-mediated" — but that was MISLEADING.
+- SEMIPARTIAL (the decisive test): image<->caption read-out corr rho_ic=+0.653 (they are NOT the same
+  signal). Controlling for the neutral caption, the IMAGE read-out keeps a LARGE unique contribution to
+  valence: semipartial r=+0.310 (unpleasantness -0.279), p<0.001. Caption's OWN unique contribution
+  beyond the image is tiny: +0.085. => most of the caption's valence signal is REDUNDANT with the image;
+  the image carries much the caption does not. NEUTRAL verbalization does NOT explain the transfer.
+- HONEST CLAIM (analysis-rules): (1) the mundane "it's just neutral captioning" explanation is
+  INSUFFICIENT (image-unique 0.31, p<0.001). (2) This is NOT yet proof of shared non-verbal geometry —
+  the neutral 1-sentence caption is lossy, so the 0.31 is an UPPER BOUND. The pivotal next test is a
+  RICHER caption (expression/body-language): if it absorbs the 0.31 -> richer-verbalization-mediated;
+  if not -> robustly non-verbal residual. LESSON: don't call the mechanism from the aggregate ratio;
+  the semipartial flipped the read. Earlier "largely verbalization-mediated" memory was overturned.
+- Gemma greedy caption = "Here's a one-sentence description of the image:\n\n<caption>" — strip preamble.
+
+## Stage C FULL-SPLIT read-out (reported number, verified 2026-07, EMOTIC test n=7280)
+- Pleasantness rho=+0.507 (Pearson +0.524), unpleasantness -0.448; polarity AUC 0.898 on n=440
+  single-label (vs thin n=58 on the 1k subset); beats the 100-draw null p=0.010 (null max 0.362).
+  This is the paper's reported read-out transfer number. `stage_c_transfer.py --full`.
+
+## Stage C RICH-caption robustness (#3) + mechanism result (verified 2026-07, n=1000)
+- `stage_c_caption.py --style rich` (prose, 96 tok): rich caption = "Describe this person's facial
+  expression, posture, and body language in two or three sentences of plain prose." (MUST be prose,
+  not markdown bullets — bullets are OOD for the prose-trained probe and inflate the residual.)
+- Result: neutral -> rich: caption rho 0.379->0.429, image<->caption r 0.653->0.697, unique(image)
+  0.310->0.256 (both p<0.001). A much richer perceptual caption absorbs only a MODEST part of the
+  residual, which stays large + highly significant. => transfer is NOT explained by verbalization at
+  either richness; the image carries valence-relevant appraisal signal beyond detailed perceptual
+  description. Robust to a strong verbalization manipulation (favorable to the shared-representation
+  thesis) BUT still correlational + an upper bound (a still-richer caption could absorb more).
+- CPU-only combined analysis: `python -m src.experiments.analyze_stage_c_mechanism` reads BOTH
+  parquets and computes unique(image | neutral), unique(image | rich), and the tightest bound
+  unique(image | neutral+rich). No GPU, seconds. Writes mechanism_summary.json. NOTE: align the two
+  parquets by ROW POSITION not image_path — EMOTIC is per-person and image_path repeats (multi-person
+  images), so an image_path merge cross-joins co-located persons (bug: inflated n 1000->1206).
+- COMBINED RESULT (n=1000): unique(image | neutral+rich) pleasantness +0.201, unpleasantness -0.153,
+  both p<0.001. Progression 0.310 -> 0.256 -> 0.201 (|neutral -> |rich -> |both): richer/joint caption
+  controls absorb some, but a substantial significant residual SURVIVES controlling for a plain AND a
+  detailed perceptual caption jointly. Stage C read-out arm DONE: transfer real (rho=0.51 full split),
+  NOT merely verbalization-mediated (still correlational + upper bound -> Stage D causal test).
+- CAVEAT for writeup: EMOTIC has per-person bounding boxes but we feed the WHOLE image and ask about
+  "this person" WITHOUT passing the bbox; for multi-person images the model can't tell which person,
+  yet we compare to one person's valence. Adds noise (signal came through anyway); disclose in threats.
+- Stage C write-up DONE: docs/stage-c-results.md (paper-ready) + docs/stage-c-explainer.md (plain-language).
+
+## Stage D cross-modal STEERING RESULT: SUPPORTS causal transfer (verified 2026-07, EMOTIC test n=150)
+- Inject TEXT-derived diff-of-means Δμ (Stage A v2 recipe) at resid_post L18 UNDER IMAGE INPUT; measure
+  closed-vocab emotion valence shift vs beta. `python -m src.experiments.stage_d_steering` (--limit N dry
+  run first). One forward per (image,dir,beta) under no_grad, no generation (~8.5 s/image, 150 img ~21min).
+- Result (slopes of mean Δvalence vs beta): pleasantness +0.329 (monotonic, +sign, ±1.0 at β=±3),
+  unpleasantness -0.309 (monotonic mirror), suddenness -0.073 (specificity control ~flat), random null
+  -0.027. Appraisal effects ~12x the random null and ~4.5x suddenness. THEORY-PREDICTED SIGNS, controls
+  small. => the text-learned appraisal direction CAUSALLY steers image-conditioned emotion output.
+- HONEST notes: (1) suddenness leaks a small valence effect (-0.073, ~2.7x random) — expected, appraisals
+  aren't orthogonal (sudden events skew unpleasant in crowd-enVENT); still ~4.5x smaller than pleasantness.
+  (2) random null slightly asymmetric (β=+3 hit -0.127) but slope tiny. Neither undermines the result.
+- SIGNIFICANCE: this is the capstone the read-out arm could not provide — a causal effect cannot be
+  explained by the "model is just captioning" critique (Stage C's correlational bound). Full arc done:
+  Stage A (text read-out + causal steering) -> Stage C (cross-modal read-out, not merely verbalization)
+  -> Stage D (cross-modal causal steering). Single layer 18 was enough (multi-layer band not needed).
+- NEXT: write up Stage D (results + explainer) to finish documentation; optional robustness (more images,
+  seeds, layer band, second VLM via qwen_verify).
+
+## Smoke test (verified 2026-07 on A100)
+- Verified: `scripts/smoke_test.py` passes — Gemma 3 boots via bridge, `cfg.is_multimodal=True`,
+  `n_layers=34`, one forward pass caches 102 tensors (3 taps × 34 layers), all three LM taps fire.
+  Stack: transformers 5.12.1, transformer-lens 3.x, torch 2.11+cu128, Python 3.12.
+- Known issue (harmless): boot logs many `Hook alias ... on SiglipVisionEncoderLayerBridge did not
+  resolve` warnings — the bridge registers LM-style aliases on the SigLIP vision tower. We only probe
+  LM `blocks.{i}...`, so these are expected; `boot_gemma` now filters them.
+
+## Compute / Colab workflow
+- Decision: runs on a Colab **A100** (40 GB) via the VS Code Colab extension; local files
+  sync to the runtime, so NO GitHub clone is needed. Gemma-3-4B uses ~8 GB — ample headroom.
+- Known issue: Colab runtimes are **ephemeral** — deps, weights, and outputs wiped each session.
+  Canonical command: `!python scripts/colab_bootstrap.py --drive` at session start (installs
+  deps, loads HF_TOKEN from Colab Secrets, symlinks data/ + results/ to Drive). See docs/colab.md.
+- Next-time rule: keep Colab's CUDA-matched torch — requirements pin only `torch>=2.2` (lower
+  bound) so pip won't swap it and break CUDA.
+- Verified: HF_TOKEN comes from Colab Secrets (🔑 icon, name `HF_TOKEN`, notebook access ON) —
+  never paste tokens into code or chat.
+- Avoid: calling `google.colab.drive.mount` or `userdata.get` inside a `!python` subprocess —
+  they need the live kernel and crash with `'NoneType' object has no attribute 'kernel'`. Do both
+  in a NOTEBOOK CELL first; `os.environ['HF_TOKEN']` and the `/content/drive` mount are then
+  inherited by every later `!python`. `colab_bootstrap.py` only does deps + symlinks + env check.
+- Verified: EMOTIC loader is correct — conversion yields train 23706 / val 3334 / test 7280 =
+  34,320 persons (the canonical EMOTIC total). Repo lives on GitHub; clone + `%cd` on Colab so
+  `import src` resolves (running a lone script from /content fails: No module named 'src').
+
+## Data access
+- Verified: crowd-enVENT is a free direct download: `romanklinger.de/data-sets/crowd-enVent2023.zip`.
+- Known issue: EMOTIC requires a signed non-commercial access form
+  (`s3.sunai.uoc.edu/emotic/download.html`) — submit early, approval latency is critical-path.
+
+## EMOTIC Annotations.mat structure (verified against the real file)
+- Images (`emotic.zip`) and annotations (`Annotations.mat`) are SEPARATE downloads. mat is the
+  classic MATLAB format — read with `scipy.io.loadmat(squeeze_me=True, struct_as_record=False)`.
+- Top-level keys: `train` (17077 imgs), `val` (2088), `test`. Each = array of image structs
+  (`filename`, `folder`, `image_size`, `original_database`, `person[]`).
+- Image `folder` is RELATIVE, e.g. `'mscoco/images'`, `'emodb_small/images'`, `'framesdb/images'`.
+  emotic.zip nests everything under a top `emotic/`, so images_root = `data/raw/emotic/emotic`.
+- Avoid: assuming one category convention. **train**: `annotations_categories` is a STRUCT with
+  `.categories`. **val/test**: `combined_categories` is a BARE string array (no `.categories`),
+  and `annotations_*` are per-annotator arrays. `src/data/emotic.py::_person_categories` handles both.
+- Continuous VAD: prefer `combined_continuous` (struct .valence/.arousal/.dominance, val/test);
+  fall back to `annotations_continuous` (train). Scale 1-10. See `_person_continuous`.
+- Canonical command: `python scripts/download_data.py --dataset emotic --archive emotic.zip
+  --annotations Annotations.mat` → writes `data/processed/emotic_{split}.parquet`.
+
+## Project status + team + next directions (2026-07)
+- STATUS: Stage A→D COMPLETE and written up (docs/stage-{a,c,d}-{results,explainer}.md). Headline:
+  a text-learned appraisal direction READS (rho=0.51, survives neutral+rich caption controls) and
+  CAUSALLY STEERS (pleasantness +0.33 / unpleasantness -0.31 slopes) image-conditioned emotion output.
+- Teammate notebook compare: `docs/comparison-charlotte-notebook.md`. Charlotte (charlotte9) got a NULL
+  cross-modal transfer (rho=0.04) where this repo gets 0.51. ROOT CAUSE = prompt/position mismatch: her
+  text probe is trained on BARE sentences (no emotion question) but applied at the image's questioned
+  position; this repo asks the emotion question on BOTH sides (aligned subspace). Compounding: she uses
+  resid_post, this repo uses attn_out L18. Both AGREE images encode valence (her image-fit probe R2~0.2
+  @ L17 ~= this repo's L18) — so it's a methodology diff, not data. C. Li is fixing her probes to the Q&A
+  format. Reconciliation test: re-run her transfer with the emotion-question prompt + attn_out L18.
+- Next-experiment ideation: `docs/next-experiments.md`. OPINION: models add credibility not novelty
+  (lead Sneheel wants a QUESTION not a model). Do a thin credibility layer overnight (>=3 seeds — the
+  caveat in every stage; + Qwen verify via qwen_verify), and make the CONTRIBUTION a novel question.
+  TOP PICK = "Stage E" appraisal-SPECIFIC emotion steering: steer non-valence appraisals to produce
+  theory-predicted specific emotions cross-modally (other-responsibility+unpleasant->anger, self-resp
+  ->guilt, suddenness->fear) = causally validates appraisal THEORY, not just valence. Runners-up:
+  behavioral consequence of steering (steering-to-safety), modality conflict (pleasant image + unpleasant
+  text — tests the "shared" claim). Models: Qwen(different) > Gemma-12B(bigger); 12B fits A100-40GB bf16,
+  27B does not.
+- TEAM (Algoverse): Sneheel (lead), Syed (this work), Charlotte/C.Li (probe-confound fix + newer models
+  Gemma4/Qwen3.5 + video ToM/MOMENTS), Arnav (emotion source attribution: 4/6 face-body vs 2/6 scenery,
+  Azure rerun), Abdul (status unclear). ~3-4 weeks to writeup start. Monday check-in Mon Jul 20 3pm ET.
+  Experiment framing: Exp 1 = appraisal geometry (this work), Exp 2 = recognition vs adoption (attribution).
+- Syed open TODOs: bigger/more models overnight; ideation -> Slack (next-experiments.md); ADD the Stage D
+  cross-modal steering writeup to the SHARED team doc (repo docs done, shared doc pending).

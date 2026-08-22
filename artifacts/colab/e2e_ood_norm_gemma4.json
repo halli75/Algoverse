@@ -1,0 +1,34 @@
+﻿{
+  "started": "2026-08-07 06:52:15",
+  "plan_gate": 6,
+  "prereg_hash": "3111c3af7f7b12656cb0792bea4a21b4302a0c42",
+  "n": 16,
+  "gpu": "Tesla T4",
+  "split_hash": "ef2a7d2a84a803c7",
+  "model": {"id": "google/gemma-4-E4B-it", "n_layers": 42, "d_model": 2560},
+  "decision": "PASS",
+  "norm_ratios": {
+    "ref_median": 118.1539535522461,
+    "science_median": 118.45844268798828,
+    "solid_median": 117.84668350219727,
+    "text_median": 123.33202362060547,
+    "ratio_science_over_ref": 1.0025770541449344,
+    "ratio_solid_over_ref": 0.997399409492354,
+    "n_science_colorlike": 0,
+    "fail_colorlike": false,
+    "fail_inflation": false
+  },
+  "norm_summary": {
+    "text_distress": {"n": 16, "median": 126.36961364746094},
+    "text_mundane": {"n": 16, "median": 120.29443359375},
+    "photo_ref_neu_train": {"n": 16, "median": 118.1539535522461},
+    "science_neg_eval": {"n": 16, "median": 118.44628143310547},
+    "science_neu_eval": {"n": 16, "median": 118.57195663452148},
+    "science_pos_eval": {"n": 16, "median": 118.43304061889648},
+    "solid_color_ood": {"n": 6, "median": 117.84668350219727}
+  },
+  "ratio_a_recheck": {"skipped": true, "reason": "missing e2e_dirs_publish.pt"},
+  "finished": "2026-08-07 06:57:04",
+  "complete": true,
+  "headline": "OOD residual-norm PASS: science/ref≈1.003; not color-square inflation. INVERTED ratio_a not explained by activation-norm artifact."
+}

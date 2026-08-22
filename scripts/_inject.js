@@ -1,0 +1,12 @@
+(() => {
+  const b64 = 'IyAjIyMgRTJFX0JPT1RTVFJBUF9BTkRfUlVOCmltcG9ydCBvcywgdGltZSwgcGF0aGxpYiwgdXJsbGliLnJlcXVlc3QKcHJpbnQoIkUyRV9CT09UU1RSQVAiLCB0aW1lLnN0cmZ0aW1lKCIlSDolTTolUyIpLCBmbHVzaD1UcnVlKQpmcm9tIGdvb2dsZS5jb2xhYiBpbXBvcnQgdXNlcmRhdGEKb3MuZW52aXJvblsiSEZfVE9LRU4iXSA9IHVzZXJkYXRhLmdldCgiSEZfVE9LRU4iKQpvcy5lbnZpcm9uWyJYQUlfQVBJX0tFWSJdID0gJ3hhaS1WOVl4Y1c3aVNKTDV0TG5UeTJCVTdoUDV4aXNwVnhlWW1XQlU1aXJ3N1pVTndmRjFyYzBiTk02dnVCaEVHSktTbFo0Znk1bUVpOWZCS25MbScKb3MuZW52aXJvblsiWEFJX0pVREdFX01PREVMIl0gPSAnZ3Jvay00LTEtZmFzdC1yZWFzb25pbmcnCm9zLmVudmlyb25bIlBZVE9SQ0hfQ1VEQV9BTExPQ19DT05GIl0gPSAiZXhwYW5kYWJsZV9zZWdtZW50czpUcnVlIgpwcmludCgic2VjcmV0cyBsb2FkZWQiLCBmbHVzaD1UcnVlKQp1cmxsaWIucmVxdWVzdC51cmxyZXRyaWV2ZSgnaHR0cHM6Ly9naXN0LmdpdGh1YnVzZXJjb250ZW50LmNvbS9oYWxsaTc1Lzc1ZTYyNzdmYWQwOTFlY2JmYTIzZDFmYzczNWNmZWFkL3Jhdy8zN2U1Y2Q4NjA5ZjhmNDQwNjJhN2I2NmFlYjRlZjcxYTIxZGNhNjVlL2UyZV9jb2xhYl9waXBlbGluZS5weScsICIvY29udGVudC9lMmVfY29sYWJfcGlwZWxpbmUucHkiKQpwcmludCgicGlwZWxpbmUgYnl0ZXMiLCBwYXRobGliLlBhdGgoIi9jb250ZW50L2UyZV9jb2xhYl9waXBlbGluZS5weSIpLnN0YXQoKS5zdF9zaXplLCBmbHVzaD1UcnVlKQpzcmMgPSBvcGVuKCIvY29udGVudC9lMmVfY29sYWJfcGlwZWxpbmUucHkiLCBlbmNvZGluZz0idXRmLTgiKS5yZWFkKCkKYXNzZXJ0ICI0OCwgNDAsIDI0IiBpbiBzcmMgYW5kICJsb2NhbCwgbm8gSEYgZGF0YXNldCIgaW4gc3JjIGFuZCAiT09NX2JmMTYiIGluIHNyYyBhbmQgInJhbmdlKDAsIGxlbihMQVlFUl9LRVlTKSwgNSkiIGluIHNyYywgIm9sZCBwaXBlbGluZSBjYWNoZWQiCnByaW50KCJwaXBlbGluZSB2ZXJzaW9uIG9rICg0OC80MC8yNCArIGxvY2FsICsgT09NICsgbGF5ZXI1KSIsIGZsdXNoPVRydWUpCnByaW50KCJzdGFydGluZyBwaXBlbGluZSIsIGZsdXNoPVRydWUpCmV4ZWMoc3JjKQo=';
+  const code = atob(b64);
+  window.colab.global.notebookModel.cells[0].setText(code);
+  function walk(root, acc=[]) {
+    for (const n of root.querySelectorAll('*')) { acc.push(n); if (n.shadowRoot) walk(n.shadowRoot, acc); }
+    return acc;
+  }
+  const runs = walk(document).filter(n => (n.getAttribute?.('aria-label')||'') === 'Run cell');
+  runs[0].click();
+  return {ok:true, len:code.length, head:code.slice(0,60)};
+})()

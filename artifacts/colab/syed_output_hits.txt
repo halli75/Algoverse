@@ -1,0 +1,52 @@
+cell34: extracting EMOTIC images from /content/drive/MyDrive/emotic.zip
+EMOTIC images under /content/appraisal-research-algoverse/data/raw/emotic
+converting annotations /content/drive/MyDrive/Annotations/Annotations.mat
+[emotic] train: 23706 persons -> /content/appraisal-research-algoverse/data/processed/emotic_train.parquet
+[emotic] val: 3334 persons -> /content/appraisal-research-algoverse/data/processed/emotic_val.parquet
+[emotic] test: 7280 persons -> /content/appraisal-research-algoverse/data/proce
+---
+cell36: Loading weights: 100% 883/883 [00:00<00:00, 5345.95it/s]
+image acts: 100% 1000/1000 [05:54<00:00,  2.82it/s]
+text acts: 100% 1000/1000 [02:18<00:00,  7.22it/s]
+
+Stage C read-out — L18 hook_attn_out  (EMOTIC test: 1000 scored, 0 skipped)
+
+  random-direction null (n=100): mean|rho|=+0.131 p95=+0.319 max=+0.372
+
+  pleasantness     valence: spearman=+0.482 pearson=+0.499 (n=1000)  |  polarity AUC=+0.936 (n=58)  |  p_vs_ctrl=+0.010  |  retention=+0.627
+  unpleasantness   valence: spearman=-0.442 pear
+---
+cell37: Loading weights: 100% 883/883 [00:00<00:00, 4936.80it/s]
+image acts: 100% 7280/7280 [43:12<00:00,  2.81it/s]
+text acts: 100% 1000/1000 [02:19<00:00,  7.15it/s]
+
+Stage C read-out — L18 hook_attn_out  (EMOTIC test: 7280 scored, 0 skipped)
+
+  random-direction null (n=100): mean|rho|=+0.128 p95=+0.300 max=+0.362
+
+  pleasantness     valence: spearman=+0.507 pearson=+0.524 (n=7280)  |  polarity AUC=+0.898 (n=440)  |  p_vs_ctrl=+0.010  |  retention=+0.660
+  unpleasantness   valence: spearman=-0.448 pea
+---
+cell39: Loading weights: 100% 883/883 [00:00<00:00, 5815.16it/s]
+  [caption 0] A baseball player in a gray uniform is swinging a bat powerfully at a pitched ball, while a catcher in blue gear prepares to catch the ball in a nighttime stadium setting.
+  [caption 1] A smiling Derek Jeter, wearing a New York Yankees uniform, is shown swinging a baseball bat at the plate during a game, with a blurred crowd of spectators in the background.
+  [caption 2] A stressed-looking woman in a business suit is being ag
+---
+cell40: Loading weights: 100% 883/883 [00:00<00:00, 5936.16it/s]
+  [caption 0] The batter has a focused and intense expression on his face, with his eyes intently fixed on the ball. He’s leaning back slightly, with a powerful swing in motion, demonstrating a full commitment to hitting the ball with force. His body is coiled and tense, conveying a sense of readiness and determination as he connects with the bat.
+  [caption 1] The baseball player has a wide, genuine smile on his face, suggesting excitemen
+---
+cell41: 
+Stage C mechanism — n=1000  (rich available: True)
+
+  pleasantness
+    image vs valence           rho=+0.482
+    neutral caption vs valence rho=+0.379
+    rich caption vs valence    rho=+0.429
+    unique(image | neutral)      part_r=+0.310 (p=0.000)
+    unique(image | rich)         part_r=+0.256 (p=0.000)
+    unique(image | neutral+rich) part_r=+0.201 (p=0.000)
+  unpleasantness
+    image vs valence           rho=-0.442
+    neutral caption vs valence rho=-0.356
+    rich caption vs valence    rho
