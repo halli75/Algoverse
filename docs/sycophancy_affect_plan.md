@@ -16,10 +16,48 @@ Detection power is the probability that the pooled crossed-bootstrap CI excludes
 
 This amendment does not lower `0.8`, `0.20`, `0.25`, or `0.80`. The `0.25` probability-band cutoff remains the `CEILING_NOTE` flag only.
 
+<!-- AMENDMENT_2026_08_22_START -->
+**Protocol amendment — 2026-08-22, advisor-locked dataset and path amendment, before confirmatory A100 data.** Numeric gates stay frozen: forced-choice mass `0.8` (`ENDPOINT_INVALID`); Likert mass `0.8` is `LIKERT_INVALID` only and does not abort `S_label`/native; held-out VA `r_v, r_a ≥ 0.7`; `s` Spearman `ρ ≥ 0.3`; detection power `0.80`; natural effect `ΔS ≥ 0.20`. Original freeze sha256 is unchanged: `051e1ea79cd116fce56edeb43848ae10526e2830efc49ab0df2cd7d904a20876`.
+
+Confirmatory `S_label` public evaluation uses professionally authored survey items only:
+
+- Perez/Anthropic PhilPapers 2020
+- Perez/Anthropic Pew Political Typology
+
+Pinned SHA256 of the raw downloaded JSONL (die on mismatch; do not invent items):
+
+| File | SHA256 |
+|---|---|
+| `sycophancy_on_philpapers2020.jsonl` | `2f112b35334fbec0b16dc755df60349fb2b2bf00d4dbaae47175519bee7d37dd` |
+| `sycophancy_on_political_typology_quiz.jsonl` | `691575571f659593ed237aa74ec6530b20ef3a5d0116e5e1f4f189ef530cf032` |
+| `sycophancy_on_nlp_survey.jsonl` | `582860b42e2beec806a7d361a08bcce7fdb264e2e697d55104074540352fb308` |
+
+Secondary only (not pooled into confirmatory `S_label`):
+
+- Perez NLP survey (ceiling stress / secondary)
+- Sharma `meg-tong/sycophancy-eval` `datasets/answer.jsonl` and `datasets/are_you_sure.jsonl` for native-completion and/or exploratory Grok only
+
+Smoke sets `N_FREEFORM=0` (no Grok/Sharma free-form scoring). Full may run the secondary native/Grok branch.
+
+**DROP** `data/sycophancy_custom_claims.json` from all evaluation, calibration, direction fitting, and image–claim relevance. `N_CUSTOM=0` in smoke and full. Keep the file on disk as provenance only. `DIRECT_CONTENT_BIAS` via custom relevance is ineligible.
+
+**DROP** Sharma `datasets/feedback.jsonl` (model-written material). Do not download or score it.
+
+**VA bank.** Replace invented GoEmotions V/A targets with JULIELab EmoBank human VAD, commit `248ce2a43e165a66d31aeaed83cff9641d6654e0`, file `corpus/emobank.csv`. Columns `id, split, V, A, D, text`. Use `V` and `A` only. Fit on official `train`; gate held-out `r_v`/`r_a` on official `test`; do not mix `dev` into either. Neutral texts are near-mid on the 1–5 scale: `|V−3| ≤ 0.25` and `|A−3| ≤ 0.25`. Same estimator as 2026-08-18: V first, A on V-orthogonal residuals, PCA(8), Ridge `α=1`, Gram–Schmidt cleanup only, die if `r < 0.7`. `data/sycophancy_goemotions_bank.json` is provenance only.
+
+Paths are environment-configurable for JupyterHub A100. Do not hard-require `/content`. Default root is `E2E_ROOT` or `/content` (Colab). JupyterHub sets `E2E_ROOT=~/algoverse_run`. Per-path overrides: `E2E_OUT`, `E2E_HB`, `E2E_DIRS`, `E2E_SPLIT`, `E2E_EMOTIC`, `E2E_DATA`.
+
+Never overwrite `artifacts/colab/e2e_mechanism_results_full_v3.json`.
+
+A100 boot is `scripts/a100_sycophancy_boot.py` (clone/pull `halli75/Algoverse`, no Colab gist/`google.colab` userdata). Notebook cell: `scripts/a100_sycophancy_cell.py`.
+<!-- AMENDMENT_2026_08_22_END -->
+
 - Plan file: `docs/sycophancy_affect_plan.md`
 - Script: `scripts/e2e_sycophancy_affect.py`
-- Custom claims (eval-only): `data/sycophancy_custom_claims.json`
-- GoEmotions bank (direction-fit only): `data/sycophancy_goemotions_bank.json`
+- A100 boot / cell: `scripts/a100_sycophancy_boot.py`, `scripts/a100_sycophancy_cell.py`
+- Custom claims (provenance only; `N_CUSTOM=0`; not used): `data/sycophancy_custom_claims.json`
+- GoEmotions bank (provenance only; not used for V/A): `data/sycophancy_goemotions_bank.json`
+- VA bank: JULIELab EmoBank `emobank.csv` at commit `248ce2a43e165a66d31aeaed83cff9641d6654e0`
 - Affect lexicon (de-affectize gate): `data/sycophancy_affect_lexicon.json`
 - Sibling refusal artifact (frozen, do not overwrite): `artifacts/colab/e2e_mechanism_results_full_v3.json`
 
@@ -69,11 +107,11 @@ Pinned model `grok-4.6`, `reasoning_effort=high`, no tools/web, blinded JSON. Sc
 
 ### Public Perez/Anthropic benchmarks
 
-Sources (download at run; pin SHA256 of the raw JSONL in the result artifact):
+Sources (download at run; verify pinned SHA256; die on mismatch; do not invent items):
 
-- `https://raw.githubusercontent.com/anthropics/evals/main/sycophancy/sycophancy_on_philpapers2020.jsonl`
-- `https://raw.githubusercontent.com/anthropics/evals/main/sycophancy/sycophancy_on_political_typology_quiz.jsonl`
-- `https://raw.githubusercontent.com/anthropics/evals/main/sycophancy/sycophancy_on_nlp_survey.jsonl`
+- `https://raw.githubusercontent.com/anthropics/evals/main/sycophancy/sycophancy_on_philpapers2020.jsonl` — `2f112b35334fbec0b16dc755df60349fb2b2bf00d4dbaae47175519bee7d37dd`
+- `https://raw.githubusercontent.com/anthropics/evals/main/sycophancy/sycophancy_on_political_typology_quiz.jsonl` — `691575571f659593ed237aa74ec6530b20ef3a5d0116e5e1f4f189ef530cf032`
+- `https://raw.githubusercontent.com/anthropics/evals/main/sycophancy/sycophancy_on_nlp_survey.jsonl` — `582860b42e2beec806a7d361a08bcce7fdb264e2e697d55104074540352fb308`
 
 Split **by underlying question stem**, not generated biography. Seed `0`.
 
@@ -83,24 +121,21 @@ Split **by underlying question stem**, not generated biography. Seed `0`.
 | calibration | 96 disjoint | Dose, headroom, direction validation |
 | confirmatory PhilPapers | 160 | Primary public eval |
 | confirmatory Political | 136 | Primary public eval |
-| NLP Survey | 64 | Secondary ceiling stress test |
+| NLP Survey | 64 | Secondary ceiling stress test (not confirmatory `S_label`) |
 
 Question-stem extractor (frozen): take the substring after the last biography sentence and before `Choices:` / `Answer:`; if missing, last 400 characters before `Answer:`. Group ID = SHA256 of normalized stem (lowercase, collapsed whitespace)[:16].
 
-### Custom claims — eval-only
+### Custom claims — dropped from the experiment (2026-08-22)
 
-`data/sycophancy_custom_claims.json`: 40 mildly false facts + 40 true minimal-edit pairs + 40 flawed low-stakes proceed plans + 40 sound minimal-edit pairs = **160 items**.
+`data/sycophancy_custom_claims.json` is **provenance only**. `N_CUSTOM=0`. Do not score, calibrate, fit, or run relevance on these items. The file remains on disk so earlier hashes can be audited.
 
-**Custom claims (n=160) are eval-only. `s`, V, A, and every other direction are fit exclusively on the public-benchmark direction-train split or the GoEmotions bank. Custom claims never enter direction construction, calibration, threshold selection, or prompt tuning.**
+### Sharma meg-tong — secondary native/Grok only (2026-08-22)
 
-Excluded domains: medical, legal, financial, dangerous, time-unstable news.
+Download `answer.jsonl` and `are_you_sure.jsonl` from `meg-tong/sycophancy-eval`. Use for native-completion and/or exploratory Grok only. Never enter confirmatory `S_label`. **Do not** download or score `feedback.jsonl`. Smoke: `N_FREEFORM=0`.
 
-Each of the 80 underlying pairs has one frozen topic bucket in
-`{people/social, work/school, sport, travel/transport, food, home/indoor, nature/outdoor, object/technology}`.
+### EmoBank VA bank — direction-fit only (replaces GoEmotions, 2026-08-22)
 
-### GoEmotions bank — direction-fit only
-
-`data/sycophancy_goemotions_bank.json`: fixed single-label emotion texts with published-style V/A targets. Used only to build compact Gemma V/A axes. Never used as a sycophancy item.
+JULIELab EmoBank human VAD, commit `248ce2a43e165a66d31aeaed83cff9641d6654e0`, `https://raw.githubusercontent.com/JULIELab/EmoBank/248ce2a43e165a66d31aeaed83cff9641d6654e0/corpus/emobank.csv`. Official `train` for fit, official `test` for held-out `r_v`/`r_a`. Neutral = `|V−3|≤0.25` and `|A−3|≤0.25` on the 1–5 scale. `data/sycophancy_goemotions_bank.json` is provenance only.
 
 ## EMOTIC pairing and fallback
 
@@ -177,6 +212,8 @@ Chat order is always `[image, text]` when an image is present. Use Gemma’s nat
 
 ### Image–claim relevance
 
+**Superseded 2026-08-22:** custom claims are dropped (`N_CUSTOM=0`), so image–claim relevance is not run and `DIRECT_CONTENT_BIAS` via this control is ineligible. The original keyword-dictionary procedure is retained below only as historical text.
+
 Tag images from cached literal captions using the frozen keyword dictionary in the custom-claims file (`image_keywords`).
 
 For each base custom item: assign a **relevant** image sharing its bucket and an **irrelevant** image sharing none, within the same valence condition and selected EMOTIC calipers. Images may be broadly on-topic but cannot directly reveal the answer.
@@ -187,11 +224,11 @@ Relevance evidence: condition×relevance interaction `|ΔS_relevant − ΔS_irre
 
 ## Internal directions
 
-### V/A (GoEmotions)
+### V/A (EmoBank; GoEmotions superseded 2026-08-22)
 
-Emotion-minus-neutral residual vectors, per-layer PCA, ridge fit to fixed human V/A ratings, Gram–Schmidt orthogonalization.
+Emotion-minus-neutral residual vectors, per-layer PCA, ridge fit to **EmoBank human V/A** (not invented GoEmotions targets), Gram–Schmidt orthogonalization.
 
-**Implementation amendment — 2026-08-18, advisor AMEND-IMPLEMENTATION ([GPT-5.6 Sol High](83939084-c3c0-4755-b2ad-37292336a71d)).** Fit V first. Per layer, center those residuals, project onto the V-orthogonal subspace, then run a fresh PCA(8)+Ridge(α=1) for A. Gram–Schmidt remains cleanup only. This is the prereg estimator done in the equivalent order; truncated-PCA then post-hoc GS is not the same fit. Threshold `r ≥ 0.7` is unchanged.
+**Implementation amendment — 2026-08-18, advisor AMEND-IMPLEMENTATION ([GPT-5.6 Sol High](83939084-c3c0-4755-b2ad-37292336a71d)).** Fit V first. Per layer, center those residuals, project onto the V-orthogonal subspace, then run a fresh PCA(8)+Ridge(α=1) for A. Gram–Schmidt remains cleanup only. This is the prereg estimator done in the equivalent order; truncated-PCA then post-hoc GS is not the same fit. Threshold `r ≥ 0.7` is unchanged. 2026-08-22 changes the rating source to EmoBank train/test, not the estimator or `r ≥ 0.7`.
 
 Gates: held-out VA recovery `r ≥ 0.7`; frozen text V/A axes predict held-out EMOTIC annotations above whitened-null p95.
 
@@ -217,9 +254,9 @@ Overlap diagnostic only. Report raw projections first. Test `VA ⊥ s`, `VA ⊥ 
 5. Select doses on calibration only. Sweep bidirectional V, A, and `s`. Matched-norm isotropic + activation-whitened controls + paper’s three random families (VA in-plane, VA-orthogonal, fully random orthonormal) × 3 seeds. Do not copy the paper’s raw alpha grid.
 6. Restore clean DESCRIBE-level affect under sycophancy prompts; inject `s⊥VA` as a positive gate; require random controls flat.
 7. Locked free-form Grok subset.
-8. Lower-priority custom-claim analysis.
+8. Custom-claim analysis — **dropped 2026-08-22** (`N_CUSTOM=0`).
 
-Checkpoint after every stage. Partial artifact: `/content/e2e_sycophancy_results.json`. Final: `/content/e2e_sycophancy_results_final.json`. Never overwrite refusal artifacts.
+Checkpoint after every stage. Partial artifact: `$E2E_OUT` (default `$E2E_ROOT/e2e_sycophancy_results.json`, else `/content/e2e_sycophancy_results.json`). Final: `$E2E_ROOT/e2e_sycophancy_results_final.json`. Never overwrite `artifacts/colab/e2e_mechanism_results_full_v3.json` or other refusal artifacts. Atomic write (temp file, then replace).
 
 ## Power and gate transparency
 
@@ -264,24 +301,25 @@ Always write all hypothesis matches, individual gate outcomes, effects/CIs, and 
 | confirmatory public eval | 1–1.5 h |
 | projection / caption / relevance | 0.75–1.25 h |
 | dose-response and causal | 1–2 h |
-| free-form Grok + custom claims | 0.5–1 h |
+| free-form Grok (full only; smoke `N_FREEFORM=0`) | 0.5–1 h |
 
 Hard cap: 7 h A100; 650 Grok calls / $15.
 
 If time runs out, preserve in this order and cut only from the bottom:
 
-baseline/headroom → direction validation → confirmatory public eval → dose-response/causal → free-form Grok → custom claims.
+baseline/headroom → direction validation → confirmatory public eval → dose-response/causal → free-form Grok.
 
 Never issue a mechanism headline with missing prerequisites.
 
 ## Smoke
 
-T4, 24–32 items/source, remapping seeds `{0,1}`. Same validity gates as full except the power abort applies to the **projected full-sample** detection power (smoke reports it; full dies if `< 0.80`). Must pass tokenizer IDs, forced-choice mass ≥0.8, finite S, pairing report, OOD, checkpoint write. Likert mass and `p_in_band` are reported; neither fails smoke.
+T4 or A100, 24–32 items/source, remapping seeds `{0,1}`. `N_CUSTOM=0`. `N_FREEFORM=0`. Same validity gates as full except the power abort applies to the **projected full-sample** detection power (smoke reports it; full dies if `< 0.80`). Must pass tokenizer IDs, forced-choice mass ≥0.8, finite S, pairing report, OOD, checkpoint write, Perez SHA256 pins, EmoBank `r≥0.7`. Likert mass and `p_in_band` are reported; neither fails smoke.
 
 ## Supervision
 
-- Boot: `scripts/_restore_sycophancy_boot.py` with pinned gist revision SHA (never unpinned `/raw/file`).
-- 15-minute health loop: kernel/GPU, PIDs, heartbeat freshness, stage, exact model/dtype, logs, checkpoints, partial results.
+- Colab boot (legacy): `scripts/_restore_sycophancy_boot.py` with pinned gist revision SHA (never unpinned `/raw/file`).
+- JupyterHub A100 boot: `scripts/a100_sycophancy_boot.py` + cell `scripts/a100_sycophancy_cell.py`. Clone/pull `halli75/Algoverse`. Set `E2E_ROOT` (default `~/algoverse_run`). No `google.colab` userdata. `E2E_TIER` from env (default `smoke`).
+- 15-minute health loop: kernel/GPU, PIDs, heartbeat freshness, stage, exact model/`weights_dtype=nf4`/`compute_dtype=bf16`, logs, checkpoints, partial results.
 - Recover infrastructure failures only. Stop on scientific gate failures.
 - Advisor checkpoints: preregistration freeze, after smoke, before locked A100 causal work.
 
@@ -289,10 +327,14 @@ T4, 24–32 items/source, remapping seeds `{0,1}`. Same validity gates as full e
 
 Record in the result JSON:
 
-- SHA256 of this plan file
-- SHA256 of custom claims, GoEmotions bank, affect lexicon
-- SHA256 of downloaded Perez JSONL files
+- SHA256 of this plan file (`PLAN_FILE_HASH`) and of the 2026-08-22 amendment section (`AMENDMENT_HASH`)
+- Original freeze sha256 `051e1ea79cd116fce56edeb43848ae10526e2830efc49ab0df2cd7d904a20876` (do not replace)
+- SHA256 of custom-claims and GoEmotions files if present (provenance only)
+- SHA256 of affect lexicon
+- SHA256 of downloaded Perez JSONL files (must match the pins above)
+- SHA256 of downloaded Sharma `answer.jsonl` / `are_you_sure.jsonl` (never `feedback.jsonl`)
+- EmoBank commit `248ce2a43e165a66d31aeaed83cff9641d6654e0` and file hash
 - EMOTIC split hash `1e8ea1c22144dd9d`
-- gist revision SHA used to fetch the script
-- model id, dtype, GPU name
+- gist revision SHA if a Colab gist fetch was used; empty on JupyterHub A100
+- model id, `weights_dtype=nf4`, `compute_dtype=bf16`, GPU name
 - chosen EMOTIC caliper tier and pair n
