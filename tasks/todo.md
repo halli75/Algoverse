@@ -1,3 +1,32 @@
+# Affect battery campaign (2026-08-23)
+
+New 10-experiment A100 campaign. See `docs/battery_campaign.md`.
+Does **not** resume the aborted EmoBank-VA sycophancy confirmatory.
+Scientific SUCCESS/FAILED: `docs/battery_results.md`. All ten `results.json` complete. Exploratory (no LOCK.json).
+
+- [x] exp01 fear vs anger risk — **FAILED** (Δ −0.09, CI includes 0)
+- [x] exp02 scene-matched EMOTIC pairs — **FAILED** (`NO_EXP01_EFFECT_TO_EXPLAIN`)
+- [x] exp03 cross-modal signature — **SUCCESS** (weak; pixel dictator n=8, `CROSS_MODAL_DIVERGE`)
+- [x] exp04 Perez sycophancy behavior-only — **FAILED** (ΔS CI includes 0)
+- [x] exp05 Dictator + Ultimatum — **SUCCESS** (partial; anger reject holds; give predictions do not)
+- [x] exp06 temporal discounting — **SUCCESS** (partial; photo vs none on p(now); no emotion k)
+- [x] exp07 TruthfulQA / capability control — **FAILED** (`EQUIVALENCE_INCONCLUSIVE`; not affect-on-trivia)
+- [x] exp08 EMOTIC vs OASIS — **FAILED** (both_null; do not pool)
+- [x] exp09 XSTest soft safety — **SUCCESS** (any photo jumps over-refusal)
+  - [x] Retrieve official XSTest (250 safe / 200 unsafe)
+  - [x] Advisor gpt-5.6-sol-high AMEND (n=250, 8 img/emotion, FT only)
+  - [x] scripts/battery_exp09_run.py + boot
+  - [x] Resume on GPU 5; results.json complete=true, 14/14 gates
+- [x] exp10 mediation — **SUCCESS** (partial; risk only; `DIAGNOSTIC_NOT_V3`)
+- [x] Overseer 15-min loop until all `results.json` valid (loop stopped after all ten complete)
+
+## Battery review
+
+- Strongest keep: exp09 photo vs no-photo extra caution (~85% the score moved; ~60% it is real refusal).
+- Locked rerun candidates: exp05 anger-reject, exp06 photo-vs-none.
+- Do not elevate exp03 (n=8) or exp10 (rebuilt dirs) without a lock.
+- Chance at least one of the five moves is real ~90%; chance all five are ~15%.
+
 # Graded Sycophancy Experiment
 
 [[sycophancy-affect-experiment]]

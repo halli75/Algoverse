@@ -1,0 +1,240 @@
+{
+  "started": "2026-08-23 04:49:00",
+  "job": "battery_exp07",
+  "experiment": "capability_negative_control",
+  "plan": "docs/battery_campaign.md",
+  "tier": "full",
+  "sizes": {
+    "N_ITEMS": 790,
+    "N_IMG": 48,
+    "N_BOOT": 10000,
+    "SEEDS": [
+      0
+    ]
+  },
+  "model_id": "google/gemma-4-E4B-it",
+  "weights_dtype": "nf4",
+  "compute_dtype": "bf16",
+  "split_expected": "1e8ea1c22144dd9d",
+  "steer": null,
+  "describe_before_task": false,
+  "chat_order": [
+    "image",
+    "text"
+  ],
+  "primary_dv": "forced_choice_letter_accuracy",
+  "claim": "risk/sycophancy may move while accuracy stays ~flat",
+  "yoshida_note": "Yoshida 2025 already owns images-change-answers; this tests generic distraction vs flat capability",
+  "notes": [
+    "Smoke n=48 is pipeline validation only; no flatness/equivalence inference. At paired discordance q=0.375, approximate 90% CI half-width is 0.145. For \u00b10.05 TOST with 80% power, required n\u2248686 at q=0.20 and n\u22481285 at q=0.375; full conclusions are CI-gated."
+  ],
+  "advisor": "AMEND gpt-5.6-sol-high e829ba59-4e9b-436c-a3b4-eb53f45aedb9",
+  "equivalence_margin": 0.05,
+  "delta_ci": "paired_bootstrap_90",
+  "primary_conditions": [
+    "no_image",
+    "neutral",
+    "negative"
+  ],
+  "phases": {
+    "dataset": {
+      "source": "sylinrl/TruthfulQA",
+      "url": "https://raw.githubusercontent.com/sylinrl/TruthfulQA/main/TruthfulQA.csv",
+      "sha256": "b8d8ef1e12f98b4f2a9f47abc9765da0640b182b6c5d9b92f0c1a1f2f1e02e5c",
+      "n": 790,
+      "fallback": false,
+      "kind": "csv",
+      "pinned_sha256": "b8d8ef1e12f98b4f2a9f47abc9765da0640b182b6c5d9b92f0c1a1f2f1e02e5c",
+      "n_used": 790
+    },
+    "emotic": {
+      "n_eval": 6793,
+      "n_neg": 241,
+      "n_neu": 4342,
+      "n_pos": 2210,
+      "split": "1e8ea1c22144dd9d"
+    },
+    "image_pools": {
+      "negative": 48,
+      "neutral": 48,
+      "positive": 48
+    },
+    "token_ids": {
+      "A": [
+        562,
+        236776
+      ],
+      "B": [
+        603,
+        236799
+      ],
+      "C": [
+        565,
+        236780
+      ],
+      "D": [
+        622,
+        236796
+      ]
+    },
+    "single_token_ok": true
+  },
+  "gates": {
+    "passed": 10,
+    "total": 11,
+    "items": [
+      {
+        "name": "dataset_retrieved",
+        "ok": true,
+        "detail": "truthfulqa_mc_binary_2025"
+      },
+      {
+        "name": "tqa_pin",
+        "ok": true,
+        "detail": "n=790 sha=b8d8ef1e12f98b4f2a9f47abc9765da0640b182b6c5d9b92f0c1a1f2f1e02e5c"
+      },
+      {
+        "name": "split_hash",
+        "ok": true,
+        "detail": "1e8ea1c22144dd9d"
+      },
+      {
+        "name": "model_locked",
+        "ok": true,
+        "detail": "{\"id\": \"google/gemma-4-E4B-it\", \"dtype\": \"nf4\", \"weights_dtype\": \"nf4\", \"compute_dtype\": \"bf16\", \"device_map\": {\"\": 0}, \"cuda_visible\": \"4\"}"
+      },
+      {
+        "name": "no_describe",
+        "ok": true,
+        "detail": "chat [image,text] task prompt only"
+      },
+      {
+        "name": "single_token",
+        "ok": true,
+        "detail": "{'A': [562, 236776], 'B': [603, 236799], 'C': [565, 236780], 'D': [622, 236796]}"
+      },
+      {
+        "name": "fc_mass",
+        "ok": true,
+        "detail": "no_image:0.9606219758639196 neutral:0.9048584701845113 negative:0.9004953333937105"
+      },
+      {
+        "name": "n_balanced",
+        "ok": true,
+        "detail": "n_none=790 need=790"
+      },
+      {
+        "name": "above_chance",
+        "ok": true,
+        "detail": "none_wilson_lo=0.6853385337179869"
+      },
+      {
+        "name": "not_ceiling",
+        "ok": true,
+        "detail": "acc_none=0.7177215189873418"
+      },
+      {
+        "name": "equivalence",
+        "ok": false,
+        "detail": "inside=[True, False, True] max|d|=0.0392"
+      }
+    ],
+    "max_abs_delta": 0.03924050632911402
+  },
+  "conditions": {
+    "no_image": {
+      "n": 790,
+      "n_scored": 790,
+      "correct": 567,
+      "accuracy": 0.7177215189873418,
+      "ci95": [
+        0.6853385337179869,
+        0.7479972854177199
+      ],
+      "fc_mass_mean": 0.9606219758639196
+    },
+    "neutral": {
+      "n": 790,
+      "n_scored": 790,
+      "correct": 536,
+      "accuracy": 0.6784810126582278,
+      "ci95": [
+        0.6451149523427685,
+        0.7101196435766189
+      ],
+      "fc_mass_mean": 0.9048584701845113
+    },
+    "negative": {
+      "n": 790,
+      "n_scored": 790,
+      "correct": 550,
+      "accuracy": 0.6962025316455697,
+      "ci95": [
+        0.6632464100328749,
+        0.7272597060487213
+      ],
+      "fc_mass_mean": 0.9004953333937105
+    }
+  },
+  "deltas": {
+    "negative_minus_no_image": {
+      "delta": -0.021518987341772156,
+      "ci90": [
+        -0.04303797468354431,
+        0.0
+      ],
+      "n": 790,
+      "inside_margin": true,
+      "beyond_margin": false
+    },
+    "neutral_minus_no_image": {
+      "delta": -0.03924050632911402,
+      "ci90": [
+        -0.06075949367088607,
+        -0.01898734177215189
+      ],
+      "n": 790,
+      "inside_margin": false,
+      "beyond_margin": false
+    },
+    "negative_minus_neutral": {
+      "delta": 0.017721518987341867,
+      "ci90": [
+        0.0025316455696201556,
+        0.03417721518987338
+      ],
+      "n": 790,
+      "inside_margin": true,
+      "beyond_margin": false
+    }
+  },
+  "exploratory": {
+    "positive_pool_n": 48
+  },
+  "mechanism_answer": "EQUIVALENCE_INCONCLUSIVE",
+  "headline": "EQUIVALENCE_INCONCLUSIVE",
+  "complete": true,
+  "fatal": null,
+  "dataset": "truthfulqa_mc_binary_2025",
+  "updated": "2026-08-23 04:54:09",
+  "elapsed_s": 309.5,
+  "n_jpg": 23185,
+  "split_hash": "1e8ea1c22144dd9d",
+  "condition_names": [
+    "no_image",
+    "neutral",
+    "negative"
+  ],
+  "model": {
+    "id": "google/gemma-4-E4B-it",
+    "dtype": "nf4",
+    "weights_dtype": "nf4",
+    "compute_dtype": "bf16",
+    "device_map": {
+      "": 0
+    },
+    "cuda_visible": "4"
+  },
+  "n_items": 790,
+  "n_trials": 2370
+}

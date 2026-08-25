@@ -1,0 +1,36 @@
+{
+  "job": "exp08",
+  "stage": "gpu_claiming",
+  "ts": 1787462672.6458228,
+  "iso": "2026-08-23 05:24:32",
+  "n_running": 1,
+  "holders": [
+    "exp02",
+    "smi_low_free"
+  ],
+  "used": [
+    0,
+    2,
+    3,
+    4,
+    6,
+    7
+  ],
+  "live": [
+    2
+  ],
+  "done": [
+    "exp01",
+    "exp03",
+    "exp04",
+    "exp05",
+    "exp06",
+    "exp07",
+    "exp09"
+  ],
+  "free": [
+    1,
+    5
+  ],
+  "prefer": 4
+}

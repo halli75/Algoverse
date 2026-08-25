@@ -1,0 +1,23 @@
+{
+  "experiment": "exp01",
+  "source": {
+    "repo": "https://github.com/rossjillian/llm-economicus",
+    "commit": "main",
+    "game": "gambling",
+    "note": "Economicus CE accept/reject lists converted to single forced-choice A/B. EV not shown in the prompt."
+  },
+  "seed": 20260823,
+  "prompt_suffix": "You must choose exactly one option. Reply with only the letter A or B.",
+  "items": [
+    {"id": 1, "sure": 35, "p": 0.10, "prize": 500, "other": 0},
+    {"id": 2, "sure": 50, "p": 0.10, "prize": 500, "other": 0},
+    {"id": 3, "sure": 38, "p": 0.25, "prize": 200, "other": 0},
+    {"id": 4, "sure": 50, "p": 0.25, "prize": 200, "other": 0},
+    {"id": 5, "sure": 40, "p": 0.50, "prize": 100, "other": 0},
+    {"id": 6, "sure": 50, "p": 0.50, "prize": 100, "other": 0},
+    {"id": 7, "sure": 43, "p": 0.75, "prize": 68, "other": 0},
+    {"id": 8, "sure": 51, "p": 0.75, "prize": 68, "other": 0},
+    {"id": 9, "sure": 45, "p": 0.90, "prize": 56, "other": 0},
+    {"id": 10, "sure": 50, "p": 0.90, "prize": 56, "other": 0}
+  ]
+}

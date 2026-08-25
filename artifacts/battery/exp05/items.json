@@ -1,0 +1,42 @@
+{
+  "experiment": "exp05",
+  "title": "Affect-conditioned Dictator and Ultimatum",
+  "sources": {
+    "ultimatum_proposer": {
+      "cite": "rossjillian/llm-economicus games.py Ultimatum.write_player1_prompt",
+      "url": "https://github.com/rossjillian/llm-economicus/blob/main/games.py",
+      "verbatim_stem": "You have %d dollars. How much do you offer?"
+    },
+    "ultimatum_responder_economicus": {
+      "cite": "rossjillian/llm-economicus games.py Ultimatum.write_player2_prompt",
+      "url": "https://github.com/rossjillian/llm-economicus/blob/main/games.py",
+      "verbatim_stem": "The other player has %d dollars. They offer you %d dollars. Do you accept or reject the offer?"
+    },
+    "ultimatum_responder_turing": {
+      "cite": "microsoft/turing-experiments data/prompt-templates/ultimatum_game/no-complete-accept.txt",
+      "url": "https://github.com/microsoft/turing-experiments/blob/main/data/prompt-templates/ultimatum_game/no-complete-accept.txt",
+      "verbatim_stem": "Scenario: $player1 is given $$$money. $player1 will propose how to split the money between $player1_self and $player2. Then $player2 will decide whether to accept or reject $player1's proposal. If $player2 accepts, then $player1 and $player2 get the money as they agreed to split. If $player2 rejects, then $player1 and $player2 both receive nothing. $player1 takes $$$keep for $player1_self and offers $player2 $$$offer."
+    },
+    "dictator": {
+      "cite": "Forsythe et al. 1994 / Engel 2011 dictator parallel to Economicus UG proposer (no veto)",
+      "note": "Economicus has no Dictator class. Stem is the UG proposer line with the veto removed.",
+      "verbatim_stem": "You have %d dollars. How much do you give to the other person? The other person cannot refuse."
+    }
+  },
+  "pool_dollars": 100,
+  "give_amounts_6way_invalid": [0, 20, 40, 50, 60, 80],
+  "give_pairs_ab": [[0, 50], [50, 80]],
+  "unfair_offers": [
+    {"keep": 90, "offer": 10},
+    {"keep": 80, "offer": 20}
+  ],
+  "fair_offer": {"keep": 50, "offer": 50},
+  "fc_suffix": "Reply with exactly one letter.",
+  "no_describe": true,
+  "chat_order": ["image", "text"],
+  "predictions": {
+    "sympathy_give_more": "sympathy/affection dictator expected-give > neutral",
+    "anger_reject_unfair": "anger unfair-reject rate > neutral",
+    "fear_give_less": "fear dictator expected-give < neutral"
+  }
+}

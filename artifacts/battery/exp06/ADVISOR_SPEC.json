@@ -1,0 +1,22 @@
+{
+  "advisor": "gpt-5.6-sol-high",
+  "agent_id": "3fe17622-b84f-4971-b9c6-e0f6439a3a21",
+  "received": "2026-08-23T04:42:00Z",
+  "recommended_instrument": "Kirby 27-item MCQ",
+  "advisor_reason": "Thought Economicus lacked a machine-readable amount schedule.",
+  "decision": "keep_economicus_primary",
+  "decision_reason": "rossjillian/llm-economicus experiments/wait/de_novo.py comps() was retrieved: 7 delays x 31 amounts. Campaign says retrieve Economicus if possible. Smoke already valid 17/17 on that grid. Kirby kept as optional secondary if full finishes with time.",
+  "kirby_grid_n": 27,
+  "kirby_k_bounds": [0.000158128, 0.25],
+  "adopted_from_advisor": [
+    "first-token A/B logits (already implemented)",
+    "exclusive EMOTIC purity (already implemented)",
+    "no DESCRIBE (already implemented)",
+    "finite bounded k (already implemented)",
+    "side counterbalance (already implemented)"
+  ],
+  "not_adopted_midflight": [
+    "switch primary instrument to Kirby 27",
+    "48 images per condition (deadline; 4-image Economicus full already launched)"
+  ]
+}

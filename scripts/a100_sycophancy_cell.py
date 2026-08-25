@@ -26,6 +26,19 @@ def main() -> int:
     os.environ.setdefault("E2E_SPLIT", str(root / "emotic_split.json"))
     os.environ.setdefault("E2E_EMOTIC", str(root / "emotic_data"))
     os.environ.setdefault("E2E_DATA", str(root / "e2e_data"))
+    user_site = Path.home() / ".local" / "lib" / f"python{sys.version_info.major}.{sys.version_info.minor}" / "site-packages"
+    os.environ["PYTHONPATH"] = str(user_site) + os.pathsep + os.environ.get("PYTHONPATH", "")
+    local_bin = str(Path.home() / ".local" / "bin")
+    if local_bin not in os.environ.get("PATH", ""):
+        os.environ["PATH"] = local_bin + os.pathsep + os.environ.get("PATH", "")
+    if not os.environ.get("HF_TOKEN"):
+        for cand in (Path.home() / ".hf_token", Path.home() / ".cache" / "huggingface" / "token"):
+            if cand.is_file():
+                tok = cand.read_text(encoding="utf-8").strip()
+                if tok:
+                    os.environ["HF_TOKEN"] = tok
+                    os.environ.setdefault("HUGGING_FACE_HUB_TOKEN", tok)
+                    break
     print(
         "env ready",
         {

@@ -1,0 +1,360 @@
+{
+  "experiment": "exp02",
+  "started": "2026-08-23 05:13:43",
+  "model_id": "google/gemma-4-E4B-it",
+  "weights_dtype": "nf4",
+  "compute_dtype": "bf16",
+  "split_expected": "1e8ea1c22144dd9d",
+  "advisor": "2ebc4933-bcc2-4967-af4f-05ceb379a2ed",
+  "notes": [],
+  "pair_report": {
+    "fear_anger": {
+      "status": "OK",
+      "tier": 2,
+      "n": 96,
+      "pool_left": 156,
+      "pool_right": 183,
+      "eligible_edges": 575,
+      "matched": 96,
+      "unmatched_left": 60,
+      "unmatched_right": 87,
+      "mean_dlum": 0.02580175462111928,
+      "mean_daro": 0.3121527777777778,
+      "smd_luminance": -0.0527739521965114,
+      "smd_arousal": -0.03715573369170349,
+      "tier_counts": {
+        "1": {
+          "n": 64,
+          "eligible_edges": 178
+        },
+        "2": {
+          "n": 96,
+          "eligible_edges": 575
+        }
+      },
+      "left_class": "fear",
+      "right_class": "anger",
+      "pool_source": "eval_plus_train"
+    },
+    "fear_neutral": {
+      "status": "OK",
+      "tier": 1,
+      "n": 96,
+      "pool_left": 156,
+      "pool_right": 8326,
+      "eligible_edges": 12614,
+      "matched": 96,
+      "unmatched_left": 60,
+      "unmatched_right": 8230,
+      "mean_dlum": 0.0006470723868974666,
+      "mean_daro": 0.0,
+      "smd_luminance": 0.0008785542834166975,
+      "smd_arousal": 0.0,
+      "tier_counts": {
+        "1": {
+          "n": 96,
+          "eligible_edges": 12614
+        }
+      },
+      "left_class": "fear",
+      "right_class": "neutral",
+      "pool_source": "eval_plus_train"
+    },
+    "anger_neutral": {
+      "status": "OK",
+      "tier": 3,
+      "n": 65,
+      "pool_left": 71,
+      "pool_right": 3355,
+      "eligible_edges": 5824,
+      "matched": 65,
+      "unmatched_left": 6,
+      "unmatched_right": 3290,
+      "mean_dlum": 0.02478609893476622,
+      "mean_daro": 0.1576923076923077,
+      "smd_luminance": 0.05146682965601134,
+      "smd_arousal": 0.05117935816392447,
+      "tier_counts": {
+        "1": {
+          "n": 51,
+          "eligible_edges": 1230
+        },
+        "2": {
+          "n": 63,
+          "eligible_edges": 4779
+        },
+        "3": {
+          "n": 65,
+          "eligible_edges": 5824
+        }
+      },
+      "left_class": "anger",
+      "right_class": "neutral",
+      "pool_source": "eval"
+    },
+    "negative_neutral": {
+      "status": "OK",
+      "tier": 1,
+      "n": 96,
+      "pool_left": 133,
+      "pool_right": 3355,
+      "eligible_edges": 5023,
+      "matched": 96,
+      "unmatched_left": 37,
+      "unmatched_right": 3259,
+      "mean_dlum": 0.002121659821155028,
+      "mean_daro": 0.0,
+      "smd_luminance": 0.0035064729848811853,
+      "smd_arousal": 0.0,
+      "tier_counts": {
+        "1": {
+          "n": 96,
+          "eligible_edges": 5023
+        }
+      },
+      "left_class": "negative",
+      "right_class": "neutral",
+      "pool_source": "eval"
+    },
+    "sadness_happiness": {
+      "status": "OK",
+      "tier": 2,
+      "n": 96,
+      "pool_left": 114,
+      "pool_right": 1801,
+      "eligible_edges": 3985,
+      "matched": 96,
+      "unmatched_left": 18,
+      "unmatched_right": 1705,
+      "mean_dlum": 0.020135547912198737,
+      "mean_daro": 0.1722222222222222,
+      "smd_luminance": -0.04894630518740767,
+      "smd_arousal": -0.02263486412157571,
+      "tier_counts": {
+        "1": {
+          "n": 79,
+          "eligible_edges": 1191
+        },
+        "2": {
+          "n": 96,
+          "eligible_edges": 3985
+        }
+      },
+      "left_class": "sadness",
+      "right_class": "happiness",
+      "pool_source": "eval"
+    },
+    "sadness_neutral": {
+      "status": "OK",
+      "tier": 2,
+      "n": 96,
+      "pool_left": 114,
+      "pool_right": 3355,
+      "eligible_edges": 8593,
+      "matched": 96,
+      "unmatched_left": 18,
+      "unmatched_right": 3259,
+      "mean_dlum": 0.014104965309691587,
+      "mean_daro": 0.07366071428571429,
+      "smd_luminance": -0.009840152319391499,
+      "smd_arousal": 0.008619424430716083,
+      "tier_counts": {
+        "1": {
+          "n": 88,
+          "eligible_edges": 2296
+        },
+        "2": {
+          "n": 96,
+          "eligible_edges": 8593
+        }
+      },
+      "left_class": "sadness",
+      "right_class": "neutral",
+      "pool_source": "eval"
+    },
+    "happiness_neutral": {
+      "status": "OK",
+      "tier": 1,
+      "n": 96,
+      "pool_left": 1801,
+      "pool_right": 3355,
+      "eligible_edges": 80614,
+      "matched": 96,
+      "unmatched_left": 1705,
+      "unmatched_right": 3259,
+      "mean_dlum": 4.7352111417489164e-05,
+      "mean_daro": 0.0,
+      "smd_luminance": -9.94004021363896e-05,
+      "smd_arousal": 0.0,
+      "tier_counts": {
+        "1": {
+          "n": 96,
+          "eligible_edges": 80614
+        }
+      },
+      "left_class": "happiness",
+      "right_class": "neutral",
+      "pool_source": "eval"
+    }
+  },
+  "effects": {
+    "risk": {
+      "fear_anger": {
+        "estimate": 0.03688963811838828,
+        "ci95": [
+          -0.09030179255113505,
+          0.17045924848413807
+        ],
+        "n": 96,
+        "n_items": 8,
+        "finite": true,
+        "n_cells": 768
+      },
+      "negative_neutral": {
+        "estimate": 0.12722168619593502,
+        "ci95": [
+          0.0042051066007547985,
+          0.25786804083325165
+        ],
+        "n": 96,
+        "n_items": 8,
+        "finite": true,
+        "n_cells": 768
+      }
+    },
+    "dictator": {
+      "fear_anger": {
+        "estimate": -0.0031982429190823836,
+        "ci95": [
+          -0.14136657784965148,
+          0.1682051553848862
+        ],
+        "n": 96,
+        "n_items": 8,
+        "finite": true,
+        "n_cells": 768
+      },
+      "negative_neutral": {
+        "estimate": 0.018660481656934277,
+        "ci95": [
+          -0.09760864001241393,
+          0.159735112885268
+        ],
+        "n": 96,
+        "n_items": 8,
+        "finite": true,
+        "n_cells": 768
+      }
+    }
+  },
+  "gates": {
+    "forced_choice_mass": {
+      "pass": true,
+      "mean": 0.9989158778248541,
+      "n": 23106,
+      "threshold": 0.8
+    },
+    "finite_S": {
+      "pass": true,
+      "value": true
+    },
+    "forced_choice_mass_by_cell": {
+      "risk|fear_anger|left": {
+        "pass": true,
+        "mean": 0.9994590370588119,
+        "n": 2891
+      },
+      "risk|fear_anger|right": {
+        "pass": true,
+        "mean": 0.9994316100157375,
+        "n": 2891
+      },
+      "dictator|fear_anger|left": {
+        "pass": true,
+        "mean": 0.9988296208138374,
+        "n": 2941
+      },
+      "dictator|fear_anger|right": {
+        "pass": true,
+        "mean": 0.9980271827545802,
+        "n": 2941
+      },
+      "risk|negative_neutral|left": {
+        "pass": true,
+        "mean": 0.9994555634251444,
+        "n": 2856
+      },
+      "risk|negative_neutral|right": {
+        "pass": true,
+        "mean": 0.9994551161777944,
+        "n": 2856
+      },
+      "dictator|negative_neutral|left": {
+        "pass": true,
+        "mean": 0.9983525229542822,
+        "n": 2865
+      },
+      "dictator|negative_neutral|right": {
+        "pass": true,
+        "mean": 0.998336011805875,
+        "n": 2865
+      }
+    },
+    "exp01_available": {
+      "pass": true,
+      "value": true,
+      "source": "/home/jupyter-asca-ec66/algoverse_run/battery/exp01/results.json"
+    },
+    "passed": 3,
+    "total": 3
+  },
+  "mechanism_answer": "NO_EXP01_EFFECT_TO_EXPLAIN",
+  "complete": true,
+  "updated": "2026-08-23 07:07:49",
+  "elapsed_s": 6845.5,
+  "pair_report_meta": {
+    "n_jpg": 23185,
+    "n_eval_images": 6793,
+    "pool_sizes": {
+      "neutral": 3355,
+      "happiness": 1801,
+      "fear": 65,
+      "sadness": 114,
+      "negative": 133,
+      "anger": 71
+    },
+    "split_hash": "1e8ea1c22144dd9d"
+  },
+  "phases": {
+    "gpu_lock": {
+      "exp": "exp02",
+      "pid": 2064480,
+      "unix": 1787462024.5005574,
+      "ts": "2026-08-23 05:13:44"
+    },
+    "token_ids": {
+      "A": [
+        562,
+        236776
+      ],
+      "B": [
+        603,
+        236799
+      ]
+    }
+  },
+  "gpu": "NVIDIA A100-SXM4-40GB",
+  "cuda_visible": "2",
+  "n_scored": 23106,
+  "n_rows": 23106,
+  "n_trials": 11553,
+  "exp01_unmatched": {
+    "estimate": -0.09166666666666667,
+    "ci95": [
+      -0.5,
+      0.30000000000000004
+    ],
+    "source": "exp01.delta_anger_minus_fear"
+  },
+  "sha256_pairs": "9266e58cb43a73e1bcd5087a574c9f5efa86f34e5332a50e0ccaab407e9a4b0b"
+}

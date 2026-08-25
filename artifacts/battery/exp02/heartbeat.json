@@ -1,0 +1,10 @@
+{
+  "job": "exp02",
+  "stage": "done",
+  "ts": 1787468869.4085531,
+  "iso": "2026-08-23 07:07:49",
+  "elapsed_s": 6845.5,
+  "gpu": "2",
+  "pid": 2064480,
+  "answer": "NO_EXP01_EFFECT_TO_EXPLAIN"
+}

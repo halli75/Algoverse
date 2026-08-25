@@ -1,0 +1,698 @@
+{
+  "experiment": "exp05",
+  "started": "2026-08-23 04:32:41",
+  "model_id": "google/gemma-4-E4B-it",
+  "weights_dtype": "nf4",
+  "compute_dtype": "bf16",
+  "split_expected": "1e8ea1c22144dd9d",
+  "pool_dollars": 100,
+  "give_amounts": [
+    0,
+    20,
+    40,
+    50,
+    60,
+    80
+  ],
+  "n_per_condition": 32,
+  "seed": 5,
+  "notes": [],
+  "phases": {
+    "gpu_lock": {
+      "exp": "exp05",
+      "pid": 2046476,
+      "unix": 1787459561.289321,
+      "ts": "2026-08-23 04:32:41"
+    },
+    "pools": {
+      "fear": {
+        "n": 32,
+        "exclusive_or_available": 42
+      },
+      "anger": {
+        "n": 32,
+        "exclusive_or_available": 53
+      },
+      "sadness": {
+        "n": 32,
+        "exclusive_or_available": 80
+      },
+      "sympathy": {
+        "n": 32,
+        "exclusive_or_available": 88
+      },
+      "affection": {
+        "n": 32,
+        "exclusive_or_available": 79
+      },
+      "happiness": {
+        "n": 32,
+        "exclusive_or_available": 1315
+      },
+      "neutral": {
+        "n": 32,
+        "exclusive_or_available": 3487
+      }
+    },
+    "token_ids": {
+      "A": [
+        562,
+        236776
+      ],
+      "B": [
+        603,
+        236799
+      ],
+      "C": [
+        565,
+        236780
+      ],
+      "D": [
+        622,
+        236796
+      ],
+      "E": [
+        645,
+        236788
+      ],
+      "F": [
+        633,
+        236811
+      ]
+    },
+    "n_tasks": 1280,
+    "n_scored": 1280
+  },
+  "gates": {
+    "split_hash": {
+      "pass": true,
+      "value": "1e8ea1c22144dd9d",
+      "expected": "1e8ea1c22144dd9d"
+    },
+    "model_dtype": {
+      "pass": true,
+      "model": "google/gemma-4-E4B-it",
+      "weights_dtype": "nf4",
+      "compute_dtype": "bf16",
+      "gpu": "NVIDIA A100-SXM4-40GB"
+    },
+    "fc_mass": {
+      "pass": false,
+      "value": 0.6903401162493916,
+      "threshold": 0.8
+    },
+    "no_describe_before_task": {
+      "pass": true,
+      "describe_hits": 0
+    },
+    "eval_only": {
+      "pass": true,
+      "split": "1e8ea1c22144dd9d"
+    },
+    "n_min": {
+      "pass": true,
+      "threshold": 16
+    },
+    "finite_estimates": {
+      "pass": true
+    },
+    "passed": 6,
+    "total": 7
+  },
+  "primary": {
+    "dictator": {
+      "no_image": {
+        "mean": 24.501959061385932,
+        "ci_lo": 19.16152469994558,
+        "ci_hi": 30.910480295114358,
+        "n": 32,
+        "finite": true
+      },
+      "sympathy": {
+        "mean": 35.11399351353257,
+        "ci_lo": 28.282993602925323,
+        "ci_hi": 40.99118669709608,
+        "n": 32,
+        "finite": true
+      },
+      "affection": {
+        "mean": 35.62136819124577,
+        "ci_lo": 28.258539156087284,
+        "ci_hi": 43.09231270952384,
+        "n": 32,
+        "finite": true
+      },
+      "neutral": {
+        "mean": 35.319792147341886,
+        "ci_lo": 28.58478327281277,
+        "ci_hi": 42.40330743693555,
+        "n": 32,
+        "finite": true
+      },
+      "fear": {
+        "mean": 36.73638948843774,
+        "ci_lo": 29.13629731659857,
+        "ci_hi": 45.32212699639475,
+        "n": 32,
+        "finite": true
+      },
+      "anger": {
+        "mean": 37.53623733381798,
+        "ci_lo": 29.95924826905178,
+        "ci_hi": 44.215417281948454,
+        "n": 32,
+        "finite": true
+      },
+      "sadness": {
+        "mean": 36.378585099516314,
+        "ci_lo": 28.718561482593966,
+        "ci_hi": 43.36053646735926,
+        "n": 32,
+        "finite": true
+      },
+      "happiness": {
+        "mean": 35.233098617198316,
+        "ci_lo": 28.338095054814517,
+        "ci_hi": 42.03063845138532,
+        "n": 32,
+        "finite": true
+      }
+    },
+    "ug_offer": {
+      "no_image": {
+        "mean": 39.08927991113362,
+        "ci_lo": 35.968530183658245,
+        "ci_hi": 42.210029638609,
+        "n": 32,
+        "finite": true
+      },
+      "happiness": {
+        "mean": 41.65972396814631,
+        "ci_lo": 36.31467726664629,
+        "ci_hi": 46.67928229311556,
+        "n": 32,
+        "finite": true
+      },
+      "sympathy": {
+        "mean": 41.217787303711525,
+        "ci_lo": 36.855598768917645,
+        "ci_hi": 46.104026744878176,
+        "n": 32,
+        "finite": true
+      },
+      "neutral": {
+        "mean": 42.65186756503591,
+        "ci_lo": 36.65675798285051,
+        "ci_hi": 48.03986122207811,
+        "n": 32,
+        "finite": true
+      },
+      "affection": {
+        "mean": 42.525475578028384,
+        "ci_lo": 36.58720625238815,
+        "ci_hi": 48.44106753616403,
+        "n": 32,
+        "finite": true
+      },
+      "sadness": {
+        "mean": 41.90995284784398,
+        "ci_lo": 36.03287945853019,
+        "ci_hi": 47.76647245270305,
+        "n": 32,
+        "finite": true
+      },
+      "fear": {
+        "mean": 43.54758692720789,
+        "ci_lo": 36.74903425843826,
+        "ci_hi": 49.61093059555129,
+        "n": 32,
+        "finite": true
+      },
+      "anger": {
+        "mean": 44.086652350536745,
+        "ci_lo": 38.31329258728439,
+        "ci_hi": 49.56985655002842,
+        "n": 32,
+        "finite": true
+      }
+    },
+    "ug_reject_90_10": {
+      "fear": {
+        "mean": 0.026924972043777626,
+        "ci_lo": 0.019208012835091336,
+        "ci_hi": 0.0356997360901195,
+        "n": 32,
+        "finite": true
+      },
+      "anger": {
+        "mean": 0.07238795664579367,
+        "ci_lo": 0.039465857901060594,
+        "ci_hi": 0.10686120065762826,
+        "n": 32,
+        "finite": true
+      },
+      "neutral": {
+        "mean": 0.017195314300788064,
+        "ci_lo": 0.012909240897638823,
+        "ci_hi": 0.0216465417774465,
+        "n": 32,
+        "finite": true
+      },
+      "affection": {
+        "mean": 0.024399418336871686,
+        "ci_lo": 0.015868625370997952,
+        "ci_hi": 0.03528440445478305,
+        "n": 32,
+        "finite": true
+      },
+      "no_image": {
+        "mean": 0.12484737174186027,
+        "ci_lo": 0.07975819418816874,
+        "ci_hi": 0.16242168636993654,
+        "n": 32,
+        "finite": true
+      },
+      "sadness": {
+        "mean": 0.040072026867950084,
+        "ci_lo": 0.027911872849329056,
+        "ci_hi": 0.053839469105953774,
+        "n": 32,
+        "finite": true
+      },
+      "sympathy": {
+        "mean": 0.026970343591625354,
+        "ci_lo": 0.016468859479204494,
+        "ci_hi": 0.04318277385105276,
+        "n": 32,
+        "finite": true
+      },
+      "happiness": {
+        "mean": 0.026463848314481564,
+        "ci_lo": 0.013644215364347345,
+        "ci_hi": 0.0431200200004661,
+        "n": 32,
+        "finite": true
+      }
+    },
+    "ug_reject_50_50": {
+      "no_image": {
+        "mean": 0.038044481727056725,
+        "ci_lo": 0.023864241056776488,
+        "ci_hi": 0.05222472239733697,
+        "n": 32,
+        "finite": true
+      },
+      "anger": {
+        "mean": 0.005612322788569523,
+        "ci_lo": 0.0030388095285645454,
+        "ci_hi": 0.008710776548268658,
+        "n": 32,
+        "finite": true
+      },
+      "neutral": {
+        "mean": 0.003573154168076874,
+        "ci_lo": 0.002052791300947776,
+        "ci_hi": 0.005210895463808485,
+        "n": 32,
+        "finite": true
+      },
+      "happiness": {
+        "mean": 0.0043968667461529035,
+        "ci_lo": 0.0023453271193844927,
+        "ci_hi": 0.007081794152859658,
+        "n": 32,
+        "finite": true
+      },
+      "fear": {
+        "mean": 0.0029270794855414226,
+        "ci_lo": 0.0018384050356662907,
+        "ci_hi": 0.004132623420212817,
+        "n": 32,
+        "finite": true
+      },
+      "sympathy": {
+        "mean": 0.003302546576581563,
+        "ci_lo": 0.002190933960867164,
+        "ci_hi": 0.0045679733837634936,
+        "n": 32,
+        "finite": true
+      },
+      "affection": {
+        "mean": 0.0032023178524874874,
+        "ci_lo": 0.0019180139797204242,
+        "ci_hi": 0.004748316777971963,
+        "n": 32,
+        "finite": true
+      },
+      "sadness": {
+        "mean": 0.0034096002451138585,
+        "ci_lo": 0.002065425265435927,
+        "ci_hi": 0.005020304670052734,
+        "n": 32,
+        "finite": true
+      }
+    },
+    "ug_reject_80_20": {
+      "fear": {
+        "mean": 0.0037777094687468163,
+        "ci_lo": 0.002632908880243592,
+        "ci_hi": 0.004946066318388556,
+        "n": 32,
+        "finite": true
+      },
+      "anger": {
+        "mean": 0.011507322670528253,
+        "ci_lo": 0.005743448749068659,
+        "ci_hi": 0.01821765782068216,
+        "n": 32,
+        "finite": true
+      },
+      "no_image": {
+        "mean": 0.05991477992447832,
+        "ci_lo": 0.037681612231748374,
+        "ci_hi": 0.08214794761720827,
+        "n": 32,
+        "finite": true
+      },
+      "sadness": {
+        "mean": 0.006964476018112123,
+        "ci_lo": 0.004422363824358308,
+        "ci_hi": 0.009982959133187915,
+        "n": 32,
+        "finite": true
+      },
+      "happiness": {
+        "mean": 0.004808315202018338,
+        "ci_lo": 0.0028945456822792423,
+        "ci_hi": 0.007156178902498742,
+        "n": 32,
+        "finite": true
+      },
+      "affection": {
+        "mean": 0.004778253132842933,
+        "ci_lo": 0.0028975327367943187,
+        "ci_hi": 0.007337517497097552,
+        "n": 32,
+        "finite": true
+      },
+      "sympathy": {
+        "mean": 0.004004063208114097,
+        "ci_lo": 0.0028151430243513846,
+        "ci_hi": 0.005680424594994155,
+        "n": 32,
+        "finite": true
+      },
+      "neutral": {
+        "mean": 0.0030729552907864987,
+        "ci_lo": 0.0021425802600582265,
+        "ci_hi": 0.004060354131464162,
+        "n": 32,
+        "finite": true
+      }
+    }
+  },
+  "predictions": {
+    "sympathy_give_more": {
+      "delta": 0.04788870504728493,
+      "ci_lo": -8.770818673431245,
+      "ci_hi": 8.868086435371092,
+      "n_a": 64,
+      "n_b": 32,
+      "finite": true,
+      "holds": false,
+      "lean": true,
+      "tested": true,
+      "direction": "gt"
+    },
+    "anger_reject_unfair": {
+      "delta": 0.03181350486237368,
+      "ci_lo": 0.014537689078952415,
+      "ci_hi": 0.053007886167618486,
+      "n_a": 64,
+      "n_b": 64,
+      "finite": true,
+      "holds": true,
+      "lean": true,
+      "tested": true,
+      "direction": "gt"
+    },
+    "fear_give_less": {
+      "delta": 1.4165973410958514,
+      "ci_lo": -8.909993867653249,
+      "ci_hi": 11.607981450126672,
+      "n_a": 32,
+      "n_b": 32,
+      "finite": true,
+      "holds": false,
+      "lean": false,
+      "tested": true,
+      "direction": "lt"
+    }
+  },
+  "mechanism_answer": "On Gemma-4-E4B-it with natural EMOTIC prepend and forced-choice letters, sympathy_give_more leans but CI crosses 0 (\u0394=0.04788870504728493); anger_reject_unfair holds (\u0394=0.032); fear_give_less does not hold (\u0394=1.4165973410958514). Mean FC mass=0.690.",
+  "complete": true,
+  "updated": "2026-08-23 04:39:26",
+  "elapsed_s": 405.5,
+  "gpu": "NVIDIA A100-SXM4-40GB",
+  "cuda_visible": "1",
+  "n_jpg": 23185,
+  "split_hash": "1e8ea1c22144dd9d",
+  "fc_mass_mean": 0.6903401162493916,
+  "n_by": {
+    "dictator": {
+      "no_image": 32,
+      "sympathy": 32,
+      "affection": 32,
+      "neutral": 32,
+      "fear": 32,
+      "anger": 32,
+      "sadness": 32,
+      "happiness": 32
+    },
+    "ug_offer": {
+      "no_image": 32,
+      "happiness": 32,
+      "sympathy": 32,
+      "neutral": 32,
+      "affection": 32,
+      "sadness": 32,
+      "fear": 32,
+      "anger": 32
+    },
+    "ug_reject_90_10": {
+      "fear": 32,
+      "anger": 32,
+      "neutral": 32,
+      "affection": 32,
+      "no_image": 32,
+      "sadness": 32,
+      "sympathy": 32,
+      "happiness": 32
+    },
+    "ug_reject_50_50": {
+      "no_image": 32,
+      "anger": 32,
+      "neutral": 32,
+      "happiness": 32,
+      "fear": 32,
+      "sympathy": 32,
+      "affection": 32,
+      "sadness": 32
+    },
+    "ug_reject_80_20": {
+      "fear": 32,
+      "anger": 32,
+      "no_image": 32,
+      "sadness": 32,
+      "happiness": 32,
+      "affection": 32,
+      "sympathy": 32,
+      "neutral": 32
+    }
+  },
+  "aggregates": {
+    "dictator_means": {
+      "no_image": {
+        "mean": 24.501959061385932,
+        "ci_lo": 19.16152469994558,
+        "ci_hi": 30.910480295114358,
+        "n": 32,
+        "finite": true
+      },
+      "sympathy": {
+        "mean": 35.11399351353257,
+        "ci_lo": 28.282993602925323,
+        "ci_hi": 40.99118669709608,
+        "n": 32,
+        "finite": true
+      },
+      "affection": {
+        "mean": 35.62136819124577,
+        "ci_lo": 28.258539156087284,
+        "ci_hi": 43.09231270952384,
+        "n": 32,
+        "finite": true
+      },
+      "neutral": {
+        "mean": 35.319792147341886,
+        "ci_lo": 28.58478327281277,
+        "ci_hi": 42.40330743693555,
+        "n": 32,
+        "finite": true
+      },
+      "fear": {
+        "mean": 36.73638948843774,
+        "ci_lo": 29.13629731659857,
+        "ci_hi": 45.32212699639475,
+        "n": 32,
+        "finite": true
+      },
+      "anger": {
+        "mean": 37.53623733381798,
+        "ci_lo": 29.95924826905178,
+        "ci_hi": 44.215417281948454,
+        "n": 32,
+        "finite": true
+      },
+      "sadness": {
+        "mean": 36.378585099516314,
+        "ci_lo": 28.718561482593966,
+        "ci_hi": 43.36053646735926,
+        "n": 32,
+        "finite": true
+      },
+      "happiness": {
+        "mean": 35.233098617198316,
+        "ci_lo": 28.338095054814517,
+        "ci_hi": 42.03063845138532,
+        "n": 32,
+        "finite": true
+      }
+    },
+    "ug_offer_means": {
+      "no_image": {
+        "mean": 39.08927991113362,
+        "ci_lo": 35.968530183658245,
+        "ci_hi": 42.210029638609,
+        "n": 32,
+        "finite": true
+      },
+      "happiness": {
+        "mean": 41.65972396814631,
+        "ci_lo": 36.31467726664629,
+        "ci_hi": 46.67928229311556,
+        "n": 32,
+        "finite": true
+      },
+      "sympathy": {
+        "mean": 41.217787303711525,
+        "ci_lo": 36.855598768917645,
+        "ci_hi": 46.104026744878176,
+        "n": 32,
+        "finite": true
+      },
+      "neutral": {
+        "mean": 42.65186756503591,
+        "ci_lo": 36.65675798285051,
+        "ci_hi": 48.03986122207811,
+        "n": 32,
+        "finite": true
+      },
+      "affection": {
+        "mean": 42.525475578028384,
+        "ci_lo": 36.58720625238815,
+        "ci_hi": 48.44106753616403,
+        "n": 32,
+        "finite": true
+      },
+      "sadness": {
+        "mean": 41.90995284784398,
+        "ci_lo": 36.03287945853019,
+        "ci_hi": 47.76647245270305,
+        "n": 32,
+        "finite": true
+      },
+      "fear": {
+        "mean": 43.54758692720789,
+        "ci_lo": 36.74903425843826,
+        "ci_hi": 49.61093059555129,
+        "n": 32,
+        "finite": true
+      },
+      "anger": {
+        "mean": 44.086652350536745,
+        "ci_lo": 38.31329258728439,
+        "ci_hi": 49.56985655002842,
+        "n": 32,
+        "finite": true
+      }
+    },
+    "ug_reject_unfair_pooled": {
+      "happiness": {
+        "mean": 0.015636081758249955,
+        "ci_lo": 0.008889989338032093,
+        "ci_hi": 0.024338068609192624,
+        "n": 64,
+        "finite": true
+      },
+      "sympathy": {
+        "mean": 0.015487203399869727,
+        "ci_lo": 0.009404722294326822,
+        "ci_hi": 0.024168618396985784,
+        "n": 64,
+        "finite": true
+      },
+      "affection": {
+        "mean": 0.01458883573485731,
+        "ci_lo": 0.009618518285807863,
+        "ci_hi": 0.020947432482687364,
+        "n": 64,
+        "finite": true
+      },
+      "anger": {
+        "mean": 0.04194763965816096,
+        "ci_lo": 0.0252276118973418,
+        "ci_hi": 0.06078807495139565,
+        "n": 64,
+        "finite": true
+      },
+      "fear": {
+        "mean": 0.01535134075626222,
+        "ci_lo": 0.010629512009199333,
+        "ci_hi": 0.020279822627542406,
+        "n": 64,
+        "finite": true
+      },
+      "neutral": {
+        "mean": 0.010134134795787283,
+        "ci_lo": 0.007514899182504173,
+        "ci_hi": 0.013033564533329179,
+        "n": 64,
+        "finite": true
+      },
+      "no_image": {
+        "mean": 0.09238107583316929,
+        "ci_lo": 0.06958623745671359,
+        "ci_hi": 0.11695506646653125,
+        "n": 64,
+        "finite": true
+      },
+      "sadness": {
+        "mean": 0.023518251443031102,
+        "ci_lo": 0.016544228499270064,
+        "ci_hi": 0.031934295703721145,
+        "n": 64,
+        "finite": true
+      }
+    }
+  },
+  "item_hashes": {
+    "dictator_fwd": "bb4c17c15caed69f",
+    "ug_offer_fwd": "d153170477469e0a",
+    "ug_respond_90_10": "c61f9bcbf5930a0d"
+  },
+  "gates_summary": {
+    "passed": 6,
+    "total": 7
+  }
+}
