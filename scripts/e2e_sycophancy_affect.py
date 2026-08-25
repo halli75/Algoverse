@@ -561,6 +561,14 @@ def main() -> None:
     except Exception:
         pass
     if not os.environ.get("HF_TOKEN"):
+        for cand in (Path.home() / ".hf_token", Path.home() / ".cache" / "huggingface" / "token"):
+            if cand.is_file():
+                tok = cand.read_text(encoding="utf-8").strip()
+                if tok:
+                    os.environ["HF_TOKEN"] = tok
+                    os.environ.setdefault("HUGGING_FACE_HUB_TOKEN", tok)
+                    break
+    if not os.environ.get("HF_TOKEN"):
         note("HF_TOKEN missing — gated model load may fail")
     if not torch.cuda.is_available():
         die("no CUDA")
@@ -839,7 +847,7 @@ def main() -> None:
     try:
         model.processor = AutoProcessor.from_pretrained(mid, token=token)
     except Exception as e:
-        note(f"processor attach failed: {e}")
+        die(f"processor attach failed: {e}")
     model.eval()
     for p in model.parameters():
         p.requires_grad = False
@@ -1184,17 +1192,12 @@ def main() -> None:
     # ------------------------------------------------------------------ Phase 2 directions
     heartbeat("phase2_dirs")
     log("PHASE2 V/A (EmoBank) and s")
-    n_emo_tr = int(SZ.get("N_EMO_TRAIN") or SZ.get("N_GOE") or 64)
-    n_emo_te = int(SZ.get("N_EMO_TEST") or 64)
+    # Amendment: official EmoBank train fit / test gate. Do not subsample.
     emo_train = list(emobank["train"])
     emo_test = list(emobank["test"])
-    rng_emo = random.Random(SEED0)
-    rng_emo.shuffle(emo_train)
-    rng_emo.shuffle(emo_test)
     neu_txt = [g for g in emo_train if g["neutral"]]
-    goe_tr = [g for g in emo_train if not g["neutral"]][:n_emo_tr]
-    goe_ho = emo_test[:n_emo_te]
-    neu_txt = neu_txt[: max(8, min(len(neu_txt), n_emo_tr))]
+    goe_tr = [g for g in emo_train if not g["neutral"]]
+    goe_ho = list(emo_test)
     if len(goe_tr) < 8 or len(neu_txt) < 2 or len(goe_ho) < 3:
         die(
             f"EmoBank too small for VA fit/gate train_nonneu={len(goe_tr)} "
@@ -1207,7 +1210,9 @@ def main() -> None:
     # train non-neutral minus neutral, then ridge V/A on official train
     emo_vecs = []
     y_v, y_a = [], []
-    for g in goe_tr:
+    for i, g in enumerate(goe_tr):
+        if i % 16 == 0:
+            heartbeat("va_fit", i=i, n=len(goe_tr))
         try:
             vec = resid_layers(build_inputs(g["text"])) - A_neu
             emo_vecs.append(vec)
@@ -1262,7 +1267,9 @@ def main() -> None:
         return float(np.mean(pv)), float(np.mean(pa))
 
     ho_v_true, ho_v_hat, ho_a_true, ho_a_hat = [], [], [], []
-    for g in goe_ho:
+    for i, g in enumerate(goe_ho):
+        if i % 16 == 0:
+            heartbeat("va_test", i=i, n=len(goe_ho))
         try:
             pv, pa = proj_va(text=g["text"], prompt=g["text"])
             ho_v_true.append(g["valence"])
@@ -1299,6 +1306,10 @@ def main() -> None:
         "emobank_commit": EMOBANK_COMMIT,
         "fit_split": "train",
         "gate_split": "test",
+        "official_splits": True,
+        "n_fit_nonneutral": len(goe_tr),
+        "n_fit_neutral": len(neu_txt),
+        "n_heldout_test": len(goe_ho),
         "neutral_rule": emobank["meta"]["neutral_rule"],
     }
     if not va_ok:

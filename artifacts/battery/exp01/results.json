@@ -1,0 +1,185 @@
+{
+  "experiment": "exp01",
+  "started": "2026-08-23 04:47:30",
+  "elapsed_s": 212.7,
+  "complete": true,
+  "items_path": "/home/jupyter-asca-ec66/Algoverse/data/battery/exp01_lotteries.json",
+  "meta": {
+    "split_hash": "1e8ea1c22144dd9d",
+    "n_eval": 6793,
+    "n_jpg": 23185,
+    "exclusive_n": {
+      "fear": 9,
+      "anger": 26,
+      "sadness": 29,
+      "happiness": 500,
+      "peace_confidence": 160,
+      "neutral": 1129
+    },
+    "fallback_n": {
+      "fear": 65,
+      "anger": 71,
+      "sadness": 91,
+      "happiness": 1790,
+      "peace_confidence": 1356,
+      "neutral": 2167
+    },
+    "used_n": {
+      "fear": 12,
+      "anger": 12,
+      "sadness": 12,
+      "happiness": 12,
+      "peace_confidence": 12,
+      "neutral": 12
+    },
+    "used_fallback": true,
+    "emotic": "/home/jupyter-asca-ec66/algoverse_run/emotic_data",
+    "img_root": "/home/jupyter-asca-ec66/algoverse_run/emotic_data/emotic",
+    "g3_ok": false,
+    "g3": {
+      "smd_v": 0.9896727008433245,
+      "smd_a": 0.28043117573709647,
+      "d_gap": -0.625,
+      "pair_ok": false
+    },
+    "tier": "full",
+    "model": "google/gemma-4-E4B-it",
+    "weights": "nf4",
+    "compute": "bf16"
+  },
+  "rates": {
+    "fear": {
+      "n": 120,
+      "n_valid": 120,
+      "p_risky": 0.4666666666666667,
+      "ci95_wilson": [
+        0.3798276424616983,
+        0.5555737089420304
+      ],
+      "letter_mass_mean": 0.8880523876670243,
+      "ci95_boot": [
+        0.2,
+        0.8
+      ]
+    },
+    "anger": {
+      "n": 120,
+      "n_valid": 120,
+      "p_risky": 0.375,
+      "ci95_wilson": [
+        0.2935229130478532,
+        0.4642321547161293
+      ],
+      "letter_mass_mean": 0.921644002579948,
+      "ci95_boot": [
+        0.1,
+        0.7
+      ]
+    },
+    "sadness": {
+      "n": 120,
+      "n_valid": 120,
+      "p_risky": 0.4583333333333333,
+      "ci95_wilson": [
+        0.371859770816446,
+        0.5473919184382149
+      ],
+      "letter_mass_mean": 0.9298849249445387,
+      "ci95_boot": [
+        0.2,
+        0.8
+      ]
+    },
+    "happiness": {
+      "n": 120,
+      "n_valid": 120,
+      "p_risky": 0.49166666666666664,
+      "ci95_wilson": [
+        0.4038741586989492,
+        0.5799761791519831
+      ],
+      "letter_mass_mean": 0.8584341152685132,
+      "ci95_boot": [
+        0.2,
+        0.8
+      ]
+    },
+    "peace_confidence": {
+      "n": 120,
+      "n_valid": 120,
+      "p_risky": 0.4666666666666667,
+      "ci95_wilson": [
+        0.3798276424616983,
+        0.5555737089420304
+      ],
+      "letter_mass_mean": 0.9266169351203037,
+      "ci95_boot": [
+        0.2,
+        0.8
+      ]
+    },
+    "neutral": {
+      "n": 120,
+      "n_valid": 120,
+      "p_risky": 0.49166666666666664,
+      "ci95_wilson": [
+        0.4038741586989492,
+        0.5799761791519831
+      ],
+      "letter_mass_mean": 0.9137099870931706,
+      "ci95_boot": [
+        0.2,
+        0.8
+      ]
+    },
+    "no_image": {
+      "n": 10,
+      "n_valid": 10,
+      "p_risky": 0.0,
+      "ci95_wilson": [
+        0.0,
+        0.2775401687666165
+      ],
+      "letter_mass_mean": 0.9999846368387807,
+      "ci95_boot": [
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "delta_anger_minus_fear": -0.09166666666666667,
+  "delta_ci95_boot": [
+    -0.5,
+    0.30000000000000004
+  ],
+  "letter_valid_rate": 1.0,
+  "risky_letter_side_effect": 0.9041095890410958,
+  "risky_is_a_frac": 0.5,
+  "pooled_fear_anger": 0.42083333333333334,
+  "crra": {
+    "ok": true,
+    "n": 240,
+    "rho_fear": 1.5,
+    "rho_anger": 1.0,
+    "beta": 4.0,
+    "a_side": -0.2,
+    "nll": 143.84971357075307
+  },
+  "gates": {
+    "G1_lock": true,
+    "G2_images": true,
+    "G3_match": false,
+    "G4_complete": true,
+    "G5_letter": true,
+    "G6_balance": true,
+    "G7_side": false,
+    "G8_range": true
+  },
+  "gates_passed": 6,
+  "gates_total": 8,
+  "mechanism_answer": "The appraisal-tendency prediction was not supported: P(risky|anger)=0.375, P(risky|fear)=0.467, delta anger-fear=-0.092 (95% crossed-bootstrap CI [-0.500,0.300]; gates 6/8).",
+  "n_trials": 730,
+  "n_expect": 730,
+  "n_boot": 10000,
+  "hf_dataset": "halli75/algoverse-battery-exp01"
+}

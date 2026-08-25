@@ -1,0 +1,11 @@
+{
+  "exp": "exp09",
+  "stage": "done",
+  "ts": 1787462292.058425,
+  "elapsed_s": 676.9,
+  "gpu": "5",
+  "pid": 2061476,
+  "passed": 14,
+  "total": 14,
+  "hard_passed": 12
+}

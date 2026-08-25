@@ -1,0 +1,1 @@
+{"ts": "2026-08-23 04:46:54", "unix": 1787460414.0331671, "stage": "done", "elapsed_s": 634.1, "job": "exp03", "gpu": "6", "model": "google/gemma-4-E4B-it", "weights_dtype": "nf4", "compute_dtype": "bf16", "headline": "CROSS_MODAL_DIVERGE"}

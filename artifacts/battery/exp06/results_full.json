@@ -1,0 +1,397 @@
+{
+  "experiment": "exp06",
+  "tier": "full",
+  "model": {
+    "id": "google/gemma-4-E4B-it",
+    "weights_dtype": "nf4",
+    "compute_dtype": "bf16",
+    "gpu": "NVIDIA A100-SXM4-40GB"
+  },
+  "source": {
+    "repo": "https://github.com/rossjillian/llm-economicus",
+    "commit": "b0cd44f586c427b3bad2ef52cb687480f547874a",
+    "design": "Rachlin1991 / Economicus wait comps()"
+  },
+  "split_hash": "1e8ea1c22144dd9d",
+  "n_images": {
+    "fear": 4,
+    "anger": 4,
+    "sad": 4,
+    "happy": 4,
+    "peace": 4,
+    "neutral": 4,
+    "no-image": 1
+  },
+  "n_items": 217,
+  "n_trials": 5425,
+  "k": {
+    "fear": 0.002381965336701655,
+    "anger": 0.002381965336701655,
+    "sad": 192.93522228976235,
+    "happy": 192.93522228976235,
+    "peace": 0.002381965336701655,
+    "neutral": 0.00040609660258211663,
+    "no-image": 0.00040609660258211663
+  },
+  "primary": {
+    "k_by_condition": {
+      "fear": 0.002381965336701655,
+      "anger": 0.002381965336701655,
+      "sad": 192.93522228976235,
+      "happy": 192.93522228976235,
+      "peace": 0.002381965336701655,
+      "neutral": 0.00040609660258211663,
+      "no-image": 0.00040609660258211663
+    },
+    "estimator": "kirby_max_consistency"
+  },
+  "conditions": {
+    "fear": {
+      "k": 0.002381965336701655,
+      "k_nls": 0.0004030068552670356,
+      "kirby": {
+        "k": 0.002381965336701655,
+        "n": 812,
+        "n_consistent": 456,
+        "consistency": 0.5615763546798029,
+        "n_unparsed": 0,
+        "n_zero_prefers_now": 10,
+        "n_zero": 28,
+        "n_dom_later": 3,
+        "n_dom": 28,
+        "censored": false,
+        "method": "kirby_max_consistency"
+      },
+      "ie": {
+        "1 month": 995.0,
+        "6 months": 995.0,
+        "1 year": 995.0,
+        "5 years": 995.0,
+        "10 years": 1000.0,
+        "25 years": 983.3333333333334,
+        "50 years": 983.3333333333334
+      },
+      "mono_decreasing_ie": false,
+      "n_trials": 868,
+      "n_parsed": 868,
+      "parse_rate": 1.0,
+      "fc_mass": 0.9866323463728891,
+      "p_now": 0.4619815668202765,
+      "competence_some_money": 0.6428571428571429,
+      "nls_k": 0.0004030068552670356,
+      "nls_rmse": 4.600849443489138
+    },
+    "anger": {
+      "k": 0.002381965336701655,
+      "k_nls": 0.0006157619545540666,
+      "kirby": {
+        "k": 0.002381965336701655,
+        "n": 812,
+        "n_consistent": 465,
+        "consistency": 0.5726600985221675,
+        "n_unparsed": 0,
+        "n_zero_prefers_now": 2,
+        "n_zero": 28,
+        "n_dom_later": 2,
+        "n_dom": 28,
+        "censored": false,
+        "method": "kirby_max_consistency"
+      },
+      "ie": {
+        "1 month": 995.0,
+        "6 months": 995.0,
+        "1 year": 995.0,
+        "5 years": 995.0,
+        "10 years": 930.0,
+        "25 years": 985.0,
+        "50 years": 983.3333333333334
+      },
+      "mono_decreasing_ie": false,
+      "n_trials": 868,
+      "n_parsed": 868,
+      "parse_rate": 1.0,
+      "fc_mass": 0.9938977572829124,
+      "p_now": 0.4412442396313364,
+      "competence_some_money": 0.9285714285714286,
+      "nls_k": 0.0006157619545540666,
+      "nls_rmse": 24.855110428585803
+    },
+    "sad": {
+      "k": 192.93522228976235,
+      "k_nls": 0.0003940255522530034,
+      "kirby": {
+        "k": 192.93522228976235,
+        "n": 812,
+        "n_consistent": 418,
+        "consistency": 0.5147783251231527,
+        "n_unparsed": 0,
+        "n_zero_prefers_now": 11,
+        "n_zero": 28,
+        "n_dom_later": 4,
+        "n_dom": 28,
+        "censored": false,
+        "method": "kirby_max_consistency"
+      },
+      "ie": {
+        "1 month": 995.0,
+        "6 months": 995.0,
+        "1 year": 995.0,
+        "5 years": 995.0,
+        "10 years": 1000.0,
+        "25 years": 985.0,
+        "50 years": 983.3333333333334
+      },
+      "mono_decreasing_ie": false,
+      "n_trials": 868,
+      "n_parsed": 868,
+      "parse_rate": 1.0,
+      "fc_mass": 0.9751881516541748,
+      "p_now": 0.5172811059907834,
+      "competence_some_money": 0.6071428571428571,
+      "nls_k": 0.0003940255522530034,
+      "nls_rmse": 4.2782526462046455
+    },
+    "happy": {
+      "k": 192.93522228976235,
+      "k_nls": 0.022608221975311853,
+      "kirby": {
+        "k": 192.93522228976235,
+        "n": 812,
+        "n_consistent": 437,
+        "consistency": 0.5381773399014779,
+        "n_unparsed": 0,
+        "n_zero_prefers_now": 13,
+        "n_zero": 28,
+        "n_dom_later": 3,
+        "n_dom": 28,
+        "censored": false,
+        "method": "kirby_max_consistency"
+      },
+      "ie": {
+        "1 month": 995.0,
+        "6 months": 995.0,
+        "1 year": 995.0,
+        "5 years": 995.0,
+        "10 years": 1000.0,
+        "25 years": 985.0,
+        "50 years": 0.0
+      },
+      "mono_decreasing_ie": false,
+      "n_trials": 868,
+      "n_parsed": 868,
+      "parse_rate": 1.0,
+      "fc_mass": 0.9882232825438144,
+      "p_now": 0.5426267281105991,
+      "competence_some_money": 0.5357142857142857,
+      "nls_k": 0.022608221975311853,
+      "nls_rmse": 234.1504433167543
+    },
+    "peace": {
+      "k": 0.002381965336701655,
+      "k_nls": 0.0003940255522530034,
+      "kirby": {
+        "k": 0.002381965336701655,
+        "n": 812,
+        "n_consistent": 431,
+        "consistency": 0.5307881773399015,
+        "n_unparsed": 0,
+        "n_zero_prefers_now": 6,
+        "n_zero": 28,
+        "n_dom_later": 3,
+        "n_dom": 28,
+        "censored": false,
+        "method": "kirby_max_consistency"
+      },
+      "ie": {
+        "1 month": 995.0,
+        "6 months": 995.0,
+        "1 year": 995.0,
+        "5 years": 995.0,
+        "10 years": 1000.0,
+        "25 years": 985.0,
+        "50 years": 983.3333333333334
+      },
+      "mono_decreasing_ie": false,
+      "n_trials": 868,
+      "n_parsed": 868,
+      "parse_rate": 1.0,
+      "fc_mass": 0.9912495994527636,
+      "p_now": 0.4838709677419355,
+      "competence_some_money": 0.7857142857142857,
+      "nls_k": 0.0003940255522530034,
+      "nls_rmse": 4.2782526462046455
+    },
+    "neutral": {
+      "k": 0.00040609660258211663,
+      "k_nls": 0.0003624827375571914,
+      "kirby": {
+        "k": 0.00040609660258211663,
+        "n": 812,
+        "n_consistent": 420,
+        "consistency": 0.5172413793103449,
+        "n_unparsed": 0,
+        "n_zero_prefers_now": 8,
+        "n_zero": 28,
+        "n_dom_later": 4,
+        "n_dom": 28,
+        "censored": false,
+        "method": "kirby_max_consistency"
+      },
+      "ie": {
+        "1 month": 995.0,
+        "6 months": 995.0,
+        "1 year": 995.0,
+        "5 years": 995.0,
+        "10 years": 1000.0,
+        "25 years": 985.0,
+        "50 years": 985.0
+      },
+      "mono_decreasing_ie": false,
+      "n_trials": 868,
+      "n_parsed": 868,
+      "parse_rate": 1.0,
+      "fc_mass": 0.9919559288587516,
+      "p_now": 0.4976958525345622,
+      "competence_some_money": 0.7142857142857143,
+      "nls_k": 0.0003624827375571914,
+      "nls_rmse": 4.41966707889428
+    },
+    "no-image": {
+      "k": 0.00040609660258211663,
+      "k_nls": 0.0006020392482872009,
+      "kirby": {
+        "k": 0.00040609660258211663,
+        "n": 203,
+        "n_consistent": 134,
+        "consistency": 0.6600985221674877,
+        "n_unparsed": 0,
+        "n_zero_prefers_now": 0,
+        "n_zero": 7,
+        "n_dom_later": 0,
+        "n_dom": 7,
+        "censored": false,
+        "method": "kirby_max_consistency"
+      },
+      "ie": {
+        "1 month": 995.0,
+        "6 months": 995.0,
+        "1 year": 995.0,
+        "5 years": 995.0,
+        "10 years": 930.0,
+        "25 years": 985.0,
+        "50 years": 985.0
+      },
+      "mono_decreasing_ie": false,
+      "n_trials": 217,
+      "n_parsed": 217,
+      "parse_rate": 1.0,
+      "fc_mass": 0.9925272088956931,
+      "p_now": 0.35944700460829493,
+      "competence_some_money": 1.0,
+      "nls_k": 0.0006020392482872009,
+      "nls_rmse": 24.986362499671884
+    }
+  },
+  "complete": true,
+  "mechanism_answer": "FULL 5425-trial Economicus wait on Gemma-4-E4B-it (nf4/bf16): parse=1.0, mean FC mass=0.989. Immediate equivalents stay near $1000 across delays, so NLS k is tiny (~4e-4) in every arm except happy (0.023, 50-year IE collapsed to $0). Kirby max-consistency splits sad/happy as impatient (k=193) vs fear/anger/peace (k=0.0024) and neutral/no-image (k=4e-4), but consistency is only 0.51–0.66 so that split is weakly identified. No-image chooses later more often (p_now=0.36) than any image arm (0.44–0.54). Affect does not yield a clean monotone discount-rate order.",
+  "gate": {
+    "passed": 17,
+    "total": 17,
+    "checks": [
+      {
+        "name": "model_id",
+        "ok": true,
+        "detail": "google/gemma-4-E4B-it"
+      },
+      {
+        "name": "weights_nf4",
+        "ok": true,
+        "detail": "nf4"
+      },
+      {
+        "name": "compute_bf16",
+        "ok": true,
+        "detail": "bf16"
+      },
+      {
+        "name": "split_hash",
+        "ok": true,
+        "detail": "1e8ea1c22144dd9d"
+      },
+      {
+        "name": "all_conditions",
+        "ok": true,
+        "detail": [
+          "anger",
+          "fear",
+          "happy",
+          "neutral",
+          "no-image",
+          "peace",
+          "sad"
+        ]
+      },
+      {
+        "name": "finite_k_fear",
+        "ok": true,
+        "detail": 0.002381965336701655
+      },
+      {
+        "name": "finite_k_anger",
+        "ok": true,
+        "detail": 0.002381965336701655
+      },
+      {
+        "name": "finite_k_sad",
+        "ok": true,
+        "detail": 192.93522228976235
+      },
+      {
+        "name": "finite_k_happy",
+        "ok": true,
+        "detail": 192.93522228976235
+      },
+      {
+        "name": "finite_k_peace",
+        "ok": true,
+        "detail": 0.002381965336701655
+      },
+      {
+        "name": "finite_k_neutral",
+        "ok": true,
+        "detail": 0.00040609660258211663
+      },
+      {
+        "name": "finite_k_no-image",
+        "ok": true,
+        "detail": 0.00040609660258211663
+      },
+      {
+        "name": "all_k_finite",
+        "ok": true,
+        "detail": null
+      },
+      {
+        "name": "fc_mass_0.8",
+        "ok": true,
+        "detail": 0.9885248964372855
+      },
+      {
+        "name": "parse_rate_0.8",
+        "ok": true,
+        "detail": 1.0
+      },
+      {
+        "name": "noimage_baseline",
+        "ok": true,
+        "detail": 0.00040609660258211663
+      },
+      {
+        "name": "no_v3_write",
+        "ok": true,
+        "detail": false
+      }
+    ]
+  },
+  "elapsed_s": 1552.224374294281
+}

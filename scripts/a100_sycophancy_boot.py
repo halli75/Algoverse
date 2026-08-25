@@ -53,6 +53,9 @@ def ensure_pkg(mod: str, pip_spec: str | None = None) -> None:
         spec = pip_spec or mod
         log(f"pip install {spec}")
         subprocess.check_call([sys.executable, "-m", "pip", "install", "-q", spec])
+    local_bin = str(Path.home() / ".local" / "bin")
+    if local_bin not in os.environ.get("PATH", ""):
+        os.environ["PATH"] = local_bin + os.pathsep + os.environ.get("PATH", "")
 
 
 def set_paths() -> dict[str, Path]:
@@ -125,7 +128,7 @@ def ensure_emotic(paths: dict[str, Path]) -> None:
         zip_path = root / "emotic_images.zip"
         if not (zip_path.exists() and zip_path.stat().st_size > 1_000_000_000):
             subprocess.check_call(
-                ["gdown", EMOTIC_DRIVE, "-O", str(zip_path), "--fuzzy"]
+                [sys.executable, "-m", "gdown", EMOTIC_DRIVE, "-O", str(zip_path)]
             )
         hb("unpack")
         img_root = root / "emotic_images"
@@ -151,6 +154,7 @@ def ensure_emotic(paths: dict[str, Path]) -> None:
             subprocess.check_call(["ln", "-sfn", str(ann), str(emotic_root / "Annotations")])
         hb("mat2py")
         if not csv_path.exists():
+            ensure_pkg("cv2", "opencv-python-headless")
             repo = root / "emotic_repo"
             if not repo.exists():
                 subprocess.check_call(
@@ -169,9 +173,13 @@ def ensure_emotic(paths: dict[str, Path]) -> None:
             )
             if old in text:
                 mat2py.write_text(text.replace(old, new), encoding="utf-8")
+            env = os.environ.copy()
+            user_site = str(Path.home() / ".local" / "lib" / f"python{sys.version_info.major}.{sys.version_info.minor}" / "site-packages")
+            env["PYTHONPATH"] = user_site + os.pathsep + env.get("PYTHONPATH", "")
             subprocess.check_call(
                 [sys.executable, "mat2py.py", "--data_dir", str(emotic_root), "--label", "all"],
                 cwd=str(repo),
+                env=env,
             )
 
     n_jpg = sum(1 for _ in (emotic_root / "emotic").rglob("*.jpg"))

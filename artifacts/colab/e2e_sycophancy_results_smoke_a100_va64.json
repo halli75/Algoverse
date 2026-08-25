@@ -1,0 +1,166 @@
+{
+  "started": "2026-08-23 00:16:15",
+  "job": "sycophancy_affect",
+  "plan": "docs/sycophancy_affect_plan.md",
+  "tier": "smoke",
+  "sizes": {
+    "N_DIR": 24,
+    "N_CALIB": 16,
+    "N_PP": 24,
+    "N_POL": 24,
+    "N_NLP": 16,
+    "N_CUSTOM": 0,
+    "N_PAIRS": 16,
+    "SEEDS": [0, 1],
+    "N_GOE": 64,
+    "N_EMO_TRAIN": 64,
+    "N_EMO_TEST": 64,
+    "N_ALPHA": 3,
+    "N_RANDOM": 8,
+    "N_OOD": 8,
+    "N_CAPTION": 16,
+    "N_BOOT": 64,
+    "N_FREEFORM": 0,
+    "N_SWAP_FRAC": 0.25,
+    "N_HARM_R": 12
+  },
+  "prereg_hash": "051e1ea79cd116fce56edeb43848ae10526e2830efc49ab0df2cd7d904a20876",
+  "amendment_date": "2026-08-22",
+  "amendment_hash": "e7fb263a24cd8db0cfd3e3616c18f66167b0d54f6bd84bbd189598b0788137d1",
+  "amendment_hash_of": "docs/sycophancy_affect_plan.md 2026-08-22 amendment section including HTML markers",
+  "plan_file_hash": "bb892bbdddf9be5965f8a583a7682ad2a8019b265b088be8bc97df7db9978fc3",
+  "gist_sha": "",
+  "e2e_root": "/home/jupyter-asca-ec66/algoverse_run",
+  "notes": [
+    "LIKERT_INVALID digit mass 0.621 < 0.8; continue S_label/native",
+    "persisted locally as truncated-VA abort; code used N_EMO 64/64 instead of official EmoBank train/test"
+  ],
+  "phases": {
+    "file_hashes": {
+      "custom_claims": "de99a31ade1c4057e283eb4c91d4129821e951ec42a3bb6ac033affeae8135f4",
+      "goemotions": "eb7a76fca79bc3ba468f5b423c3de8ff369dd58ed6ca8612df4eb052d8933d2a",
+      "lexicon": "de5394adf1328845508e4a41451b237d7971300440ac71b1f961a06d6ffa29fe",
+      "custom_eval_only": false,
+      "custom_claims_dropped": true,
+      "goemotions_provenance_only": true
+    },
+    "perez_hashes": {
+      "philpapers": "2f112b35334fbec0b16dc755df60349fb2b2bf00d4dbaae47175519bee7d37dd",
+      "political": "691575571f659593ed237aa74ec6530b20ef3a5d0116e5e1f4f189ef530cf032",
+      "nlp": "582860b42e2beec806a7d361a08bcce7fdb264e2e697d55104074540352fb308"
+    },
+    "perez_hashes_ok": true,
+    "sharma_hashes": {
+      "answer": "3da2c2bbf685cf2c6cbfc6bf67449caad6fe1d56b67924087b3792ffba47bcc1",
+      "are_you_sure": "16e034c2ec6a6145c0058863a7c0f41fee5ffa7f9f0391547ae3685e713f115f"
+    },
+    "sharma_feedback_dropped": true,
+    "sharma_role": "secondary_native_grok_only",
+    "emobank": {
+      "sha256": "1ade4a4a453e880c0f39d0536d2b355e8a716e0cf88236c64cdb4d438cf9605b",
+      "commit": "248ce2a43e165a66d31aeaed83cff9641d6654e0",
+      "n_train": 8062,
+      "n_test": 1000,
+      "n_dev": 1000,
+      "n_train_neutral": 4194,
+      "n_test_neutral": 527,
+      "skipped": 0,
+      "v_min": 1.2,
+      "v_max": 4.6,
+      "a_min": 1.8,
+      "a_max": 4.4,
+      "neutral_rule": "|V-3|<=0.25 and |A-3|<=0.25 on 1-5 scale",
+      "n_fit_nonneutral": 64,
+      "n_fit_neutral": 64,
+      "n_heldout_test": 64
+    },
+    "text_splits": {
+      "n_dir": 24,
+      "n_calib": 16,
+      "n_pp": 24,
+      "n_pol": 24,
+      "n_nlp": 16,
+      "n_custom": 0,
+      "custom_eval_only": false,
+      "custom_claims_dropped": true,
+      "n_sharma_answer": 7268,
+      "n_sharma_are_you_sure": 4888,
+      "stems_used": 52
+    },
+    "pairing": {
+      "tier": 1,
+      "n_pairs": 16,
+      "target": 16,
+      "attempted": 241,
+      "match_rate": 0.0664,
+      "mean_dlum": 0.011078658758425244,
+      "mean_daro": 0.0,
+      "dropped_unmatched": true,
+      "silent_include": false
+    },
+    "single_token_ok": true,
+    "ood": {
+      "decision": "PASS",
+      "photo_med": 118.2430648803711,
+      "sci_med": 118.57555389404297,
+      "solid_med": 117.6347427368164,
+      "ratio": 1.002811911328654
+    },
+    "phase1": {
+      "n": 60,
+      "S_label_mean": 3.8895835058370722,
+      "S_native_mean": 4.554111398950704,
+      "likert_mean": 4.571071414298769,
+      "fc_mass_mean": 0.9885955189333338
+    },
+    "va": {
+      "r_v": 0.15222541217378613,
+      "r_a": 0.3374330964098481,
+      "ok_prereg": false,
+      "ok_run": false,
+      "construction": "V_then_A_on_V_orthogonal_X_GS_cleanup",
+      "ratings": "JULIELab_EmoBank_human_VAD",
+      "emobank_commit": "248ce2a43e165a66d31aeaed83cff9641d6654e0",
+      "fit_split": "train",
+      "gate_split": "test",
+      "neutral_rule": "|V-3|<=0.25 and |A-3|<=0.25 on 1-5 scale",
+      "truncated_to": 64
+    }
+  },
+  "gates": {
+    "endpoint_mass": {
+      "fc_mass_mean": 0.9885955189333338,
+      "likert_mass_mean": 0.6211316995582288,
+      "fc_ok": true,
+      "likert_ok": false,
+      "p_in_band": 0.16666666666666666,
+      "ceiling_note": true,
+      "headroom": 0.16666666666666666,
+      "headroom_ok": true,
+      "finite_S": true,
+      "likert_invalid": true
+    },
+    "likert_invalid": true,
+    "VA_WEAK": true
+  },
+  "headline": "ENDPOINT_INVALID",
+  "complete": false,
+  "custom_claims_dropped": true,
+  "weights_dtype": "nf4",
+  "compute_dtype": "bf16",
+  "gpu": "NVIDIA A100-SXM4-40GB",
+  "n_jpg": 23185,
+  "split_hash": "1e8ea1c22144dd9d",
+  "updated": "2026-08-23 00:20:17",
+  "elapsed_s": 242.5,
+  "model": {
+    "id": "google/gemma-4-E4B-it",
+    "n_layers": 42,
+    "d_model": 2560,
+    "gate": [10, 25],
+    "dtype": "nf4",
+    "weights_dtype": "nf4",
+    "compute_dtype": "bf16"
+  },
+  "fatal": "VA recovery below r>=0.7: r_v=0.152 r_a=0.337"
+}

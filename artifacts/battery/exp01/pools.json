@@ -1,0 +1,765 @@
+{
+  "fear": [
+    {
+      "rid": "framesdb/images/frame_1f1ehuhja4m700o1.jpg",
+      "V": 4.0,
+      "A": 6.0,
+      "D": 8.0,
+      "labs": [
+        "Anticipation",
+        "Fatigue",
+        "Fear",
+        "Pain"
+      ]
+    },
+    {
+      "rid": "mscoco/images/COCO_train2014_000000048032.jpg",
+      "V": 6.0,
+      "A": 10.0,
+      "D": 10.0,
+      "labs": [
+        "Anticipation",
+        "Confidence",
+        "Excitement",
+        "Fear",
+        "Yearning"
+      ]
+    },
+    {
+      "rid": "mscoco/images/COCO_train2014_000000245598.jpg",
+      "V": 7.5,
+      "A": 8.5,
+      "D": 7.5,
+      "labs": [
+        "Anticipation",
+        "Confidence",
+        "Engagement",
+        "Fear"
+      ]
+    },
+    {
+      "rid": "mscoco/images/COCO_train2014_000000025549.jpg",
+      "V": 8.0,
+      "A": 9.0,
+      "D": 8.0,
+      "labs": [
+        "Fear"
+      ]
+    },
+    {
+      "rid": "mscoco/images/COCO_train2014_000000296424.jpg",
+      "V": 6.0,
+      "A": 7.0,
+      "D": 6.0,
+      "labs": [
+        "Fear"
+      ]
+    },
+    {
+      "rid": "emodb_small/images/3jrq0k5xmvsl03z6qp.jpg",
+      "V": 5.0,
+      "A": 4.0,
+      "D": 5.0,
+      "labs": [
+        "Disconnection",
+        "Doubt/Confusion",
+        "Fatigue",
+        "Fear",
+        "Sadness"
+      ]
+    },
+    {
+      "rid": "emodb_small/images/cmlzw7v76zskkuxg85.jpg",
+      "V": 3.0,
+      "A": 5.0,
+      "D": 5.0,
+      "labs": [
+        "Annoyance",
+        "Disconnection",
+        "Fear"
+      ]
+    },
+    {
+      "rid": "mscoco/images/COCO_train2014_000000052348.jpg",
+      "V": 6.0,
+      "A": 7.0,
+      "D": 7.0,
+      "labs": [
+        "Anticipation",
+        "Disquietment",
+        "Fear"
+      ]
+    },
+    {
+      "rid": "mscoco/images/COCO_train2014_000000525636.jpg",
+      "V": 5.0,
+      "A": 7.5,
+      "D": 6.0,
+      "labs": [
+        "Anticipation",
+        "Confidence",
+        "Engagement",
+        "Fear"
+      ]
+    },
+    {
+      "rid": "mscoco/images/COCO_val2014_000000572453.jpg",
+      "V": 6.0,
+      "A": 5.0,
+      "D": 8.0,
+      "labs": [
+        "Anticipation",
+        "Engagement",
+        "Fear",
+        "Surprise"
+      ]
+    },
+    {
+      "rid": "framesdb/images/frame_7owu2be8j435v2cg.jpg",
+      "V": 7.0,
+      "A": 3.0,
+      "D": 7.0,
+      "labs": [
+        "Anticipation",
+        "Disquietment",
+        "Engagement",
+        "Excitement",
+        "Fear",
+        "Sadness",
+        "Suffering"
+      ]
+    },
+    {
+      "rid": "mscoco/images/COCO_val2014_000000501281.jpg",
+      "V": 7.0,
+      "A": 7.0,
+      "D": 7.0,
+      "labs": [
+        "Anticipation",
+        "Doubt/Confusion",
+        "Fear",
+        "Pain"
+      ]
+    }
+  ],
+  "anger": [
+    {
+      "rid": "emodb_small/images/gv232bwvvkb8m27mh1.jpg",
+      "V": 1.0,
+      "A": 10.0,
+      "D": 10.0,
+      "labs": [
+        "Anger"
+      ]
+    },
+    {
+      "rid": "emodb_small/images/g913ioe8wwg2ej06h0.jpg",
+      "V": 3.0,
+      "A": 7.0,
+      "D": 4.0,
+      "labs": [
+        "Anger"
+      ]
+    },
+    {
+      "rid": "emodb_small/images/gs84txnh5el02zkbp9.jpg",
+      "V": 3.0,
+      "A": 7.0,
+      "D": 6.0,
+      "labs": [
+        "Anger",
+        "Aversion",
+        "Disapproval"
+      ]
+    },
+    {
+      "rid": "emodb_small/images/gyi3tunx4pd4uep74y.jpg",
+      "V": 2.0,
+      "A": 4.0,
+      "D": 4.0,
+      "labs": [
+        "Anger",
+        "Annoyance",
+        "Disapproval"
+      ]
+    },
+    {
+      "rid": "mscoco/images/COCO_train2014_000000249086.jpg",
+      "V": 7.0,
+      "A": 5.0,
+      "D": 6.0,
+      "labs": [
+        "Anger"
+      ]
+    },
+    {
+      "rid": "emodb_small/images/gm73cvq8lp8dvwxm1s.jpg",
+      "V": 5.0,
+      "A": 7.0,
+      "D": 6.0,
+      "labs": [
+        "Anger",
+        "Annoyance",
+        "Disapproval"
+      ]
+    },
+    {
+      "rid": "emodb_small/images/fmedw302t8gevaadcs.jpg",
+      "V": 3.0,
+      "A": 6.0,
+      "D": 7.0,
+      "labs": [
+        "Anger",
+        "Annoyance",
+        "Disapproval"
+      ]
+    },
+    {
+      "rid": "framesdb/images/frame_img70kzyxcwpcep2.jpg",
+      "V": 5.0,
+      "A": 2.0,
+      "D": 3.0,
+      "labs": [
+        "Anger"
+      ]
+    },
+    {
+      "rid": "mscoco/images/COCO_val2014_000000542755.jpg",
+      "V": 5.0,
+      "A": 10.0,
+      "D": 9.0,
+      "labs": [
+        "Anger"
+      ]
+    },
+    {
+      "rid": "framesdb/images/frame_cdiw8wrcis87vk42.jpg",
+      "V": 6.0,
+      "A": 7.0,
+      "D": 6.0,
+      "labs": [
+        "Anger",
+        "Annoyance"
+      ]
+    },
+    {
+      "rid": "mscoco/images/COCO_train2014_000000222977.jpg",
+      "V": 6.0,
+      "A": 4.0,
+      "D": 7.0,
+      "labs": [
+        "Anger"
+      ]
+    },
+    {
+      "rid": "framesdb/images/frame_dy9lbeqikdu279x7.jpg",
+      "V": 5.0,
+      "A": 2.0,
+      "D": 9.0,
+      "labs": [
+        "Anger"
+      ]
+    }
+  ],
+  "sadness": [
+    {
+      "rid": "emodb_small/images/7okrk0d56cbhuiaaij.jpg",
+      "V": 5.0,
+      "A": 1.0,
+      "D": 2.0,
+      "labs": [
+        "Sadness"
+      ]
+    },
+    {
+      "rid": "framesdb/images/frame_cwyxahgbij3estub.jpg",
+      "V": 4.0,
+      "A": 3.0,
+      "D": 3.0,
+      "labs": [
+        "Embarrassment",
+        "Sadness"
+      ]
+    },
+    {
+      "rid": "mscoco/images/COCO_train2014_000000212227.jpg",
+      "V": 2.0,
+      "A": 3.0,
+      "D": 3.0,
+      "labs": [
+        "Fatigue",
+        "Sadness"
+      ]
+    },
+    {
+      "rid": "mscoco/images/COCO_train2014_000000523220.jpg",
+      "V": 3.0,
+      "A": 3.0,
+      "D": 2.0,
+      "labs": [
+        "Disconnection",
+        "Sadness"
+      ]
+    },
+    {
+      "rid": "emodb_small/images/blttrfplvllwz156pk.jpg",
+      "V": 5.0,
+      "A": 4.0,
+      "D": 7.0,
+      "labs": [
+        "Sadness"
+      ]
+    },
+    {
+      "rid": "mscoco/images/COCO_train2014_000000247508.jpg",
+      "V": 4.0,
+      "A": 2.0,
+      "D": 3.0,
+      "labs": [
+        "Sadness",
+        "Yearning"
+      ]
+    },
+    {
+      "rid": "framesdb/images/frame_i8ccfuiiaao4w3ht.jpg",
+      "V": 4.0,
+      "A": 5.0,
+      "D": 9.0,
+      "labs": [
+        "Pain",
+        "Sadness",
+        "Suffering"
+      ]
+    },
+    {
+      "rid": "emodb_small/images/eji8kqj204bif0h313.jpg",
+      "V": 1.0,
+      "A": 4.0,
+      "D": 3.0,
+      "labs": [
+        "Sadness"
+      ]
+    },
+    {
+      "rid": "mscoco/images/COCO_train2014_000000494811.jpg",
+      "V": 4.0,
+      "A": 2.0,
+      "D": 3.0,
+      "labs": [
+        "Sadness"
+      ]
+    },
+    {
+      "rid": "mscoco/images/COCO_train2014_000000253335.jpg",
+      "V": 8.0,
+      "A": 4.0,
+      "D": 6.0,
+      "labs": [
+        "Sadness",
+        "Suffering"
+      ]
+    },
+    {
+      "rid": "mscoco/images/COCO_train2014_000000500778.jpg",
+      "V": 3.0,
+      "A": 3.0,
+      "D": 4.0,
+      "labs": [
+        "Sadness"
+      ]
+    },
+    {
+      "rid": "ade20k/images/sun_bthpemoyhgpvzwdw.jpg",
+      "V": 4.0,
+      "A": 2.0,
+      "D": 2.0,
+      "labs": [
+        "Sadness",
+        "Sensitivity",
+        "Suffering"
+      ]
+    }
+  ],
+  "happiness": [
+    {
+      "rid": "mscoco/images/COCO_train2014_000000571405.jpg",
+      "V": 7.0,
+      "A": 5.0,
+      "D": 7.0,
+      "labs": [
+        "Happiness",
+        "Pleasure"
+      ]
+    },
+    {
+      "rid": "mscoco/images/COCO_train2014_000000365452.jpg",
+      "V": 6.0,
+      "A": 4.0,
+      "D": 8.0,
+      "labs": [
+        "Excitement",
+        "Happiness"
+      ]
+    },
+    {
+      "rid": "mscoco/images/COCO_train2014_000000109208.jpg",
+      "V": 6.0,
+      "A": 7.0,
+      "D": 6.0,
+      "labs": [
+        "Anticipation",
+        "Happiness",
+        "Pleasure"
+      ]
+    },
+    {
+      "rid": "framesdb/images/frame_irpl7nmnn88mpzkl.jpg",
+      "V": 4.0,
+      "A": 4.0,
+      "D": 3.0,
+      "labs": [
+        "Happiness"
+      ]
+    },
+    {
+      "rid": "mscoco/images/COCO_train2014_000000258488.jpg",
+      "V": 7.0,
+      "A": 4.0,
+      "D": 8.0,
+      "labs": [
+        "Happiness"
+      ]
+    },
+    {
+      "rid": "mscoco/images/COCO_train2014_000000430417.jpg",
+      "V": 7.0,
+      "A": 4.0,
+      "D": 7.5,
+      "labs": [
+        "Happiness"
+      ]
+    },
+    {
+      "rid": "mscoco/images/COCO_val2014_000000027969.jpg",
+      "V": 8.0,
+      "A": 2.0,
+      "D": 9.0,
+      "labs": [
+        "Affection",
+        "Esteem",
+        "Happiness",
+        "Pleasure"
+      ]
+    },
+    {
+      "rid": "mscoco/images/COCO_train2014_000000386203.jpg",
+      "V": 6.5,
+      "A": 7.5,
+      "D": 7.5,
+      "labs": [
+        "Anticipation",
+        "Happiness"
+      ]
+    },
+    {
+      "rid": "framesdb/images/frame_iy2cceqlne129au5.jpg",
+      "V": 4.0,
+      "A": 3.0,
+      "D": 4.0,
+      "labs": [
+        "Happiness"
+      ]
+    },
+    {
+      "rid": "framesdb/images/frame_9a3lu8fx0d5099j3.jpg",
+      "V": 5.666666666666667,
+      "A": 3.0,
+      "D": 8.0,
+      "labs": [
+        "Affection",
+        "Excitement",
+        "Happiness"
+      ]
+    },
+    {
+      "rid": "mscoco/images/COCO_train2014_000000207467.jpg",
+      "V": 8.0,
+      "A": 4.0,
+      "D": 6.0,
+      "labs": [
+        "Happiness"
+      ]
+    },
+    {
+      "rid": "mscoco/images/COCO_train2014_000000446181.jpg",
+      "V": 7.0,
+      "A": 6.0,
+      "D": 6.0,
+      "labs": [
+        "Happiness"
+      ]
+    }
+  ],
+  "peace_confidence": [
+    {
+      "rid": "mscoco/images/COCO_train2014_000000456639.jpg",
+      "V": 5.0,
+      "A": 5.0,
+      "D": 7.0,
+      "labs": [
+        "Confidence",
+        "Peace"
+      ]
+    },
+    {
+      "rid": "mscoco/images/COCO_train2014_000000317102.jpg",
+      "V": 7.0,
+      "A": 4.0,
+      "D": 6.0,
+      "labs": [
+        "Confidence"
+      ]
+    },
+    {
+      "rid": "mscoco/images/COCO_val2014_000000108758.jpg",
+      "V": 7.0,
+      "A": 5.0,
+      "D": 7.0,
+      "labs": [
+        "Confidence"
+      ]
+    },
+    {
+      "rid": "mscoco/images/COCO_train2014_000000208006.jpg",
+      "V": 4.0,
+      "A": 5.0,
+      "D": 4.0,
+      "labs": [
+        "Confidence"
+      ]
+    },
+    {
+      "rid": "framesdb/images/frame_88wgat6c3rjtbfaa.jpg",
+      "V": 3.0,
+      "A": 8.0,
+      "D": 8.0,
+      "labs": [
+        "Confidence"
+      ]
+    },
+    {
+      "rid": "mscoco/images/COCO_train2014_000000547419.jpg",
+      "V": 6.0,
+      "A": 4.0,
+      "D": 6.0,
+      "labs": [
+        "Peace"
+      ]
+    },
+    {
+      "rid": "mscoco/images/COCO_train2014_000000094010.jpg",
+      "V": 5.0,
+      "A": 4.0,
+      "D": 7.0,
+      "labs": [
+        "Peace"
+      ]
+    },
+    {
+      "rid": "mscoco/images/COCO_train2014_000000491323.jpg",
+      "V": 6.0,
+      "A": 9.0,
+      "D": 9.0,
+      "labs": [
+        "Confidence"
+      ]
+    },
+    {
+      "rid": "mscoco/images/COCO_train2014_000000496274.jpg",
+      "V": 7.0,
+      "A": 7.0,
+      "D": 6.0,
+      "labs": [
+        "Confidence"
+      ]
+    },
+    {
+      "rid": "mscoco/images/COCO_val2014_000000047837.jpg",
+      "V": 6.0,
+      "A": 4.0,
+      "D": 7.0,
+      "labs": [
+        "Peace"
+      ]
+    },
+    {
+      "rid": "mscoco/images/COCO_train2014_000000343159.jpg",
+      "V": 8.0,
+      "A": 8.0,
+      "D": 8.0,
+      "labs": [
+        "Confidence"
+      ]
+    },
+    {
+      "rid": "framesdb/images/frame_ked8nhzg0xeasq2c.jpg",
+      "V": 5.0,
+      "A": 5.0,
+      "D": 4.0,
+      "labs": [
+        "Peace"
+      ]
+    }
+  ],
+  "neutral": [
+    {
+      "rid": "mscoco/images/COCO_train2014_000000108075.jpg",
+      "V": 6.0,
+      "A": 4.0,
+      "D": 6.0,
+      "labs": [
+        "Engagement"
+      ]
+    },
+    {
+      "rid": "mscoco/images/COCO_train2014_000000580052.jpg",
+      "V": 6.0,
+      "A": 5.0,
+      "D": 7.0,
+      "labs": [
+        "Engagement"
+      ]
+    },
+    {
+      "rid": "mscoco/images/COCO_train2014_000000178411.jpg",
+      "V": 8.0,
+      "A": 7.0,
+      "D": 8.5,
+      "labs": [
+        "Engagement"
+      ]
+    },
+    {
+      "rid": "framesdb/images/frame_een41iiu1gro1c4p.jpg",
+      "V": 6.0,
+      "A": 6.0,
+      "D": 6.0,
+      "labs": [
+        "Engagement"
+      ]
+    },
+    {
+      "rid": "framesdb/images/frame_f7swknjenr6gumia.jpg",
+      "V": 6.0,
+      "A": 4.0,
+      "D": 4.0,
+      "labs": [
+        "Engagement"
+      ]
+    },
+    {
+      "rid": "mscoco/images/COCO_train2014_000000148240.jpg",
+      "V": 6.0,
+      "A": 7.0,
+      "D": 6.0,
+      "labs": [
+        "Engagement"
+      ]
+    },
+    {
+      "rid": "mscoco/images/COCO_train2014_000000145385.jpg",
+      "V": 6.0,
+      "A": 4.0,
+      "D": 6.0,
+      "labs": [
+        "Engagement"
+      ]
+    },
+    {
+      "rid": "mscoco/images/COCO_val2014_000000521071.jpg",
+      "V": 5.0,
+      "A": 8.0,
+      "D": 4.0,
+      "labs": [
+        "Engagement"
+      ]
+    },
+    {
+      "rid": "framesdb/images/frame_8vl9fr2oeymo5rcx.jpg",
+      "V": 5.0,
+      "A": 3.3333333333333335,
+      "D": 9.0,
+      "labs": [
+        "Engagement"
+      ]
+    },
+    {
+      "rid": "framesdb/images/frame_cgvg2yihmi7fixej.jpg",
+      "V": 4.0,
+      "A": 4.0,
+      "D": 6.0,
+      "labs": [
+        "Engagement"
+      ]
+    },
+    {
+      "rid": "mscoco/images/COCO_train2014_000000506988.jpg",
+      "V": 7.0,
+      "A": 3.0,
+      "D": 10.0,
+      "labs": [
+        "Engagement"
+      ]
+    },
+    {
+      "rid": "framesdb/images/frame_hcd0atz6do1k67mp.jpg",
+      "V": 6.0,
+      "A": 2.0,
+      "D": 3.0,
+      "labs": [
+        "Engagement"
+      ]
+    }
+  ],
+  "meta": {
+    "split_hash": "1e8ea1c22144dd9d",
+    "n_eval": 6793,
+    "n_jpg": 23185,
+    "exclusive_n": {
+      "fear": 9,
+      "anger": 26,
+      "sadness": 29,
+      "happiness": 500,
+      "peace_confidence": 160,
+      "neutral": 1129
+    },
+    "fallback_n": {
+      "fear": 65,
+      "anger": 71,
+      "sadness": 91,
+      "happiness": 1790,
+      "peace_confidence": 1356,
+      "neutral": 2167
+    },
+    "used_n": {
+      "fear": 12,
+      "anger": 12,
+      "sadness": 12,
+      "happiness": 12,
+      "peace_confidence": 12,
+      "neutral": 12
+    },
+    "used_fallback": true,
+    "emotic": "/home/jupyter-asca-ec66/algoverse_run/emotic_data",
+    "img_root": "/home/jupyter-asca-ec66/algoverse_run/emotic_data/emotic",
+    "g3_ok": false,
+    "g3": {
+      "smd_v": 0.9896727008433245,
+      "smd_a": 0.28043117573709647,
+      "d_gap": -0.625,
+      "pair_ok": false
+    },
+    "tier": "full",
+    "model": "google/gemma-4-E4B-it"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "q": 0.33,
+  "lo": 3.962244008714595,
+  "hi": 5.062449039021549,
+  "n": 900,
+  "counts": {"neg": 297, "neu": 306, "pos": 297},
+  "rule": "empirical valence tertiles: <=q0.33 neg, >=q0.67 pos, else neu",
+  "construct": "elicited_viewer_valence",
+  "not_depicted_person_emotion": true,
+  "rating_source": "Kurdi OSF 6pnd7 OASIS.csv inside OASIS.zip",
+  "n_rated": 900,
+  "n_with_image": 900,
+  "invented_ratings": false,
+  "hf_repo": "halli75/algoverse-exp08-oasis",
+  "split_emotic": "1e8ea1c22144dd9d"
+}

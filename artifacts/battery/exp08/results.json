@@ -1,0 +1,417 @@
+{
+  "job": "exp08",
+  "started": "2026-08-23 05:23:19",
+  "tier": "smoke",
+  "sizes": {
+    "N_IMG": 12,
+    "N_RISK": 12,
+    "N_DICT": 12,
+    "N_PEREZ": 16,
+    "N_BOOT": 64
+  },
+  "model": {
+    "id": "google/gemma-4-E4B-it",
+    "weights_dtype": "nf4",
+    "compute_dtype": "bf16",
+    "n_params_note": "gemma-4-E4B-it"
+  },
+  "steer": null,
+  "chat_order": [
+    "image",
+    "text"
+  ],
+  "describe_image": false,
+  "constructs": {
+    "emotic": "depicted_person_emotion",
+    "oasis": "viewer_elicited_valence_arousal"
+  },
+  "do_not_pool": true,
+  "frozen_v3_untouched": true,
+  "notes": [],
+  "complete": true,
+  "elapsed_s": 73.32,
+  "oasis": {
+    "meta": {
+      "q": 0.33,
+      "lo": 3.962244008714595,
+      "hi": 5.062449039021549,
+      "n": 900,
+      "counts": {
+        "neg": 297,
+        "neu": 306,
+        "pos": 297
+      },
+      "rule": "empirical valence tertiles: <=q0.33 neg, >=q0.67 pos, else neu",
+      "construct": "elicited_viewer_valence",
+      "not_depicted_person_emotion": true,
+      "dest": "/home/jupyter-asca-ec66/algoverse_run/battery/exp08/oasis",
+      "rating_source": "/home/jupyter-asca-ec66/algoverse_run/battery/exp08/oasis/OASIS.csv",
+      "n_jpg_on_disk": 1800,
+      "n_rated": 900,
+      "n_with_image": 900,
+      "notes": [
+        "hub_hit=/home/jupyter-asca-ec66/algoverse_run/battery/exp08/oasis"
+      ],
+      "osf": "6pnd7",
+      "zip_url": "https://osf.io/download/uxvpb/",
+      "data_url": "https://osf.io/download/bv43g/",
+      "citation": "Kurdi, Lozano, Banaji 2017 BRM; OSF 10.17605/OSF.IO/6PND7",
+      "invented_ratings": false
+    }
+  },
+  "emotic": {
+    "meta": {
+      "split_hash": "1e8ea1c22144dd9d",
+      "n_eval": 6793,
+      "counts": {
+        "neg": 241,
+        "neu": 4342,
+        "pos": 2210
+      },
+      "rule": "VAD valence <4 neg, >6 pos, else neu",
+      "construct": "depicted_person_emotion",
+      "not_viewer_elicited": true
+    }
+  },
+  "perez_hashes": {
+    "philpapers": "2f112b35334fbec0b16dc755df60349fb2b2bf00d4dbaae47175519bee7d37dd",
+    "political": "691575571f659593ed237aa74ec6530b20ef3a5d0116e5e1f4f189ef530cf032"
+  },
+  "perez_hashes_ok": true,
+  "n_items": {
+    "risk": 12,
+    "dictator": 12,
+    "perez": 16
+  },
+  "n_images": {
+    "emotic": {
+      "neg": 12,
+      "neu": 12
+    },
+    "oasis": {
+      "neg": 12,
+      "neu": 12
+    }
+  },
+  "gpu": 4,
+  "label_ids": {
+    "A": [
+      562,
+      236776
+    ],
+    "B": [
+      603,
+      236799
+    ]
+  },
+  "fc_mass_mean": 0.984388170931323,
+  "primary_estimates": {
+    "emotic": {
+      "risk": {
+        "n": 12,
+        "mean": -0.1562498154429098,
+        "lo": -0.575781255075708,
+        "hi": 0.46406343830749375,
+        "estimand": "E[score_neg - score_neu]"
+      },
+      "dictator": {
+        "n": 12,
+        "mean": -0.1770833715175589,
+        "lo": -0.9151042154475969,
+        "hi": 0.4994791434194966,
+        "estimand": "E[score_neg - score_neu]"
+      },
+      "perez": {
+        "n": 16,
+        "mean": -0.10156208783882903,
+        "lo": -0.6283201594966158,
+        "hi": 0.4953132193997588,
+        "estimand": "E[score_neg - score_neu]"
+      }
+    },
+    "oasis": {
+      "risk": {
+        "n": 12,
+        "mean": 0.37500061246100813,
+        "lo": -0.15026001172082032,
+        "hi": 1.048959028092213,
+        "estimand": "E[score_neg - score_neu]"
+      },
+      "dictator": {
+        "n": 12,
+        "mean": 0.34375000234770897,
+        "lo": -0.37890628175130886,
+        "hi": 1.1947916726411978,
+        "estimand": "E[score_neg - score_neu]"
+      },
+      "perez": {
+        "n": 16,
+        "mean": 0.5039060906419763,
+        "lo": -0.04267582224310898,
+        "hi": 1.1468745808269882,
+        "estimand": "E[score_neg - score_neu]"
+      }
+    }
+  },
+  "cells": {
+    "emotic": {
+      "risk": {
+        "neg": {
+          "n": 12,
+          "mean": -0.07291648831839363,
+          "lo": -1.2187498981404739,
+          "hi": 1.226823305501602
+        },
+        "neu": {
+          "n": 12,
+          "mean": 0.08333332712451617,
+          "lo": -1.5460940576313684,
+          "hi": 1.1184899601309244
+        },
+        "delta": {
+          "n": 12,
+          "mean": -0.1562498154429098,
+          "lo": -0.575781255075708,
+          "hi": 0.46406343830749375,
+          "estimand": "E[score_neg - score_neu]"
+        }
+      },
+      "dictator": {
+        "neg": {
+          "n": 12,
+          "mean": -1.8333333544433117,
+          "lo": -2.874739595250382,
+          "hi": -0.8291666813349975
+        },
+        "neu": {
+          "n": 12,
+          "mean": -1.6562499829257529,
+          "lo": -2.1677083178966616,
+          "hi": -1.1445312466472388
+        },
+        "delta": {
+          "n": 12,
+          "mean": -0.1770833715175589,
+          "lo": -0.9151042154475969,
+          "hi": 0.4994791434194966,
+          "estimand": "E[score_neg - score_neu]"
+        }
+      },
+      "perez": {
+        "neg": {
+          "n": 16,
+          "mean": 1.921875395331881,
+          "lo": 0.10175754906376824,
+          "hi": 4.131055584298519
+        },
+        "neu": {
+          "n": 16,
+          "mean": 2.02343748317071,
+          "lo": -0.12734437542803784,
+          "hi": 4.072461103531896
+        },
+        "delta": {
+          "n": 16,
+          "mean": -0.10156208783882903,
+          "lo": -0.6283201594966158,
+          "hi": 0.4953132193997588,
+          "estimand": "E[score_neg - score_neu]"
+        }
+      }
+    },
+    "oasis": {
+      "risk": {
+        "neg": {
+          "n": 12,
+          "mean": -0.2187496767146513,
+          "lo": -1.4299483430649464,
+          "hi": 0.8848962475516596
+        },
+        "neu": {
+          "n": 12,
+          "mean": -0.5937502891756594,
+          "lo": -2.520052547845989,
+          "hi": 0.9789069647667927
+        },
+        "delta": {
+          "n": 12,
+          "mean": 0.37500061246100813,
+          "lo": -0.15026001172082032,
+          "hi": 1.048959028092213,
+          "estimand": "E[score_neg - score_neu]"
+        }
+      },
+      "dictator": {
+        "neg": {
+          "n": 12,
+          "mean": -1.6354166831976424,
+          "lo": -2.6140625117715293,
+          "hi": -0.7411458494141698
+        },
+        "neu": {
+          "n": 12,
+          "mean": -1.9791666855453514,
+          "lo": -2.707812541402624,
+          "hi": -1.0611979235274096
+        },
+        "delta": {
+          "n": 12,
+          "mean": 0.34375000234770897,
+          "lo": -0.37890628175130886,
+          "hi": 1.1947916726411978,
+          "estimand": "E[score_neg - score_neu]"
+        }
+      },
+      "perez": {
+        "neg": {
+          "n": 16,
+          "mean": 2.4335938324511517,
+          "lo": 0.8700193067146756,
+          "hi": 4.50947304291767
+        },
+        "neu": {
+          "n": 16,
+          "mean": 1.9296877418091753,
+          "lo": -0.8488282483827787,
+          "hi": 4.245508316609265
+        },
+        "delta": {
+          "n": 16,
+          "mean": 0.5039060906419763,
+          "lo": -0.04267582224310898,
+          "hi": 1.1468745808269882,
+          "estimand": "E[score_neg - score_neu]"
+        }
+      }
+    }
+  },
+  "signatures": {
+    "by_task": {
+      "dictator": {
+        "emotic_delta": {
+          "n": 12,
+          "mean": -0.1770833715175589,
+          "lo": -0.9151042154475969,
+          "hi": 0.4994791434194966,
+          "estimand": "E[score_neg - score_neu]"
+        },
+        "oasis_delta": {
+          "n": 12,
+          "mean": 0.34375000234770897,
+          "lo": -0.37890628175130886,
+          "hi": 1.1947916726411978,
+          "estimand": "E[score_neg - score_neu]"
+        },
+        "emotic_sign": -1,
+        "oasis_sign": 1,
+        "match": true,
+        "kind": "both_null",
+        "pooled": false,
+        "note": "corpora kept separate; do not average these deltas"
+      },
+      "perez": {
+        "emotic_delta": {
+          "n": 16,
+          "mean": -0.10156208783882903,
+          "lo": -0.6283201594966158,
+          "hi": 0.4953132193997588,
+          "estimand": "E[score_neg - score_neu]"
+        },
+        "oasis_delta": {
+          "n": 16,
+          "mean": 0.5039060906419763,
+          "lo": -0.04267582224310898,
+          "hi": 1.1468745808269882,
+          "estimand": "E[score_neg - score_neu]"
+        },
+        "emotic_sign": -1,
+        "oasis_sign": 1,
+        "match": true,
+        "kind": "both_null",
+        "pooled": false,
+        "note": "corpora kept separate; do not average these deltas"
+      },
+      "risk": {
+        "emotic_delta": {
+          "n": 12,
+          "mean": -0.1562498154429098,
+          "lo": -0.575781255075708,
+          "hi": 0.46406343830749375,
+          "estimand": "E[score_neg - score_neu]"
+        },
+        "oasis_delta": {
+          "n": 12,
+          "mean": 0.37500061246100813,
+          "lo": -0.15026001172082032,
+          "hi": 1.048959028092213,
+          "estimand": "E[score_neg - score_neu]"
+        },
+        "emotic_sign": -1,
+        "oasis_sign": 1,
+        "match": true,
+        "kind": "both_null",
+        "pooled": false,
+        "note": "corpora kept separate; do not average these deltas"
+      }
+    },
+    "n_tasks": 3,
+    "n_match": 3,
+    "verdict": "signatures_match_visual_affect",
+    "claim": "Same-task signatures match across corpora. Compatible with a shared visual-affect construct. Still do not pool EMOTIC and OASIS effect sizes.",
+    "pooled_effect_size": null,
+    "do_not_pool": true
+  },
+  "gates": {
+    "gates": [
+      {
+        "name": "oasis_official_ratings",
+        "ok": true,
+        "detail": "n_rated=900 src=/home/jupyter-asca-ec66/algoverse_run/battery/exp08/oasis/OASIS.csv"
+      },
+      {
+        "name": "emotic_split_hash",
+        "ok": true,
+        "detail": "hash=1e8ea1c22144dd9d"
+      },
+      {
+        "name": "perez_sha256",
+        "ok": true,
+        "detail": "{'philpapers': '2f112b35334fbec0b16dc755df60349fb2b2bf00d4dbaae47175519bee7d37dd', 'political': '691575571f659593ed237aa74ec6530b20ef3a5d0116e5e1f4f189ef530cf032'}"
+      },
+      {
+        "name": "model_pin",
+        "ok": true,
+        "detail": "{'id': 'google/gemma-4-E4B-it', 'weights_dtype': 'nf4', 'compute_dtype': 'bf16', 'n_params_note': 'gemma-4-E4B-it'}"
+      },
+      {
+        "name": "no_v3_overwrite",
+        "ok": true,
+        "detail": "e2e_mechanism_results_full_v3.json"
+      },
+      {
+        "name": "do_not_pool",
+        "ok": true,
+        "detail": "pooled_effect_size is null"
+      },
+      {
+        "name": "fc_mass",
+        "ok": true,
+        "detail": "fc_mass_mean=0.984388170931323"
+      },
+      {
+        "name": "finite_primaries",
+        "ok": true,
+        "detail": "6/6"
+      },
+      {
+        "name": "no_secrets",
+        "ok": true,
+        "detail": "aggregate rates only"
+      }
+    ],
+    "passed": 9,
+    "total": 9,
+    "ok": true
+  },
+  "headline": "Same-task signatures match across corpora. Compatible with a shared visual-affect construct. Still do not pool EMOTIC and OASIS effect sizes."
+}

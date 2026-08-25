@@ -1,0 +1,12 @@
+{
+  "exp": "exp01",
+  "ts": "2026-08-23 04:51:09",
+  "unix": 1787460669,
+  "elapsed_s": 216.0,
+  "stage": "done",
+  "gpu": "0",
+  "gates": "6/8",
+  "complete": true,
+  "results": "artifacts/battery/exp01/results.json",
+  "hf_dataset": "halli75/algoverse-battery-exp01"
+}

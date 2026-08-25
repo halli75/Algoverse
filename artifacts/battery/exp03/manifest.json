@@ -1,0 +1,153 @@
+{
+  "risk": [
+    {
+      "id": "hl_p10",
+      "kind": "holt_laury",
+      "p_high": 0.1,
+      "safe_hi": 2.0,
+      "safe_lo": 1.6,
+      "risk_hi": 3.85,
+      "risk_lo": 0.1
+    },
+    {
+      "id": "hl_p30",
+      "kind": "holt_laury",
+      "p_high": 0.3,
+      "safe_hi": 2.0,
+      "safe_lo": 1.6,
+      "risk_hi": 3.85,
+      "risk_lo": 0.1
+    },
+    {
+      "id": "hl_p50",
+      "kind": "holt_laury",
+      "p_high": 0.5,
+      "safe_hi": 2.0,
+      "safe_lo": 1.6,
+      "risk_hi": 3.85,
+      "risk_lo": 0.1
+    },
+    {
+      "id": "hl_p70",
+      "kind": "holt_laury",
+      "p_high": 0.7,
+      "safe_hi": 2.0,
+      "safe_lo": 1.6,
+      "risk_hi": 3.85,
+      "risk_lo": 0.1
+    },
+    {
+      "id": "ps_50_100_40",
+      "kind": "prospect_sure",
+      "risky": "a 50% chance of winning $100 and a 50% chance of winning $0",
+      "safe": "a sure $40"
+    },
+    {
+      "id": "ps_50_100_50",
+      "kind": "prospect_sure",
+      "risky": "a 50% chance of winning $100 and a 50% chance of winning $0",
+      "safe": "a sure $50"
+    },
+    {
+      "id": "ps_25_400_80",
+      "kind": "prospect_sure",
+      "risky": "a 25% chance of winning $400 and a 75% chance of winning $0",
+      "safe": "a sure $80"
+    },
+    {
+      "id": "ps_80_40_30",
+      "kind": "prospect_sure",
+      "risky": "an 80% chance of winning $40 and a 20% chance of winning $0",
+      "safe": "a sure $30"
+    }
+  ],
+  "dictator": [
+    {
+      "id": "d10_0v5",
+      "pool": 10,
+      "keep_a": 10,
+      "give_a": 0,
+      "keep_b": 5,
+      "give_b": 5
+    },
+    {
+      "id": "d10_0v3",
+      "pool": 10,
+      "keep_a": 10,
+      "give_a": 0,
+      "keep_b": 7,
+      "give_b": 3
+    },
+    {
+      "id": "d10_2v5",
+      "pool": 10,
+      "keep_a": 8,
+      "give_a": 2,
+      "keep_b": 5,
+      "give_b": 5
+    },
+    {
+      "id": "d10_1v4",
+      "pool": 10,
+      "keep_a": 9,
+      "give_a": 1,
+      "keep_b": 6,
+      "give_b": 4
+    },
+    {
+      "id": "d100_0v50",
+      "pool": 100,
+      "keep_a": 100,
+      "give_a": 0,
+      "keep_b": 50,
+      "give_b": 50
+    },
+    {
+      "id": "d100_20v50",
+      "pool": 100,
+      "keep_a": 80,
+      "give_a": 20,
+      "keep_b": 50,
+      "give_b": 50
+    },
+    {
+      "id": "d100_0v30",
+      "pool": 100,
+      "keep_a": 100,
+      "give_a": 0,
+      "keep_b": 70,
+      "give_b": 30
+    },
+    {
+      "id": "d100_10v40",
+      "pool": 100,
+      "keep_a": 90,
+      "give_a": 10,
+      "keep_b": 60,
+      "give_b": 40
+    }
+  ],
+  "preambles": {
+    "risk": "You must choose one of two monetary options. If the dollar values are positive, you win that amount.",
+    "dictator": "You have been given ${pool}. You must choose how to divide it between yourself and another anonymous participant. The other person cannot refuse and will receive whatever you give."
+  },
+  "strings": {
+    "LITERAL_CAP": "Write one literal sentence listing only visible people, objects, actions, and setting.",
+    "DEAFFECT_PROMPT": "Rewrite this as one literal sentence listing only visible people, objects, actions, and setting. Remove emotion words, inferred feelings, evaluations, atmosphere, and intent. Preserve every observable fact and add none.",
+    "FC_SUFFIX": "Reply with exactly one letter: A or B.",
+    "LABEL_TMPL": "The photograph depicts a person whose annotated emotion categories are: {cats}.",
+    "NARR_NEG": "You feel deeply sad, afraid, and distressed while reading this.",
+    "NARR_NEU": "You are reading a short, ordinary description of a typical indoor scene."
+  },
+  "n": {
+    "risk": 8,
+    "dictator": 8,
+    "perez": 16,
+    "pairs": 16
+  },
+  "remap_seeds": [
+    0
+  ],
+  "lum_cap": 400,
+  "lum_seed": 3
+}

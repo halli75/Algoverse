@@ -1,0 +1,65 @@
+{
+  "started": "2026-08-23 00:49:16",
+  "job": "sycophancy_affect",
+  "tier": "smoke",
+  "prereg_hash": "051e1ea79cd116fce56edeb43848ae10526e2830efc49ab0df2cd7d904a20876",
+  "amendment_hash": "e7fb263a24cd8db0cfd3e3616c18f66167b0d54f6bd84bbd189598b0788137d1",
+  "plan_file_hash": "bb892bbdddf9be5965f8a583a7682ad2a8019b265b088be8bc97df7db9978fc3",
+  "notes": ["LIKERT_INVALID digit mass 0.621 < 0.8; continue S_label/native"],
+  "phases": {
+    "perez_hashes_ok": true,
+    "emobank": {
+      "sha256": "1ade4a4a453e880c0f39d0536d2b355e8a716e0cf88236c64cdb4d438cf9605b",
+      "commit": "248ce2a43e165a66d31aeaed83cff9641d6654e0",
+      "n_train": 8062,
+      "n_test": 1000,
+      "n_fit_nonneutral": 3868,
+      "n_fit_neutral": 4194,
+      "n_heldout_test": 1000
+    },
+    "ood": {"decision": "PASS", "ratio": 1.002811911328654},
+    "phase1": {
+      "n": 60,
+      "S_label_mean": 3.8895835058370722,
+      "S_native_mean": 4.554111398950704,
+      "fc_mass_mean": 0.9885955189333338
+    },
+    "va": {
+      "r_v": 0.4460770445875276,
+      "r_a": 0.23592654101496813,
+      "ok_prereg": false,
+      "ok_run": false,
+      "official_splits": true,
+      "n_fit_nonneutral": 3868,
+      "n_fit_neutral": 4194,
+      "n_heldout_test": 1000,
+      "construction": "V_then_A_on_V_orthogonal_X_GS_cleanup",
+      "emobank_commit": "248ce2a43e165a66d31aeaed83cff9641d6654e0"
+    }
+  },
+  "gates": {
+    "endpoint_mass": {
+      "fc_mass_mean": 0.9885955189333338,
+      "likert_mass_mean": 0.6211316995582288,
+      "fc_ok": true,
+      "likert_invalid": true
+    },
+    "VA_WEAK": true
+  },
+  "headline": "ENDPOINT_INVALID",
+  "complete": false,
+  "gpu": "NVIDIA A100-SXM4-40GB",
+  "n_jpg": 23185,
+  "split_hash": "1e8ea1c22144dd9d",
+  "updated": "2026-08-23 01:31:06",
+  "elapsed_s": 2509.3,
+  "model": {
+    "id": "google/gemma-4-E4B-it",
+    "n_layers": 42,
+    "d_model": 2560,
+    "gate": [10, 25],
+    "weights_dtype": "nf4",
+    "compute_dtype": "bf16"
+  },
+  "fatal": "VA recovery below r>=0.7: r_v=0.446 r_a=0.236"
+}

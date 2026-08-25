@@ -1,5 +1,16 @@
 .env
 .env.*
+.hf_token
+.xai_api_key
+.battery_env
+.agent_battery_loop.log
+artifacts/battery/SECRETS_READY.md
+artifacts/battery/exp08/oasis/
+artifacts/battery/exp03/caption_cache.json
+artifacts/battery/**/nohup.out
+artifacts/battery/**/*.log
+artifacts/battery/**/host_status.txt
+artifacts/battery/**/host_tail.txt
 *.pt
 *.npy
 *.pth
