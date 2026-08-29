@@ -1,0 +1,95 @@
+{
+  "experiment": "mech",
+  "complete": true,
+  "model_id": "google/gemma-4-12B-it",
+  "n_layers": 48,
+  "window": [
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27
+  ],
+  "dirs_status": "DIAGNOSTIC_NOT_V3",
+  "n_calib_photo": 8,
+  "n_calib_none": 8,
+  "n_eval_forwards": 96,
+  "eval_rids": {
+    "no_image": [],
+    "neutral": [
+      "mscoco/images/COCO_train2014_000000165552.jpg",
+      "mscoco/images/COCO_train2014_000000166959.jpg",
+      "mscoco/images/COCO_train2014_000000244334.jpg",
+      "mscoco/images/COCO_train2014_000000229159.jpg",
+      "mscoco/images/COCO_train2014_000000141336.jpg",
+      "framesdb/images/frame_ge3tc56pkkydy5yl.jpg",
+      "mscoco/images/COCO_train2014_000000468393.jpg",
+      "framesdb/images/frame_dgvzheloufr7ws7b.jpg"
+    ],
+    "anger": [
+      "emodb_small/images/gs84txnh5el02zkbp9.jpg",
+      "mscoco/images/COCO_train2014_000000560885.jpg",
+      "emodb_small/images/gtsc9876oqghvxobog.jpg",
+      "emodb_small/images/fkpxfhj7w9rr1og1u6.jpg",
+      "emodb_small/images/g913ioe8wwg2ej06h0.jpg",
+      "emodb_small/images/gvyytfxue60fydudwm.jpg",
+      "emodb_small/images/gcam29n1t0ckssuqpm.jpg",
+      "framesdb/images/frame_img70kzyxcwpcep2.jpg"
+    ],
+    "sadness": [
+      "framesdb/images/frame_m5ukoisgw8tna2dk.jpg",
+      "mscoco/images/COCO_train2014_000000247508.jpg",
+      "mscoco/images/COCO_train2014_000000499985.jpg",
+      "mscoco/images/COCO_train2014_000000130816.jpg",
+      "emodb_small/images/e9b5cftu9bwcw29nnh.jpg",
+      "emodb_small/images/2265zkcd3pjlfgnv2t.jpg",
+      "mscoco/images/COCO_val2014_000000118965.jpg",
+      "emodb_small/images/30nuw6i66lmickmbly.jpg"
+    ]
+  },
+  "calib_rids": [
+    "emodb_small/images/fva3gxfjhz6hdbus0m.jpg",
+    "emodb_small/images/fmedw302t8gevaadcs.jpg",
+    "emodb_small/images/fzvmccnhhau1ov7qhd.jpg",
+    "emodb_small/images/gvwj848i437jakzshe.jpg",
+    "framesdb/images/frame_g2m7m29qa583iyrw.jpg",
+    "emodb_small/images/gm73cvq8lp8dvwxm1s.jpg",
+    "framesdb/images/frame_k8o0r16mqf6wt54a.jpg",
+    "framesdb/images/frame_j4jl0h83zhw0d1j9.jpg"
+  ],
+  "image_present_unit_norm": 1.0,
+  "tracks": {
+    "exp09": {
+      "r_choice_image_present": 0.017710622231354462,
+      "r_choice_a_perp": NaN,
+      "tracks_image_present_more": null
+    },
+    "exp05": {
+      "r_choice_image_present": NaN,
+      "r_choice_a_perp": NaN,
+      "tracks_image_present_more": null
+    }
+  },
+  "notes": [],
+  "gates": {
+    "lock": true,
+    "window_ok": true,
+    "calib_disjoint": true,
+    "captured": true,
+    "exp05_included": true,
+    "exp09_open_prompt": true,
+    "tracks_not_pooled": true,
+    "a_perp_present": false
+  }
+}

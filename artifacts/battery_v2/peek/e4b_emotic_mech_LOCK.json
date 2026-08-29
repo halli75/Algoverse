@@ -1,0 +1,142 @@
+{
+  "arch": "encoder",
+  "arms": [
+    "no_image",
+    "neutral",
+    "anger",
+    "sadness"
+  ],
+  "campaign": "battery_v2",
+  "chat_order": [
+    "image",
+    "text"
+  ],
+  "describe_before_task": false,
+  "do_not_overwrite_v3": true,
+  "experiment": "mech",
+  "extra": {
+    "calib_disjoint": true,
+    "calib_rids": [
+      "emodb_small/images/fva3gxfjhz6hdbus0m.jpg",
+      "emodb_small/images/fmedw302t8gevaadcs.jpg",
+      "emodb_small/images/fzvmccnhhau1ov7qhd.jpg",
+      "emodb_small/images/gvwj848i437jakzshe.jpg",
+      "framesdb/images/frame_g2m7m29qa583iyrw.jpg",
+      "emodb_small/images/gm73cvq8lp8dvwxm1s.jpg",
+      "framesdb/images/frame_k8o0r16mqf6wt54a.jpg",
+      "framesdb/images/frame_j4jl0h83zhw0d1j9.jpg"
+    ],
+    "dirs_sha256": null,
+    "eval_rids": {
+      "anger": [
+        "emodb_small/images/gs84txnh5el02zkbp9.jpg",
+        "mscoco/images/COCO_train2014_000000560885.jpg",
+        "emodb_small/images/gtsc9876oqghvxobog.jpg",
+        "emodb_small/images/fkpxfhj7w9rr1og1u6.jpg",
+        "emodb_small/images/g913ioe8wwg2ej06h0.jpg",
+        "emodb_small/images/gvyytfxue60fydudwm.jpg",
+        "emodb_small/images/gcam29n1t0ckssuqpm.jpg",
+        "framesdb/images/frame_img70kzyxcwpcep2.jpg"
+      ],
+      "neutral": [
+        "mscoco/images/COCO_train2014_000000165552.jpg",
+        "mscoco/images/COCO_train2014_000000166959.jpg",
+        "mscoco/images/COCO_train2014_000000244334.jpg",
+        "mscoco/images/COCO_train2014_000000229159.jpg",
+        "mscoco/images/COCO_train2014_000000141336.jpg",
+        "framesdb/images/frame_ge3tc56pkkydy5yl.jpg",
+        "mscoco/images/COCO_train2014_000000468393.jpg",
+        "framesdb/images/frame_dgvzheloufr7ws7b.jpg"
+      ],
+      "no_image": [],
+      "sadness": [
+        "framesdb/images/frame_m5ukoisgw8tna2dk.jpg",
+        "mscoco/images/COCO_train2014_000000247508.jpg",
+        "mscoco/images/COCO_train2014_000000499985.jpg",
+        "mscoco/images/COCO_train2014_000000130816.jpg",
+        "emodb_small/images/e9b5cftu9bwcw29nnh.jpg",
+        "emodb_small/images/2265zkcd3pjlfgnv2t.jpg",
+        "mscoco/images/COCO_val2014_000000118965.jpg",
+        "emodb_small/images/30nuw6i66lmickmbly.jpg"
+      ]
+    },
+    "eval_rids_05": {
+      "anger": [
+        "emodb_small/images/gs84txnh5el02zkbp9.jpg",
+        "mscoco/images/COCO_train2014_000000560885.jpg",
+        "emodb_small/images/gtsc9876oqghvxobog.jpg",
+        "emodb_small/images/fkpxfhj7w9rr1og1u6.jpg",
+        "emodb_small/images/g913ioe8wwg2ej06h0.jpg",
+        "emodb_small/images/gvyytfxue60fydudwm.jpg",
+        "emodb_small/images/gcam29n1t0ckssuqpm.jpg",
+        "framesdb/images/frame_img70kzyxcwpcep2.jpg"
+      ],
+      "neutral": [
+        "mscoco/images/COCO_train2014_000000165552.jpg",
+        "mscoco/images/COCO_train2014_000000166959.jpg",
+        "mscoco/images/COCO_train2014_000000244334.jpg",
+        "mscoco/images/COCO_train2014_000000229159.jpg",
+        "mscoco/images/COCO_train2014_000000141336.jpg",
+        "framesdb/images/frame_ge3tc56pkkydy5yl.jpg",
+        "mscoco/images/COCO_train2014_000000468393.jpg",
+        "framesdb/images/frame_dgvzheloufr7ws7b.jpg"
+      ],
+      "no_image": [],
+      "sadness": [
+        "framesdb/images/frame_m5ukoisgw8tna2dk.jpg",
+        "mscoco/images/COCO_train2014_000000247508.jpg",
+        "mscoco/images/COCO_train2014_000000499985.jpg",
+        "mscoco/images/COCO_train2014_000000130816.jpg",
+        "emodb_small/images/e9b5cftu9bwcw29nnh.jpg",
+        "emodb_small/images/2265zkcd3pjlfgnv2t.jpg",
+        "mscoco/images/COCO_val2014_000000118965.jpg",
+        "emodb_small/images/30nuw6i66lmickmbly.jpg"
+      ]
+    },
+    "eval_rids_09": {
+      "anger": [
+        "emodb_small/images/gs84txnh5el02zkbp9.jpg"
+      ],
+      "neutral": [
+        "mscoco/images/COCO_train2014_000000165552.jpg"
+      ],
+      "no_image": [],
+      "sadness": [
+        "framesdb/images/frame_m5ukoisgw8tna2dk.jpg"
+      ]
+    },
+    "exps": [
+      "exp09",
+      "exp05"
+    ],
+    "rid_sha256": "48dc1eccfcd16dd533e5fe0ea6d8d7b5b434e0987b7b936db7348e57c67ac430"
+  },
+  "fc_mass_min": 0.8,
+  "frozen_v3": "e2e_mechanism_results_full_v3.json",
+  "model_id": "google/gemma-4-E4B-it",
+  "model_key": "e4b",
+  "primary_dv": "layer_score_image_present_vs_a_perp",
+  "quantize": false,
+  "scorer": "last_prompt_residual_dot",
+  "script": "/workspace/Algoverse/scripts/battery_v2_run.py",
+  "script_sha256": "58cb87976fe09225e3cd7da6e4a808b1ac9797ee8e6ca975407545e96e981856",
+  "seed": 2,
+  "sizes": {
+    "n_boot": 400,
+    "n_calib_mech": 8,
+    "n_img_03_expand": 4,
+    "n_img_06": 4,
+    "n_img_09": 4,
+    "n_mech_prompts": 16,
+    "n_pairs_03": 16,
+    "n_pairs_10": 16,
+    "n_per_05": 16,
+    "n_safe_09": 80,
+    "n_unsafe_09": 8,
+    "tier_06": "smoke"
+  },
+  "split_expected": "1e8ea1c22144dd9d",
+  "thinking": false,
+  "tier": "budget3h",
+  "weights_dtype": "bf16"
+}

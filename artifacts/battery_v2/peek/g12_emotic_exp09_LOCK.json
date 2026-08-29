@@ -1,0 +1,97 @@
+{
+  "arch": "unified",
+  "arms": [
+    "no_image",
+    "neutral",
+    "fear",
+    "anger",
+    "sadness",
+    "excitement",
+    "happiness",
+    "peace"
+  ],
+  "campaign": "battery_v2",
+  "chat_order": [
+    "image",
+    "text"
+  ],
+  "describe_before_task": false,
+  "do_not_overwrite_v3": true,
+  "experiment": "exp09",
+  "extra": {
+    "rid_sha256": "20bd27f254e2fc507e1f16244701cb97b7f8fcfc2af19a980468feb9bed76965",
+    "rids": {
+      "anger": [
+        "emodb_small/images/gs84txnh5el02zkbp9.jpg",
+        "mscoco/images/COCO_train2014_000000560885.jpg",
+        "emodb_small/images/gtsc9876oqghvxobog.jpg",
+        "emodb_small/images/fkpxfhj7w9rr1og1u6.jpg"
+      ],
+      "excitement": [
+        "mscoco/images/COCO_train2014_000000184275.jpg",
+        "mscoco/images/COCO_val2014_000000212077.jpg",
+        "mscoco/images/COCO_train2014_000000341845.jpg",
+        "mscoco/images/COCO_train2014_000000440004.jpg"
+      ],
+      "fear": [
+        "emodb_small/images/fad0lq0rhuwwxv3l2x.jpg",
+        "mscoco/images/COCO_val2014_000000501281.jpg",
+        "mscoco/images/COCO_train2014_000000579440.jpg",
+        "mscoco/images/COCO_train2014_000000232227.jpg"
+      ],
+      "happiness": [
+        "mscoco/images/COCO_train2014_000000541319.jpg",
+        "mscoco/images/COCO_train2014_000000092230.jpg",
+        "mscoco/images/COCO_train2014_000000179095.jpg",
+        "framesdb/images/frame_fiu7bldf0imk73nm.jpg"
+      ],
+      "neutral": [
+        "mscoco/images/COCO_train2014_000000165552.jpg",
+        "mscoco/images/COCO_train2014_000000166959.jpg",
+        "mscoco/images/COCO_train2014_000000244334.jpg",
+        "mscoco/images/COCO_train2014_000000229159.jpg"
+      ],
+      "no_image": [],
+      "peace": [
+        "mscoco/images/COCO_train2014_000000122916.jpg",
+        "mscoco/images/COCO_val2014_000000195863.jpg",
+        "mscoco/images/COCO_train2014_000000135045.jpg",
+        "framesdb/images/frame_hl0uac9fbljyf6b6.jpg"
+      ],
+      "sadness": [
+        "framesdb/images/frame_m5ukoisgw8tna2dk.jpg",
+        "mscoco/images/COCO_train2014_000000247508.jpg",
+        "mscoco/images/COCO_train2014_000000499985.jpg",
+        "mscoco/images/COCO_train2014_000000130816.jpg"
+      ]
+    }
+  },
+  "fc_mass_min": 0.8,
+  "frozen_v3": "e2e_mechanism_results_full_v3.json",
+  "model_id": "google/gemma-4-12B-it",
+  "model_key": "g12",
+  "primary_dv": "completion_refuse_benign",
+  "quantize": false,
+  "scorer": "battery_v2_scorer.completion_refuses",
+  "script": "/workspace/Algoverse/scripts/battery_v2_run.py",
+  "script_sha256": "58cb87976fe09225e3cd7da6e4a808b1ac9797ee8e6ca975407545e96e981856",
+  "seed": 2,
+  "sizes": {
+    "n_boot": 400,
+    "n_calib_mech": 8,
+    "n_img_03_expand": 4,
+    "n_img_06": 4,
+    "n_img_09": 4,
+    "n_mech_prompts": 16,
+    "n_pairs_03": 16,
+    "n_pairs_10": 16,
+    "n_per_05": 16,
+    "n_safe_09": 80,
+    "n_unsafe_09": 8,
+    "tier_06": "smoke"
+  },
+  "split_expected": "1e8ea1c22144dd9d",
+  "thinking": false,
+  "tier": "budget3h",
+  "weights_dtype": "bf16"
+}

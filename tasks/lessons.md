@@ -1,5 +1,10 @@
 # Lessons
 
+## 2026-08-28 — Battery v2 RunPod
+- **Mistake:** First GPU boot died on `LocalTokenNotFoundError` because RunPod did not put `HF_TOKEN` in the container env. XSTest SHA failed next because Windows CRLF changed the CSV hash. `enable_thinking=False` is a `ValueError` (not TypeError) on Gemma-4 `.generate()`. Windows `subprocess(..., text=True)` then decoded SSH output as cp1252 and crashed the 15-minute orchestrate tick.
+- **Rule:** On the pod, plant the HF token from `~/.cache/huggingface/token` before `from_pretrained`. Hash XSTest after CRLF→LF. Catch `ValueError` containing `enable_thinking` on generate. Use `encoding="utf-8", errors="replace"` on all SSH/scp captures from Windows. Pull results and terminate as soon as `campaign complete`; do not wait for the next 15-minute tick while the GPU sits idle.
+- **Also:** RTX PRO 4500 (~32GB) cannot hold 12B bf16 + image forwards + hooks. Pin the 96GB RTX PRO 6000 Blackwell. Incomplete `LOCK.json` without `results.json` complete may be replaced after a script-hash fix; do not replace a lock that already has complete results.
+
 ## 2026-08-23 — Do not fuser-kill /dev/nvidiaN
 - **Mistake:** Tried to reclaim a leaked GPU-7 context with `fuser -k /dev/nvidia7`. CUDA processes often open every `/dev/nvidia*` node, so this can SIGKILL other experiments' boots/runs on other GPUs.
 - **Rule:** Never `fuser -k` a nvidia device node on a shared host. Identify the compute PID from `nvidia-smi`. If the PID is gone and `nvidia-smi --gpu-reset` is permission-denied, wait or ask the overseer. Do not broadcast-kill device files.

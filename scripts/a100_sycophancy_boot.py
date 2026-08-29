@@ -134,7 +134,14 @@ def ensure_emotic(paths: dict[str, Path]) -> None:
         img_root = root / "emotic_images"
         if not (img_root / "emotic").exists():
             img_root.mkdir(exist_ok=True)
-            subprocess.check_call(["bash", "-lc", f"unzip -qo {zip_path} -d {img_root}"])
+            try:
+                subprocess.check_call(["bash", "-lc", f"unzip -qo {zip_path} -d {img_root}"])
+            except subprocess.CalledProcessError:
+                import zipfile
+
+                log("unzip binary missing; extracting with zipfile")
+                with zipfile.ZipFile(zip_path) as zf:
+                    zf.extractall(img_root)
         emotic = img_root / "emotic"
         emotic_root.mkdir(parents=True, exist_ok=True)
         if not (emotic_root / "emotic").exists():

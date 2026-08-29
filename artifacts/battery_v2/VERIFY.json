@@ -1,0 +1,21 @@
+{
+  "n_expected": 24,
+  "missing": [],
+  "complete_results": [
+    "e4b/emotic/exp09/results.json",
+    "e4b/emotic/exp05/results.json",
+    "e4b/emotic/exp06/results.json",
+    "e4b/emotic/exp10/results.json",
+    "e4b/emotic/exp03/results.json",
+    "e4b/emotic/mech/results.json",
+    "g12/emotic/exp09/results.json",
+    "g12/emotic/exp05/results.json",
+    "g12/emotic/exp06/results.json",
+    "g12/emotic/exp10/results.json",
+    "g12/emotic/exp03/results.json",
+    "g12/emotic/mech/results.json"
+  ],
+  "dry": [],
+  "bad_lock": [],
+  "ok": true
+}

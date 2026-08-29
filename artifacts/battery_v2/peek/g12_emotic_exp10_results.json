@@ -1,0 +1,27 @@
+{
+  "experiment": "exp10",
+  "complete": true,
+  "model_id": "google/gemma-4-12B-it",
+  "corpus": "emotic",
+  "dirs_status": "DIAGNOSTIC_NOT_V3",
+  "dirs_path": null,
+  "primary": {
+    "c_mean_dY": 0.307327627107135,
+    "ci_lo": -0.12226606631355486,
+    "ci_hi": 0.6218857908578564,
+    "n": 16,
+    "ab": null,
+    "stats": null,
+    "n_dM": 0
+  },
+  "fc_mass_mean": 0.5321526514294663,
+  "gates": {
+    "lock": true,
+    "no_v3_write": true,
+    "frozen_required": false,
+    "frozen_ok": true,
+    "ab_computed": false,
+    "fc_mass": false
+  },
+  "frozen_v3_touched": false
+}

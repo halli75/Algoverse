@@ -1,0 +1,321 @@
+{
+  "experiment": "exp05",
+  "complete": true,
+  "model_id": "google/gemma-4-12B-it",
+  "corpus": "emotic",
+  "rids": {
+    "fear": [
+      "emodb_small/images/fad0lq0rhuwwxv3l2x.jpg",
+      "mscoco/images/COCO_val2014_000000501281.jpg",
+      "mscoco/images/COCO_train2014_000000579440.jpg",
+      "mscoco/images/COCO_train2014_000000232227.jpg",
+      "framesdb/images/frame_dzyq9ukbsjiicxhe.jpg",
+      "mscoco/images/COCO_train2014_000000502134.jpg",
+      "mscoco/images/COCO_train2014_000000565387.jpg",
+      "emodb_small/images/cdyv0pywmdv4itgeis.jpg",
+      "framesdb/images/frame_kdqzkefxm99ebctj.jpg",
+      "mscoco/images/COCO_train2014_000000441108.jpg",
+      "mscoco/images/COCO_train2014_000000052348.jpg",
+      "framesdb/images/frame_05uw61tegz1kfic4.jpg",
+      "emodb_small/images/cmlzw7v76zskkuxg85.jpg",
+      "framesdb/images/frame_1f1ehuhja4m700o1.jpg",
+      "emodb_small/images/b2a6r33ptewb81m5qn.jpg",
+      "mscoco/images/COCO_train2014_000000245598.jpg"
+    ],
+    "anger": [
+      "emodb_small/images/gs84txnh5el02zkbp9.jpg",
+      "mscoco/images/COCO_train2014_000000560885.jpg",
+      "emodb_small/images/gtsc9876oqghvxobog.jpg",
+      "emodb_small/images/fkpxfhj7w9rr1og1u6.jpg",
+      "emodb_small/images/g913ioe8wwg2ej06h0.jpg",
+      "emodb_small/images/gvyytfxue60fydudwm.jpg",
+      "emodb_small/images/gcam29n1t0ckssuqpm.jpg",
+      "framesdb/images/frame_img70kzyxcwpcep2.jpg",
+      "emodb_small/images/gmd4i3btmyzwsbx2vd.jpg",
+      "emodb_small/images/b1oe73jwg70wh368hv.jpg",
+      "mscoco/images/COCO_train2014_000000476826.jpg",
+      "mscoco/images/COCO_train2014_000000014533.jpg",
+      "emodb_small/images/84ylr78s2vu1x66mau.jpg",
+      "emodb_small/images/cwqgqtrnootvlzuo5n.jpg",
+      "mscoco/images/COCO_val2014_000000157944.jpg",
+      "emodb_small/images/gog1i3qqqj2cm5jiuc.jpg"
+    ],
+    "sadness": [
+      "framesdb/images/frame_m5ukoisgw8tna2dk.jpg",
+      "mscoco/images/COCO_train2014_000000247508.jpg",
+      "mscoco/images/COCO_train2014_000000499985.jpg",
+      "mscoco/images/COCO_train2014_000000130816.jpg",
+      "emodb_small/images/e9b5cftu9bwcw29nnh.jpg",
+      "emodb_small/images/2265zkcd3pjlfgnv2t.jpg",
+      "mscoco/images/COCO_val2014_000000118965.jpg",
+      "emodb_small/images/30nuw6i66lmickmbly.jpg",
+      "mscoco/images/COCO_train2014_000000111574.jpg",
+      "emodb_small/images/ekhtdcez1lztslt6z1.jpg",
+      "mscoco/images/COCO_train2014_000000247919.jpg",
+      "emodb_small/images/h0uyuvx12plrieli3j.jpg",
+      "emodb_small/images/cbdh8gyyi6jo4bajto.jpg",
+      "framesdb/images/frame_4soobabuofgpdm27.jpg",
+      "mscoco/images/COCO_train2014_000000212227.jpg",
+      "emodb_small/images/c6gt3ckhh65l3ibaha.jpg"
+    ],
+    "excitement": [
+      "mscoco/images/COCO_train2014_000000184275.jpg",
+      "mscoco/images/COCO_val2014_000000212077.jpg",
+      "mscoco/images/COCO_train2014_000000341845.jpg",
+      "mscoco/images/COCO_train2014_000000440004.jpg",
+      "mscoco/images/COCO_val2014_000000090991.jpg",
+      "mscoco/images/COCO_train2014_000000558412.jpg",
+      "mscoco/images/COCO_train2014_000000118104.jpg",
+      "mscoco/images/COCO_val2014_000000493132.jpg",
+      "mscoco/images/COCO_val2014_000000186095.jpg",
+      "framesdb/images/frame_fpnrrj3hjwms70ww.jpg",
+      "mscoco/images/COCO_val2014_000000063953.jpg",
+      "mscoco/images/COCO_train2014_000000382736.jpg",
+      "mscoco/images/COCO_train2014_000000270440.jpg",
+      "mscoco/images/COCO_val2014_000000575156.jpg",
+      "mscoco/images/COCO_train2014_000000440592.jpg",
+      "mscoco/images/COCO_train2014_000000159808.jpg"
+    ],
+    "happiness": [
+      "mscoco/images/COCO_train2014_000000541319.jpg",
+      "mscoco/images/COCO_train2014_000000092230.jpg",
+      "mscoco/images/COCO_train2014_000000179095.jpg",
+      "framesdb/images/frame_fiu7bldf0imk73nm.jpg",
+      "mscoco/images/COCO_train2014_000000335552.jpg",
+      "mscoco/images/COCO_train2014_000000284783.jpg",
+      "emodb_small/images/1do7vfqaxcoeu5b87p.jpg",
+      "mscoco/images/COCO_train2014_000000090516.jpg",
+      "mscoco/images/COCO_val2014_000000532732.jpg",
+      "framesdb/images/frame_8blnarrikmlipzp8.jpg",
+      "mscoco/images/COCO_train2014_000000055512.jpg",
+      "framesdb/images/frame_hycz7o3m8sq1yvhz.jpg",
+      "mscoco/images/COCO_train2014_000000202855.jpg",
+      "framesdb/images/frame_c6wrr8sxvlkvflle.jpg",
+      "mscoco/images/COCO_train2014_000000401743.jpg",
+      "framesdb/images/frame_555cy2hn2h71788m.jpg"
+    ],
+    "peace": [
+      "mscoco/images/COCO_train2014_000000122916.jpg",
+      "mscoco/images/COCO_val2014_000000195863.jpg",
+      "mscoco/images/COCO_train2014_000000135045.jpg",
+      "framesdb/images/frame_hl0uac9fbljyf6b6.jpg",
+      "mscoco/images/COCO_val2014_000000502852.jpg",
+      "mscoco/images/COCO_val2014_000000108272.jpg",
+      "mscoco/images/COCO_train2014_000000374661.jpg",
+      "mscoco/images/COCO_train2014_000000007839.jpg",
+      "framesdb/images/frame_lqnz9xgz5duwmjiq.jpg",
+      "framesdb/images/frame_2ej9mkbo781nxmnr.jpg",
+      "mscoco/images/COCO_val2014_000000528331.jpg",
+      "emodb_small/images/7e1rreen1fvi8l8a3r.jpg",
+      "mscoco/images/COCO_val2014_000000229317.jpg",
+      "mscoco/images/COCO_train2014_000000493959.jpg",
+      "mscoco/images/COCO_train2014_000000178971.jpg",
+      "ade20k/images/sun_ahqlnwnttenzcgmk.jpg"
+    ],
+    "neutral": [
+      "mscoco/images/COCO_train2014_000000165552.jpg",
+      "mscoco/images/COCO_train2014_000000166959.jpg",
+      "mscoco/images/COCO_train2014_000000244334.jpg",
+      "mscoco/images/COCO_train2014_000000229159.jpg",
+      "mscoco/images/COCO_train2014_000000141336.jpg",
+      "framesdb/images/frame_ge3tc56pkkydy5yl.jpg",
+      "mscoco/images/COCO_train2014_000000468393.jpg",
+      "framesdb/images/frame_dgvzheloufr7ws7b.jpg",
+      "mscoco/images/COCO_train2014_000000020168.jpg",
+      "mscoco/images/COCO_train2014_000000221343.jpg",
+      "framesdb/images/frame_a7xhjxzcp8nhw69p.jpg",
+      "mscoco/images/COCO_val2014_000000218350.jpg",
+      "framesdb/images/frame_4an60v2r18t2pojs.jpg",
+      "mscoco/images/COCO_train2014_000000410963.jpg",
+      "emodb_small/images/7ra2q7lp16or6suhp5.jpg",
+      "mscoco/images/COCO_train2014_000000226597.jpg"
+    ],
+    "no_image": []
+  },
+  "rid_sha256": "49f5d6b3e8c1da8e0a41e4f19d76931faae5b3652d73ccd3a9bb33b1fbbdddb9",
+  "fc_mass_mean": 0.9878127773029646,
+  "parse_rate": 1.0,
+  "gates": {
+    "fc_mass": true,
+    "parse_rate": true,
+    "lock": true,
+    "ug_80_20": true,
+    "ug_90_10": true
+  },
+  "primary": {
+    "ug_reject_90_10": {
+      "no_image": {
+        "mean": 0.0,
+        "ci_lo": 0.0,
+        "ci_hi": 0.0,
+        "n": 16,
+        "n_invalid": 0
+      },
+      "neutral": {
+        "mean": 0.0,
+        "ci_lo": 0.0,
+        "ci_hi": 0.0,
+        "n": 16,
+        "n_invalid": 0
+      },
+      "fear": {
+        "mean": 0.0,
+        "ci_lo": 0.0,
+        "ci_hi": 0.0,
+        "n": 16,
+        "n_invalid": 0
+      },
+      "anger": {
+        "mean": 0.0,
+        "ci_lo": 0.0,
+        "ci_hi": 0.0,
+        "n": 16,
+        "n_invalid": 0
+      },
+      "sadness": {
+        "mean": 0.0,
+        "ci_lo": 0.0,
+        "ci_hi": 0.0,
+        "n": 16,
+        "n_invalid": 0
+      },
+      "excitement": {
+        "mean": 0.0,
+        "ci_lo": 0.0,
+        "ci_hi": 0.0,
+        "n": 16,
+        "n_invalid": 0
+      },
+      "happiness": {
+        "mean": 0.0,
+        "ci_lo": 0.0,
+        "ci_hi": 0.0,
+        "n": 16,
+        "n_invalid": 0
+      },
+      "peace": {
+        "mean": 0.0,
+        "ci_lo": 0.0,
+        "ci_hi": 0.0,
+        "n": 16,
+        "n_invalid": 0
+      }
+    },
+    "ug_reject_80_20": {
+      "no_image": {
+        "mean": 0.0,
+        "ci_lo": 0.0,
+        "ci_hi": 0.0,
+        "n": 16,
+        "n_invalid": 0
+      },
+      "neutral": {
+        "mean": 0.0,
+        "ci_lo": 0.0,
+        "ci_hi": 0.0,
+        "n": 16,
+        "n_invalid": 0
+      },
+      "fear": {
+        "mean": 0.0,
+        "ci_lo": 0.0,
+        "ci_hi": 0.0,
+        "n": 16,
+        "n_invalid": 0
+      },
+      "anger": {
+        "mean": 0.0,
+        "ci_lo": 0.0,
+        "ci_hi": 0.0,
+        "n": 16,
+        "n_invalid": 0
+      },
+      "sadness": {
+        "mean": 0.0,
+        "ci_lo": 0.0,
+        "ci_hi": 0.0,
+        "n": 16,
+        "n_invalid": 0
+      },
+      "excitement": {
+        "mean": 0.0,
+        "ci_lo": 0.0,
+        "ci_hi": 0.0,
+        "n": 16,
+        "n_invalid": 0
+      },
+      "happiness": {
+        "mean": 0.0,
+        "ci_lo": 0.0,
+        "ci_hi": 0.0,
+        "n": 16,
+        "n_invalid": 0
+      },
+      "peace": {
+        "mean": 0.0,
+        "ci_lo": 0.0,
+        "ci_hi": 0.0,
+        "n": 16,
+        "n_invalid": 0
+      }
+    },
+    "dictator_0_50": {
+      "no_image": {
+        "mean": 25.0,
+        "ci_lo": 12.5,
+        "ci_hi": 37.5,
+        "n": 16,
+        "n_invalid": 0
+      },
+      "neutral": {
+        "mean": 6.25,
+        "ci_lo": 0.0,
+        "ci_hi": 15.625,
+        "n": 16,
+        "n_invalid": 0
+      },
+      "fear": {
+        "mean": 12.5,
+        "ci_lo": 3.125,
+        "ci_hi": 25.0,
+        "n": 16,
+        "n_invalid": 0
+      },
+      "anger": {
+        "mean": 31.25,
+        "ci_lo": 18.75,
+        "ci_hi": 40.625,
+        "n": 16,
+        "n_invalid": 0
+      },
+      "sadness": {
+        "mean": 28.125,
+        "ci_lo": 15.625,
+        "ci_hi": 40.625,
+        "n": 16,
+        "n_invalid": 0
+      },
+      "excitement": {
+        "mean": 15.625,
+        "ci_lo": 6.25,
+        "ci_hi": 25.0,
+        "n": 16,
+        "n_invalid": 0
+      },
+      "happiness": {
+        "mean": 25.0,
+        "ci_lo": 12.5,
+        "ci_hi": 37.5,
+        "n": 16,
+        "n_invalid": 0
+      },
+      "peace": {
+        "mean": 3.125,
+        "ci_lo": 0.0,
+        "ci_hi": 9.375,
+        "n": 16,
+        "n_invalid": 0
+      }
+    }
+  }
+}

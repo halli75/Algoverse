@@ -1,0 +1,118 @@
+{
+  "experiment": "exp06",
+  "complete": true,
+  "model_id": "google/gemma-4-E4B-it",
+  "corpus": "emotic",
+  "rids": {
+    "fear": [
+      "emodb_small/images/fad0lq0rhuwwxv3l2x.jpg",
+      "mscoco/images/COCO_val2014_000000501281.jpg",
+      "mscoco/images/COCO_train2014_000000579440.jpg",
+      "mscoco/images/COCO_train2014_000000232227.jpg"
+    ],
+    "anger": [
+      "emodb_small/images/gs84txnh5el02zkbp9.jpg",
+      "mscoco/images/COCO_train2014_000000560885.jpg",
+      "emodb_small/images/gtsc9876oqghvxobog.jpg",
+      "emodb_small/images/fkpxfhj7w9rr1og1u6.jpg"
+    ],
+    "sadness": [
+      "framesdb/images/frame_m5ukoisgw8tna2dk.jpg",
+      "mscoco/images/COCO_train2014_000000247508.jpg",
+      "mscoco/images/COCO_train2014_000000499985.jpg",
+      "mscoco/images/COCO_train2014_000000130816.jpg"
+    ],
+    "excitement": [
+      "mscoco/images/COCO_train2014_000000184275.jpg",
+      "mscoco/images/COCO_val2014_000000212077.jpg",
+      "mscoco/images/COCO_train2014_000000341845.jpg",
+      "mscoco/images/COCO_train2014_000000440004.jpg"
+    ],
+    "happiness": [
+      "mscoco/images/COCO_train2014_000000541319.jpg",
+      "mscoco/images/COCO_train2014_000000092230.jpg",
+      "mscoco/images/COCO_train2014_000000179095.jpg",
+      "framesdb/images/frame_fiu7bldf0imk73nm.jpg"
+    ],
+    "peace": [
+      "mscoco/images/COCO_train2014_000000122916.jpg",
+      "mscoco/images/COCO_val2014_000000195863.jpg",
+      "mscoco/images/COCO_train2014_000000135045.jpg",
+      "framesdb/images/frame_hl0uac9fbljyf6b6.jpg"
+    ],
+    "neutral": [
+      "mscoco/images/COCO_train2014_000000165552.jpg",
+      "mscoco/images/COCO_train2014_000000166959.jpg",
+      "mscoco/images/COCO_train2014_000000244334.jpg",
+      "mscoco/images/COCO_train2014_000000229159.jpg"
+    ],
+    "no_image": []
+  },
+  "rid_sha256": "20bd27f254e2fc507e1f16244701cb97b7f8fcfc2af19a980468feb9bed76965",
+  "fc_mass_mean": 0.9628538769860225,
+  "parse_rate": 1.0,
+  "primary": {
+    "no_image": {
+      "p_now": 0.5,
+      "ci_lo": 0.3125,
+      "ci_hi": 0.65625,
+      "n": 32,
+      "n_invalid": 0
+    },
+    "neutral": {
+      "p_now": 0.71875,
+      "ci_lo": 0.6326171875,
+      "ci_hi": 0.7892578124999998,
+      "n": 128,
+      "n_invalid": 0
+    },
+    "fear": {
+      "p_now": 0.6953125,
+      "ci_lo": 0.6169921875,
+      "ci_hi": 0.7734375,
+      "n": 128,
+      "n_invalid": 0
+    },
+    "anger": {
+      "p_now": 0.671875,
+      "ci_lo": 0.59375,
+      "ci_hi": 0.7501953124999998,
+      "n": 128,
+      "n_invalid": 0
+    },
+    "sadness": {
+      "p_now": 0.8046875,
+      "ci_lo": 0.734375,
+      "ci_hi": 0.8671875,
+      "n": 128,
+      "n_invalid": 0
+    },
+    "excitement": {
+      "p_now": 0.6171875,
+      "ci_lo": 0.53125,
+      "ci_hi": 0.703125,
+      "n": 128,
+      "n_invalid": 0
+    },
+    "happiness": {
+      "p_now": 0.734375,
+      "ci_lo": 0.6560546875,
+      "ci_hi": 0.8125,
+      "n": 128,
+      "n_invalid": 0
+    },
+    "peace": {
+      "p_now": 0.78125,
+      "ci_lo": 0.7107421875,
+      "ci_hi": 0.84375,
+      "n": 128,
+      "n_invalid": 0
+    }
+  },
+  "gates": {
+    "lock": true,
+    "dv_is_p_now": true,
+    "fc_mass": true,
+    "parse_rate": true
+  }
+}
