@@ -1,0 +1,129 @@
+\begin{thebibliography}{24}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Arditi et~al.(2024)Arditi, Obeso, Syed, Paleka, Panickssery, Gurnee, and Nanda]{arditi2024refusal}
+Andy Arditi, Oscar Obeso, Aaquib Syed, Daniel Paleka, Nina Panickssery, Wes Gurnee, and Neel Nanda.
+\newblock Refusal in language models is mediated by a single direction.
+\newblock In \emph{Advances in Neural Information Processing Systems}, volume~37, 2024.
+
+\bibitem[Baron and Kenny(1986)]{baron1986moderator}
+Reuben~M. Baron and David~A. Kenny.
+\newblock The moderator--mediator variable distinction in social psychological research: Conceptual, strategic, and statistical considerations.
+\newblock \emph{Journal of Personality and Social Psychology}, 51\penalty0 (6):\penalty0 1173--1182, 1986.
+
+\bibitem[Borsboom et~al.(2004)Borsboom, Mellenbergh, and van Heerden]{borsboom2004concept}
+Denny Borsboom, Gideon~J. Mellenbergh, and Jaap van Heerden.
+\newblock The concept of validity.
+\newblock \emph{Psychological Review}, 111\penalty0 (4):\penalty0 1061--1071, 2004.
+
+\bibitem[Campbell and Fiske(1959)]{campbell1959convergent}
+Donald~T. Campbell and Donald~W. Fiske.
+\newblock Convergent and discriminant validation by the multitrait-multimethod matrix.
+\newblock \emph{Psychological Bulletin}, 56\penalty0 (2):\penalty0 81--105, 1959.
+
+\bibitem[Cronbach and Meehl(1955)]{cronbach1955construct}
+Lee~J. Cronbach and Paul~E. Meehl.
+\newblock Construct validity in psychological tests.
+\newblock \emph{Psychological Bulletin}, 52\penalty0 (4):\penalty0 281--302, 1955.
+
+\bibitem[Doshi-Velez and Kim(2017)]{doshi2017towards}
+Finale Doshi-Velez and Been Kim.
+\newblock Towards a rigorous science of interpretable machine learning.
+\newblock In \emph{arXiv preprint arXiv:1702.08608}, 2017.
+
+\bibitem[Forsythe et~al.(1994)Forsythe, Horowitz, Savin, and Sefton]{forsythe1994fairness}
+Robert Forsythe, Joel~L. Horowitz, N.~E. Savin, and Martin Sefton.
+\newblock Fairness in ultimatum games with asymmetric information.
+\newblock \emph{Games and Economic Behavior}, 10\penalty0 (2):\penalty0 347--369, 1994.
+
+\bibitem[{Gemma Team}(2026)]{gemmateam2026gemma4}
+{Gemma Team}.
+\newblock {Gemma} 4 technical report, 2026.
+\newblock URL \url{https://arxiv.org/abs/2607.02770}.
+
+\bibitem[{Gemma Team} et~al.(2025){Gemma Team}, Kamath, Ferret, Pathak, Vieillard, Merhej, Perrin, Matejovicova, Ram{\'e}, Rivi{\`e}re, et~al.]{gemmateam2025gemma3}
+{Gemma Team}, Aishwarya Kamath, Johan Ferret, Shreya Pathak, Nino Vieillard, Ramona Merhej, Sarah Perrin, Tatiana Matejovicova, Alexandre Ram{\'e}, Morgane Rivi{\`e}re, et~al.
+\newblock {Gemma} 3 technical report.
+\newblock \emph{arXiv preprint arXiv:2503.19786}, 2025.
+
+\bibitem[Kirby and Marakovi{\'c}(1996)]{kirby2000discounting}
+Kris~N. Kirby and Nino~N. Marakovi{\'c}.
+\newblock Amount of reward has opposite effects on the discounting of delayed and probabilistic rewards.
+\newblock \emph{Journal of Experimental Psychology: Learning, Memory, and Cognition}, 22:\penalty0 273--286, 1996.
+\newblock Kirby monetary-choice questionnaire as used in delay-discounting batteries.
+
+\bibitem[Kosti et~al.(2017)Kosti, Alvarez, Recasens, and Lapedriza]{kosti2017emotion}
+Ronak Kosti, Jose~M. Alvarez, Adria Recasens, and Agata Lapedriza.
+\newblock Emotion recognition in context.
+\newblock In \emph{Proceedings of the {IEEE} Conference on Computer Vision and Pattern Recognition}, pages 1667--1675, 2017.
+
+\bibitem[Kosti et~al.(2019)Kosti, Alvarez, Recasens, and Lapedriza]{kosti2019emotic}
+Ronak Kosti, Jose~M. Alvarez, Adria Recasens, and Agata Lapedriza.
+\newblock Context based emotion recognition using {EMOTIC} dataset.
+\newblock \emph{{IEEE} Transactions on Pattern Analysis and Machine Intelligence}, 42\penalty0 (11):\penalty0 2755--2766, 2019.
+
+\bibitem[Kurdi et~al.(2017)Kurdi, Lozano, and Banaji]{kurdi2017oasis}
+Benedek Kurdi, Shayn Lozano, and Mahzarin~R. Banaji.
+\newblock Introducing the open affective standardized image set ({OASIS}).
+\newblock \emph{Behavior Research Methods}, 49\penalty0 (2):\penalty0 457--470, 2017.
+
+\bibitem[Lin et~al.(2022)Lin, Hilton, and Evans]{lin2022truthfulqa}
+Stephanie Lin, Jacob Hilton, and Owain Evans.
+\newblock {TruthfulQA}: Measuring how models mimic human falsehoods.
+\newblock In \emph{Proceedings of the 60th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)}, pages 3214--3252, 2022.
+
+\bibitem[Lipton(2018)]{lipton2018mythos}
+Zachary~C. Lipton.
+\newblock The mythos of model interpretability.
+\newblock \emph{Communications of the {ACM}}, 61\penalty0 (10):\penalty0 36--43, 2018.
+
+\bibitem[Messick(1995)]{messick1995validity}
+Samuel Messick.
+\newblock Validity of psychological assessment: Validation of inferences from persons' responses and performances as scientific inquiry into score meaning.
+\newblock \emph{American Psychologist}, 50\penalty0 (9):\penalty0 741--749, 1995.
+
+\bibitem[Perez et~al.(2022)Perez, Ringer, Luko{\v{s}}i{\=u}t{\.e}, Nguyen, Chen, Heiner, Pettit, Olsson, Kundu, Kadavath, et~al.]{perez2022discovering}
+Ethan Perez, Sam Ringer, Kamil{\.e} Luko{\v{s}}i{\=u}t{\.e}, Karina Nguyen, Edwin Chen, Scott Heiner, Craig Pettit, Catherine Olsson, Sandipan Kundu, Saurav Kadavath, et~al.
+\newblock Discovering language model behaviors with model-written evaluations.
+\newblock \emph{arXiv preprint arXiv:2212.09251}, 2022.
+
+\bibitem[Rimsky et~al.(2024)Rimsky, Gabrieli, Schulz, Tong, Hubinger, and Turner]{rimsky2024steering}
+Nina Rimsky, Nick Gabrieli, Julian Schulz, Meg Tong, Evan Hubinger, and Alexander~Matt Turner.
+\newblock Steering {Llama} 2 via contrastive activation addition.
+\newblock In \emph{Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)}, pages 15504--15522, 2024.
+
+\bibitem[R{\"o}ttger et~al.(2024)R{\"o}ttger, Kirk, Vidgen, Attanasio, Bianchi, and Hovy]{rottger2024xstest}
+Paul R{\"o}ttger, Hannah~Rose Kirk, Bertie Vidgen, Giuseppe Attanasio, Federico Bianchi, and Dirk Hovy.
+\newblock {XST}est: A test suite for identifying exaggerated safety behaviours in large language models.
+\newblock In \emph{Proceedings of the 2024 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (Volume 1: Long Papers)}, pages 5377--5400, 2024.
+
+\bibitem[Sun et~al.(2026)Sun, Yan, Lu, Lee, Zhang, and Shao]{sun2026valence}
+Lihao Sun, Lewen Yan, Xiaoya Lu, Andrew Lee, Jie Zhang, and Jing Shao.
+\newblock Valence--arousal subspace in {LLMs}: Circular emotion geometry and multi-behavioral control.
+\newblock \emph{arXiv preprint arXiv:2604.03147}, 2026.
+
+\bibitem[Turner et~al.(2023)Turner, Thiergart, Leech, Udell, Vazquez, Mini, and MacDiarmid]{turner2023activation}
+Alexander~Matt Turner, Lisa Thiergart, Gavin Leech, David Udell, Juan~J. Vazquez, Ulisse Mini, and Monte MacDiarmid.
+\newblock Steering language models with activation engineering.
+\newblock \emph{arXiv preprint arXiv:2308.10248}, 2023.
+
+\bibitem[Wollschl{\"a}ger et~al.(2025)Wollschl{\"a}ger, Elstner, Geisler, Cohen-Addad, G{\"u}nnemann, and Gasteiger]{wollschlager2025geometry}
+Tom Wollschl{\"a}ger, Jannes Elstner, Simon Geisler, Vincent Cohen-Addad, Stephan G{\"u}nnemann, and Johannes Gasteiger.
+\newblock The geometry of refusal in large language models: Concept cones and representational independence.
+\newblock In \emph{Proceedings of the 42nd International Conference on Machine Learning}, volume 267 of \emph{Proceedings of Machine Learning Research}, pages 66945--66970. PMLR, 2025.
+
+\bibitem[Zhou et~al.(2024)Zhou, Yu, Zhang, Xu, Huang, and Li]{zhou2024alignment}
+Zhenhong Zhou, Haiyang Yu, Xinghua Zhang, Rongwu Xu, Fei Huang, and Yongbin Li.
+\newblock How alignment and jailbreak work: Explain {LLM} safety through intermediate hidden states.
+\newblock In \emph{Findings of the Association for Computational Linguistics: EMNLP 2024}, pages 2461--2488, 2024.
+
+\bibitem[Zou et~al.(2023)Zou, Wang, Carlini, Nasr, Kolter, and Fredrikson]{zou2023universal}
+Andy Zou, Zifan Wang, Nicholas Carlini, Milad Nasr, J.~Zico Kolter, and Matt Fredrikson.
+\newblock Universal and transferable adversarial attacks on aligned language models.
+\newblock \emph{arXiv preprint arXiv:2307.15043}, 2023.
+
+\end{thebibliography}
